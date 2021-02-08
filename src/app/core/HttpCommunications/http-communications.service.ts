@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 )
 export class HttpCommunicationsService {
 
-  private host = 'http://localhost:8090/lynx/rest/';
+  private host = 'http://localhost:8090/admin/';
 
   constructor(private httpClient: HttpClient) {
   }
