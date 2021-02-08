@@ -8,8 +8,8 @@ export class ListService {
 
   constructor(private http: HttpCommunicationsService) { }
 
-  findAll(path: String): Observable<Response> {
-    return this.http.retrieveGetCall<Response>(path + "/findAll")
-  }
+  // findAll(path: String): Observable<Response> {
+  //   return this.http.retrieveGetCall<Response>(path + "/findAll")
+  // }
 
 }

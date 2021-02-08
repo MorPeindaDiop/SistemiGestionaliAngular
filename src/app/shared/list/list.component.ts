@@ -11,33 +11,32 @@ import { ListService } from '../services/list.service';
 })
 export class ListComponent implements OnInit {
 
-  @Input('stringPath')
-  stringPath: String;
+  @Input('list')
+  list: Observable<any[]>;
 
-  response: Observable<Response>;
+  //response: Observable<Response>;
   error: String = "";
 
-  list= [];
+  //list= [];
   
   constructor(private listService: ListService) {
 
-    console.log(this.stringPath)
+    console.log(this.list)
 
-    this.response = this.listService.findAll(this.stringPath)
+    //this.response = this.listService.findAll(this.stringPath)
 
-    console.log(this.response)
+    //console.log(this.response)
 
-    this.response.subscribe(
-      result => {
-        this.list = result.result
-        console.log(this.list)
-      },
-      error => {
-        this.error = error.error
-        console.log(this.error)
-      }
-      
-    )
+    // this.list.subscribe(
+    //   result => {
+    //     this.list = result.result
+    //     console.log(this.list)
+    //   },
+    //   error => {
+    //     this.error = error.error
+    //     console.log(this.error)
+    //   }
+    // )
   }
 
   ngOnInit(): void {
