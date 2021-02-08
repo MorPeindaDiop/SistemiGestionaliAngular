@@ -17,6 +17,20 @@ export class ItemsComponent implements OnInit {
   error: String = "";
 
   items: Item[] = [];
+
+  public dataa = [
+    {name: 'Ajay', email: 'therichpost@gmail.com', website:'therichpost.com'},
+    {name: 'Jas', email: 'therichpost@gmail.com', website:'therichpost.com'},
+    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
+    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
+  {name: 'Jas', email: 'therichpost@gmail.com', website:'therichpost.com'},
+    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
+    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
+  {name: 'Jas', email: 'therichpost@gmail.com', website:'therichpost.com'},
+    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
+    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
+  ];
+
   
   constructor(private itemService: ItemsService) {
     console.log('costruttore items')
@@ -38,8 +52,15 @@ export class ItemsComponent implements OnInit {
       
     )
   }
+  dtOptions: DataTables.Settings = {};
 
   ngOnInit(): void {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5,
+    lengthMenu : [5, 10, 25],
+      processing: true
+    };
   }
 
   delete(item: Item) {
@@ -47,5 +68,6 @@ export class ItemsComponent implements OnInit {
     console.log(item)
     this.itemService.deleteItem(item)
   }
+  
 
 }

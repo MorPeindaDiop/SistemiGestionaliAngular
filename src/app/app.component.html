@@ -1,13 +1,34 @@
 <div class="col">
     <nav class="navbar navbar-light bg-light">
+      <li><a href="/home"><img src="/assets/logo.png" width="70" height="40" class="d-inline-block align-top" alt="logo" ></a></li>
       <a class="navbar-brand">
-        <img src="" width="30" height="30" class="d-inline-block align-top" alt="">
-        &nbsp;<label class="titolo"> MFL Management</label>
+       <label class="titolo"> MFL Management</label>
       </a>
+      <li><button class="navbar" routerLink="profilo">Profilo</button></li> &nbsp;
+      <li><button class="navbar" routerLink="logOut">Logout</button></li>
+      
     </nav>
   </div>
   
   <div class="row">
     <div class="col-sm"><br></div>
   </div>
+  
+  <!-- <h1>Angular Datatables Step by Step Example - ItSolutionStuff.com</h1>
+<table datatable [dtOptions]="dtOptions" class="row-border hover">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Body</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let post of posts">
+      <td>{{ post.id }}</td>
+      <td>{{ post.title }}</td>
+      <td>{{ post.body }}</td>
+    </tr>
+  </tbody>
+</table> -->
   <router-outlet></router-outlet>
