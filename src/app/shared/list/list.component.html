@@ -1,15 +1,8 @@
-<!-- <h1>Question</h1>
+<!-- <h1>path</h1>
 <button routerLink="create">Create new Question</button>
 <table class="table8">
     <tr>
-        <th>ID</th>
-        <th>Difficulty</th>
-        <th>Skill</th>
-        <th>Question text</th>
-        <th>Correct Answer</th>
-        <th>Wrong Answers</th>
-        <th></th>
-        <th></th>
+        <th *ngFor="let line of response.result | async">line</th>
     </tr>
     <tr *ngFor="let question of questions | async">
         <td>{{ question.id }}</td>
