@@ -1,19 +1,13 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "cli": {
-    "analytics": "2da2108d-f91c-4ed1-9f36-fa4761c9d6c5"
-  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "SistemiGestioniAngular": {
+    "academyLynxAngular": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss"
-        },
-        "@schematics/angular:application": {
-          "strict": true
         }
       },
       "root": "",
@@ -23,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/SistemiGestioniAngular",
+            "outputPath": "dist/academyLynxAngular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -34,9 +28,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/popper.js/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              
+            ]
           },
           "configurations": {
             "production": {
@@ -49,6 +50,7 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
+              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -56,13 +58,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
                 }
               ]
             }
@@ -71,18 +73,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "SistemiGestioniAngular:build"
+            "browserTarget": "academyLynxAngular:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "SistemiGestioniAngular:build:production"
+              "browserTarget": "academyLynxAngular:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "SistemiGestioniAngular:build"
+            "browserTarget": "academyLynxAngular:build"
           }
         },
         "test": {
@@ -119,16 +121,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "SistemiGestioniAngular:serve"
+            "devServerTarget": "academyLynxAngular:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "SistemiGestioniAngular:serve:production"
+              "devServerTarget": "academyLynxAngular:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "SistemiGestioniAngular"
+  "defaultProject": "academyLynxAngular",
+  "cli": {
+    "analytics": false
+  }
 }
