@@ -3,9 +3,7 @@ import { Observable } from 'rxjs';
 import { HttpCommunicationsService } from 'src/app/core/HttpCommunications/http-communications.service';
 import { Response } from 'src/app/core/model/response';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ListService {
 
   constructor(private http: HttpCommunicationsService) { }
