@@ -1,0 +1,37 @@
+<h1>CREATE ITEM</h1>
+<form [formGroup]="itemForm" (ngSubmit)="save()">
+    <div>
+        <!-- <label><b>Type:</b></label> -->
+        <input placeholder="Item cod" formControlName="codItem">
+    </div>
+    <div>
+        <!-- <label><b>Type:</b></label> -->
+        <input placeholder="Description" formControlName="description">
+    </div>
+    <div>
+        <!-- <label><b>Type:</b></label> -->
+        <input placeholder="Type" formControlName="type">
+    </div>
+    <div>
+        <!-- <label><b>Type:</b></label> -->
+        <input placeholder="Category" formControlName="category">
+    </div>
+    <div>
+        <!-- <label><b>Type:</b></label> -->
+        <input placeholder="Measure" formControlName="measure">
+    </div>
+    <div>
+        <!-- <label><b>Type:</b></label> -->
+        <input placeholder="Price" formControlName="price">
+    </div>
+    <div>
+        <!-- <label><b>Type:</b></label> -->
+        <input placeholder="Discount" formControlName="discount">
+    </div>
+    <div>
+        <!-- <label><b>Type:</b></label> -->
+        <input placeholder="Vat" formControlName="vat">
+    </div>
+    <button type="submit">SAVE</button>
+    <button type="button" routerLink="/items">ANNULLA</button>
+</form>

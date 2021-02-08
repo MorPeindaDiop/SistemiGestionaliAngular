@@ -1,7 +1,7 @@
 import { NotExpr } from "@angular/compiler";
 
 export interface Item {
-    cod_category : String;
+    codItem : String;
     description : String;
     price : number;
     measure : number;

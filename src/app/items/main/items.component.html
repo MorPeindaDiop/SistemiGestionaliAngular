@@ -1,2 +1,39 @@
-<p>items works!</p>
-<app-list [stringPath]="urlPath"></app-list>
+<!-- <app-list [stringPath]="urlPath"></app-list> -->
+<h1>Items</h1>
+<button routerLink="create">Create new Items</button>
+<table class="table8">
+    <tr>
+        <th>Item cod</th>
+        <th>Description</th>
+        <th>Type</th>
+        <th>Category</th>
+        <th>Unit of measure</th>
+        <th>Price</th>
+        <th>Discount</th>
+        <th>Vat</th>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr *ngFor="let item of items">
+        <td>{{ item.codItem }}</td>
+        <td>{{ item.description }}</td>
+        <td>{{ item.type }}</td>
+        <td>{{ item.category }}</td>
+        <td>{{ item.price }}</td>
+        <td>{{ item.measure }}</td>
+        <td>{{ item.discount }}</td>
+        <td>{{ item.vat }}</td>
+        <!-- <td>{{ item.type == "vf" ? question.correctAnswerBoolean : question.correctAnswerText }}</td>
+        <td>
+            <div *ngFor="let skill of skills | async">
+                <div *ngIf="skill.id == question.idSkill">
+                        {{ skill.description }}
+                </div>
+            </div>
+        </td>
+        <td>{{ item.wrongAnswers != '' ? question.wrongAnswers : "-" }}</td> -->
+        <td><button [routerLink]="['detail', item.codItem]">Edit</button></td>
+        <td><button (click)="delete(item)">Delete</button></td>
+    </tr>
+</table>
+<button routerLink="/home">TORNA ALLA HOME</button>

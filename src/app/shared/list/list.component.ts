@@ -1,5 +1,4 @@
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Response } from 'src/app/core/model/response';
 import { ListService } from '../services/list.service';
@@ -12,7 +11,7 @@ import { ListService } from '../services/list.service';
 export class ListComponent implements OnInit {
 
   @Input('stringPath')
-  stringPath: String;
+  urlPath: String;
 
   response: Observable<Response>;
   error: String = "";
@@ -21,9 +20,10 @@ export class ListComponent implements OnInit {
   
   constructor(private listService: ListService) {
 
-    console.log(this.stringPath)
+    console.log('costruttore list')
+    console.log(this.urlPath)
 
-    this.response = this.listService.findAll(this.stringPath)
+    this.response = this.listService.findAll(this.urlPath)
 
     console.log(this.response)
 
