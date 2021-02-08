@@ -8,6 +8,8 @@ const routes: Routes = [
   { path: 'invoices', loadChildren: () => import('./invoice/invoice.module').then(m => m.InvoiceModule) },
   { path: 'measures', loadChildren: () => import('./measures/measures.module').then(m => m.MeasuresModule) },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'vat', loadChildren: () => import('./vat/vat.module').then(m => m.VatModule) },
+  { path: 'category', loadChildren: () => import('./category/category.module').then(m => m.CategoryModule) },
   { path: '**', loadChildren: () => import('./page-not-found/page-not-found.module').then(m => m.PageNotFoundModule) },
 ];
 
