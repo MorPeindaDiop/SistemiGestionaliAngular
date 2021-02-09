@@ -16,7 +16,7 @@ export class ItemsComponent implements OnInit {
   response: Observable<Response>;
   error: String = "";
 
-  items: Item[] = [];
+   items: Item[] = [];
 
   public dataa = [
     {name: 'Ajay', email: 'therichpost@gmail.com', website:'therichpost.com'},

@@ -1,26 +1,39 @@
+<div class="corpo">
+    <h1>Articoli</h1>
+    <button routerLink="create">Crea nuovo articolo</button><br>
+    <br>
+    <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"
+        style="width: 100%;">
+        <thead>
+            <tr>
+                <th>Codice articolo</th>
+                <th>Descrizione</th>
+                <th>Tipo</th>
+                <th>Categoria</th>
+                <th>Unità di misura</th>
+                <th>Prezzo</th>
+                <th>Sconto</th>
+                <th>IVA</th>
+                <th></th>
+                <th></th>
 
-    <div class="corpo">
-        <h1>Articoli</h1>
-        <button routerLink="create">Crea nuovo articolo</button><br>
-        <br>
-<table  class="table table-striped table-bordered table-sm row-border hover"  datatable [dtOptions]="dtOptions" style="width: 100%;">
-    <thead>
-        <tr>
-        <th>Codice articolo</th>
-        <th>Descrizione</th>
-        <th>Tipo</th>
-        <th>Categoria</th>
-        <th>Unità di misura</th>
-        <th>Prezzo</th>
-        <th>Sconto</th>
-        <th>IVA</th>
-        <th></th>
-        <th></th>
-        
-    </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let group of dataa">
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of items">
+                <td>{{ item.codItem }}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.type }}</td>
+                <td>{{ item.category }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.measure }}</td>
+                <td>{{ item.discount }}</td>
+                <td>{{ item.vat }}</td>
+                <td><button [routerLink]="['detail', item.codItem]">Edit</button></td>
+                <td><button (click)="delete(item)">Delete</button></td>
+
+            </tr>
+            <!-- <tr *ngFor="let group of dataa">
             <td>{{group.name}}</td>
             <td>{{group.email}}</td>
             <td>{{group.website}}</td>
@@ -28,13 +41,13 @@
             <td>{{group.website}}</td>
             <td>{{group.website}}</td>
             <td>{{group.website}}</td>
-            <td>{{group.website}}</td>
-            <td ><button>Modifica</button></td>
-            <td ><button>Elimina</button></td>
+            <td>{{group.website}}</td> 
+            <td><button >Edit</button></td>
+                <td><button >Delete</button></td>
+           </tr> -->
             
-        </tr>
-    </tbody>
-    <!-- <tr *ngFor="let item of items">
+        </tbody>
+        <!-- <tr *ngFor="let item of items">
         <td>{{ item.codItem }}</td>
         <td>{{ item.description }}</td>
         <td>{{ item.type }}</td>
@@ -55,10 +68,10 @@
         <!-- <td><button [routerLink]="['detail', item.codItem]">Edit</button></td>
         <td><button (click)="delete(item)">Delete</button></td>
     </tr> -->
-    
-    
 
 
-</table>
-<button routerLink="/home">TORNA ALLA HOME</button>
+
+
+    </table>
+    <button routerLink="/home">TORNA ALLA HOME</button>
 </div>

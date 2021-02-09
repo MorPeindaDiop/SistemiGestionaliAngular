@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { ClienteRoutingModule } from './cliente-routing.module';
 import { ClienteComponent } from './main/cliente.component';
 import { SharedModule } from '../shared/shared.module';
+import { DataTablesModule } from 'angular-datatables';
+import { ClientsService } from './services/clients.service';
 
 
 @NgModule({
@@ -11,7 +13,11 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     ClienteRoutingModule,
-    SharedModule
+    SharedModule,
+    DataTablesModule
+  ],
+  providers: [
+    ClientsService
   ]
 })
 export class ClienteModule { }

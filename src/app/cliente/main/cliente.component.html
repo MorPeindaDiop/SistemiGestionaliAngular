@@ -1,1 +1,47 @@
-<p>cliente works!</p>
+<div class="corpo">
+    <h1>Clienti</h1>
+    <button routerLink="create">Crea un nuovo cliente</button><br>
+    <br>
+    <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"
+        style="width: 100%;">
+        <thead>
+            <tr>
+                <th>Codice CLiente</th>
+                <th>Ragione sociale</th>
+                <th>Partita IVA</th>
+                <th>Codice fiscale</th>
+                <th>Mail</th>
+                <th>Telefono</th>
+                <th>Cellulare</th>
+                <th>Città</th>
+                <th>Indirizzo</th>
+                <th>Provincia</th>
+                <th>CAP</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let client of clients">
+                <td>{{ client.codClient }}</td>
+                <td>{{ client.business_name }}</td>
+                <td>{{ client.piva }}</td>
+                <td>{{ client.fiscal_cod }}</td>
+                <td>{{ client.mail }}</td>
+                <td>{{ client.tel }}</td>
+                <td>{{ client.cel }}</td>
+                <td>{{ client.city }}</td>
+                <td>{{ client.address }}</td>
+                <td>{{ client.province }}</td>
+                <td>{{ client.cap }}</td>
+                <td><button [routerLink]="['detail', client.codItem]">Edit</button></td>
+                <td><button (click)="delete(client)">Delete</button></td>
+
+            </tr>
+           
+            
+        </tbody>
+        
+
+    </table>
+    <button routerLink="/home">TORNA ALLA HOME</button>
+</div>
