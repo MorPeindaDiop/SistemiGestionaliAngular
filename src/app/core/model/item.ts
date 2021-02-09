@@ -1,10 +1,8 @@
-import { NotExpr } from "@angular/compiler";
-
 export interface Item {
     codItem : String;
     description : String;
     price : number;
-    measure : number;
+    measure : String;
     type : String;
     category : String;
     discount : number;

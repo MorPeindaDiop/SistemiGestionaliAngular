@@ -20,11 +20,8 @@ export class ItemsComponent implements OnInit {
   
   constructor(private itemService: ItemsService) {
     console.log('costruttore items')
-    //console.log(this.urlPath)
 
     this.response = this.itemService.retreiveAllItems()
-
-    console.log(this.response)
 
     this.response.subscribe(
       response => {

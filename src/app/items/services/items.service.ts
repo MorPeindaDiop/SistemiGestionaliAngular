@@ -10,15 +10,19 @@ export class ItemsService {
   constructor(private http: HttpCommunicationsService) { }
 
   retreiveAllItems(): Observable<Response> {
+    console.log("sono dentro alla chiamata all items")
     return this.http.retrieveGetCall<Response>("item/findAll")
   }
 
   createItem(item: Item): Observable<Response> {
+    console.log("sono dentro alla chiamata create")
     return this.http.retrievePostCall<Response>("item/create", item)
   }
 
   deleteItem(item: Item): Observable<Response> {
-    return this.http.retrievePostCall<Response>("item/delete", item)
+    console.log("sono dentro alla chiamata delete")
+    console.log(JSON.stringify(item))
+    return this.http.retrievePostCall<Response>("item/delete", JSON.stringify(item))
   }
 
 }
