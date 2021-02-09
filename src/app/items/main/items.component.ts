@@ -32,8 +32,9 @@ export class ItemsComponent implements OnInit {
         this.error = error.error
         console.log(this.error)
       }
-      
     )
+
+    sessionStorage.setItem("items",JSON.stringify(this.items));
   }
 
   ngOnInit(): void {
