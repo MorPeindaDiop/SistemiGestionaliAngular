@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Item } from 'src/app/core/model/item';
 import { Response } from 'src/app/core/model/response';
 import { ItemsService } from '../services/items.service';
@@ -18,19 +18,6 @@ export class ItemsComponent implements OnInit {
 
    items: Item[] = [];
 
-  public dataa = [
-    {name: 'Ajay', email: 'therichpost@gmail.com', website:'therichpost.com'},
-    {name: 'Jas', email: 'therichpost@gmail.com', website:'therichpost.com'},
-    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
-    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
-  {name: 'Jas', email: 'therichpost@gmail.com', website:'therichpost.com'},
-    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
-    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
-  {name: 'Jas', email: 'therichpost@gmail.com', website:'therichpost.com'},
-    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
-    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
-  ];
-
   
   constructor(private itemService: ItemsService) {
     console.log('costruttore items')
@@ -44,6 +31,7 @@ export class ItemsComponent implements OnInit {
       response => {
         this.items = response.result;
         console.log(this.items)
+        this.dtTrigger.next();
       },
       error => {
         this.error = error.error
@@ -52,9 +40,11 @@ export class ItemsComponent implements OnInit {
       
     )
   }
+  dtTrigger: Subject<any> = new Subject();
   dtOptions: DataTables.Settings = {};
 
   ngOnInit(): void {
+    this.itemService;
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
