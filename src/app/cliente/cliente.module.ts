@@ -4,8 +4,9 @@ import { CommonModule } from '@angular/common';
 import { ClienteRoutingModule } from './cliente-routing.module';
 import { ClienteComponent } from './main/cliente.component';
 import { SharedModule } from '../shared/shared.module';
-import { DataTablesModule } from 'angular-datatables';
+
 import { ClientsService } from './services/clients.service';
+import { DataTablesModule } from 'angular-datatables/src/angular-datatables.module';
 
 
 @NgModule({
