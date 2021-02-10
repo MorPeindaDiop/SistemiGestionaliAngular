@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Item } from 'src/app/core/model/item';
 import { Response } from 'src/app/core/model/response';
 import { ItemsService } from '../services/items.service';
@@ -16,7 +16,8 @@ export class ItemsComponent implements OnInit {
   response: Observable<Response>;
   error: String = "";
 
-  items: Item[] = [];
+   items: Item[] = [];
+
   
   constructor(private itemService: ItemsService) {
     console.log('costruttore items')
@@ -27,6 +28,7 @@ export class ItemsComponent implements OnInit {
       response => {
         this.items = response.result;
         console.log(this.items)
+        this.dtTrigger.next();
       },
       error => {
         this.error = error.error
@@ -36,8 +38,17 @@ export class ItemsComponent implements OnInit {
 
     sessionStorage.setItem("items",JSON.stringify(this.items));
   }
+  dtTrigger: Subject<any> = new Subject();
+  dtOptions: DataTables.Settings = {};
 
   ngOnInit(): void {
+    this.itemService;
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5,
+    lengthMenu : [5, 10, 25],
+      processing: true
+    };
   }
 
   delete(item: Item) {
@@ -45,5 +56,6 @@ export class ItemsComponent implements OnInit {
     console.log(item)
     this.itemService.deleteItem(item)
   }
+  
 
 }

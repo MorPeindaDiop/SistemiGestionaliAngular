@@ -1,20 +1,53 @@
-<!-- <app-list [stringPath]="urlPath"></app-list> -->
-<h1>Items</h1>
-<button routerLink="create">Create new Items</button>
-<table class="table8">
-    <tr>
-        <th>Item cod</th>
-        <th>Description</th>
-        <th>Type</th>
-        <th>Category</th>
-        <th>Unit of measure</th>
-        <th>Price</th>
-        <th>Discount</th>
-        <th>Vat</th>
-        <th></th>
-        <th></th>
-    </tr>
-    <tr *ngFor="let item of items">
+<div class="corpo">
+    <h1>Articoli</h1>
+    <button routerLink="create">Crea nuovo articolo</button><br>
+    <br>
+    <table class="table table-striped table-bordered table-sm row-border hover"  datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+        style="width: 100%;">
+        <thead>
+            <tr>
+                <th>Codice articolo</th>
+                <th>Descrizione</th>
+                <th>Tipo</th>
+                <th>Categoria</th>
+                <th>Unità di misura</th>
+                <th>Prezzo</th>
+                <th>Sconto</th>
+                <th>IVA</th>
+                <th></th>
+                <th></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of items">
+                <td>{{ item.codItem }}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.type }}</td>
+                <td>{{ item.category }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.measure }}</td>
+                <td>{{ item.discount }}</td>
+                <td>{{ item.vat }}</td>
+                <td><button [routerLink]="['detail', item.codItem]">Edit</button></td>
+                <td><button (click)="delete(item)">Delete</button></td>
+
+            </tr>
+            <!-- <tr *ngFor="let group of dataa">
+            <td>{{group.name}}</td>
+            <td>{{group.email}}</td>
+            <td>{{group.website}}</td>
+            <td>{{group.website}}</td>
+            <td>{{group.website}}</td>
+            <td>{{group.website}}</td>
+            <td>{{group.website}}</td>
+            <td>{{group.website}}</td> 
+            <td><button >Edit</button></td>
+                <td><button >Delete</button></td>
+           </tr> -->
+            
+        </tbody>
+        <!-- <tr *ngFor="let item of items">
         <td>{{ item.codItem }}</td>
         <td>{{ item.description }}</td>
         <td>{{ item.type }}</td>
@@ -22,7 +55,7 @@
         <td>{{ item.price }}</td>
         <td>{{ item.measure }}</td>
         <td>{{ item.discount }}</td>
-        <td>{{ item.vat }}</td>
+        <td>{{ item.vat }}</td> -->
         <!-- <td>{{ item.type == "vf" ? question.correctAnswerBoolean : question.correctAnswerText }}</td>
         <td>
             <div *ngFor="let skill of skills | async">
@@ -32,8 +65,13 @@
             </div>
         </td>
         <td>{{ item.wrongAnswers != '' ? question.wrongAnswers : "-" }}</td> -->
-        <td><button [routerLink]="['detail', item.codItem]">Edit</button></td>
+        <!-- <td><button [routerLink]="['detail', item.codItem]">Edit</button></td>
         <td><button (click)="delete(item)">Delete</button></td>
-    </tr>
-</table>
-<button routerLink="/home">TORNA ALLA HOME</button>
+    </tr> -->
+
+
+
+
+    </table>
+    <button routerLink="/home">TORNA ALLA HOME</button>
+</div>

@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ItemsService } from './services/items.service';
 import { DetailComponent } from './detail/detail.component';
 import { CreateComponent } from './create/create.component';
+import { DataTablesModule } from 'angular-datatables';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { CreateComponent } from './create/create.component';
   imports: [
     CommonModule,
     ItemsRoutingModule,
-    SharedModule
+    SharedModule,
+    DataTablesModule
   ],
   providers: [
     ItemsService

@@ -1,0 +1,29 @@
+<div class="corpo">
+<h1>CREATE MEASURE</h1>
+
+<form [formGroup]="measureForm" (ngSubmit)="save()">
+    <div >
+        <!-- <label><b>Type:</b></label> -->
+        <input placeholder="cod Measure" formControlName="codMeasure">
+    </div>
+    <br>
+    <div>
+        <!-- <label><b>Type:</b></label> -->
+        <input placeholder="Description" formControlName="description">
+    </div>
+    <br>
+    <div>
+        <!-- <label><b>Type:</b></label> -->
+        <input placeholder="symbol" formControlName="symbol">
+    </div>
+    <br>
+    <div>
+        <!-- <label><b>Type:</b></label> -->
+        <input placeholder="note" formControlName="note">
+    </div>
+    <br>
+    <br>
+    <button type="submit">SAVE</button> &nbsp;
+    <button type="button" routerLink="/items">ANNULLA</button>
+</form>
+</div>
