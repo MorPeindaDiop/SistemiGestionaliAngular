@@ -1,0 +1,24 @@
+<div class="corpo">
+<h1>CREATE VAT</h1>
+
+<form [formGroup]="measureForm" (ngSubmit)="save()">
+    <div >
+        <!-- <label><b>Type:</b></label> -->
+        <input placeholder="cod vat" formControlName="codVat">
+    </div>
+    <br>
+    <div>
+        <!-- <label><b>Type:</b></label> -->
+        <input placeholder="vat" formControlName="vat">
+    </div>
+    <br>
+    <div>
+        <!-- <label><b>Type:</b></label> -->
+        <input placeholder="note" formControlName="note">
+    </div>
+    <br>
+    <br>
+    <button type="submit">SAVE</button> &nbsp;
+    <button type="button" routerLink="/items">ANNULLA</button>
+</form>
+</div>
