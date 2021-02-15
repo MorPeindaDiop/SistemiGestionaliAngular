@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
 import { Item } from 'src/app/core/model/item';
 import { Response } from 'src/app/core/model/response';
 import { ItemsService } from '../services/items.service';
@@ -19,11 +19,21 @@ export class ItemsComponent implements OnInit {
   deleteMessage: String = "";
 
   items: Item[] = [];
+
+  dtTrigger: Subject<any> = new Subject();
+  dtOptions: DataTables.Settings = {};
   
   constructor(private itemService: ItemsService) {}
 
   ngOnInit(): void {
     console.log('on init items')
+    this.itemService;
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5,
+    lengthMenu : [5, 10, 25],
+      processing: true
+    };
 
     this.response = this.itemService.retreiveAllItems()
 
@@ -73,5 +83,6 @@ export class ItemsComponent implements OnInit {
       }
     }
   }
+  
 
 }
