@@ -5,14 +5,18 @@ import { ItemsRoutingModule } from './items-routing.module';
 import { ItemsComponent } from './main/items.component';
 import { SharedModule } from '../shared/shared.module';
 import { ItemsService } from './services/items.service';
+import { DetailComponent } from './detail/detail.component';
+import { CreateComponent } from './create/create.component';
+import { DataTablesModule } from 'angular-datatables';
 
 
 @NgModule({
-  declarations: [ItemsComponent],
+  declarations: [ItemsComponent, DetailComponent, CreateComponent],
   imports: [
     CommonModule,
     ItemsRoutingModule,
-    SharedModule
+    SharedModule,
+    DataTablesModule
   ],
   providers: [
     ItemsService

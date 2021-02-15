@@ -1,0 +1,48 @@
+<div class="corpo">
+<h1>CREATE ITEM</h1>
+
+<form [formGroup]="itemForm" (ngSubmit)="save()">
+    <div >
+        <!-- <label><b>Type:</b></label> -->
+        <input placeholder="Item cod" formControlName="codItem">
+    </div>
+    <br>
+    <div>
+        <!-- <label><b>Type:</b></label> -->
+        <input placeholder="Description" formControlName="description">
+    </div>
+    <br>
+    <div>
+        <!-- <label><b>Type:</b></label> -->
+        <input placeholder="Type" formControlName="type">
+    </div>
+    <br>
+    <div>
+        <!-- <label><b>Type:</b></label> -->
+        <input placeholder="Category" formControlName="category">
+    </div>
+    <br>
+    <div>
+        <!-- <label><b>Type:</b></label> -->
+        <input placeholder="Measure" formControlName="measure">
+    </div>
+    <br>
+    <div>
+        <!-- <label><b>Type:</b></label> -->
+        <input placeholder="Price" formControlName="price">
+    </div>
+    <br>
+    <div>
+        <!-- <label><b>Type:</b></label> -->
+        <input placeholder="Discount" formControlName="discount">
+    </div>
+    <br>
+    <div>
+        <!-- <label><b>Type:</b></label> -->
+        <input placeholder="Vat" formControlName="vat">
+    </div>
+    <br>
+    <button type="submit">SAVE</button> &nbsp;
+    <button type="button" routerLink="/items">ANNULLA</button>
+</form>
+</div>

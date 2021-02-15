@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { Item } from 'src/app/core/model/item';
 import { selectItems } from 'src/app/redux/item';
+import { Observable, Subject, Subscription } from 'rxjs';
+import { Item } from 'src/app/core/model/item';
+import { Response } from 'src/app/core/model/response';
 import { ItemsService } from '../services/items.service';
 
 @Component({
@@ -12,22 +13,37 @@ import { ItemsService } from '../services/items.service';
 })
 export class ItemsComponent implements OnInit {
 
-  //urlPath: String = "item";
+  response: Observable<Response>;
+  error: String = "";
 
+  deleteMessage: String = "";
+
+  dtTrigger: Subject<any> = new Subject();
+  dtOptions: DataTables.Settings = {};
+  
   constructor(private store: Store, private itemsService: ItemsService) {
     console.log('costruttore items')
-    // console.log(this.urlPath)
-
-    this.itemsService.retreiveAllItems();
-
+    this.itemsService.retrieveAllItems();
+  }
+  
+  ngOnInit(): void {
+    console.log('on init items');
+    this.itemsService;
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      lengthMenu : [5, 10, 25],
+      processing: true
+    };
   }
 
-  get items(): Observable<any[]> {
+  get items(): Observable<Item[]> {
     return this.store.pipe(select(selectItems));
   }
-
-  ngOnInit(): void {
-    console.log(this.items.subscribe(result=> console.log(result)))
+  
+  delete(item: Item) {
+    console.log('delete')
+    this.itemsService.deleteItem(item);
   }
 
 }

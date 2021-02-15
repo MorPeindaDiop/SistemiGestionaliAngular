@@ -6,46 +6,45 @@ import { Observable } from 'rxjs';
 import { HttpCommunicationsService } from 'src/app/core/HttpCommunications/http-communications.service';
 import { switchMap, map } from 'rxjs/operators';
 import { Response } from 'src/app/core/model/Response';
-import { initItems, retrieveAllItems } from './item.actions';
+import { initItems, retrieveAllItems, createItem, deleteItem } from './item.actions';
+import { Item } from 'src/app/core/model/item';
 
 @Injectable()
 export class ItemsEffects {
 
     constructor(private actions$: Actions, private http: HttpCommunicationsService, private router: Router) { }
 
-    retreiveAllSkills(): Observable<Response> {
+    retrieveAllItems(): Observable<Response> {
         return this.http.retrieveGetCall<Response>("item/findAll")
     }
 
-    // createSkill(skill: Skill): Observable<Response> {
-    //     return this.http.retrievePostCall<Response>("skill/create", skill)
-    // }
+    createItem(item: Item): Observable<Response> {
+        return this.http.retrievePostCall<Response>("item/create", item)
+    }
 
-    // deleteSkill(id: number): Observable<Response> {
-    //     return this.http.retrievePostCall<Response>("skill/delete", id)
-    // }
+    deleteItem(item: Item): Observable<Response> {
+        return this.http.retrievePostCall<Response>("item/delete", item)
+    }
 
-    getAllSkills$: Observable<Action> = createEffect(() => this.actions$.pipe(
+    getAllItems$: Observable<Action> = createEffect(() => this.actions$.pipe(
         ofType(retrieveAllItems),
-        switchMap(() => this.retreiveAllSkills().pipe(
+        switchMap(() => this.retrieveAllItems().pipe(
             map((response) => initItems({ response }))
         ))
     ));
 
-    // createSkill$ = createEffect(() => this.actions$.pipe(
-    //     ofType(createSkill),
-    //     switchMap(skill => this.createSkill(skill.skill).pipe(
-    //         map(() => retrieveAllSkills()),
-    //     )
-    //     ))
-    // );
+    createItem$ = createEffect(() => this.actions$.pipe(
+        ofType(createItem),
+        switchMap(item => this.createItem(item.item).pipe(
+            map(() => retrieveAllItems()),
+        )))
+    );
 
-    // deleteSkill$ = createEffect(() => this.actions$.pipe(
-    //     ofType(deleteSkill),
-    //     switchMap(id => this.deleteSkill(id.id).pipe(
-    //         map(() => retrieveAllSkills()),
-    //     )
-    //     ))
-    // );
+    deleteItem$ = createEffect(() => this.actions$.pipe(
+        ofType(deleteItem),
+        switchMap(item => this.deleteItem(item.item).pipe(
+            map(() => retrieveAllItems()),
+        )))
+    );
 
 }

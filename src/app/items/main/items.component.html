@@ -1,2 +1,50 @@
-<p>items works!</p>
-<app-list [list]="items"></app-list>
+<div class="corpo">
+    <h1>Articoli</h1>
+    <button routerLink="create">Crea nuovo articolo</button><br>
+    <div *ngIf="deleteMessage !=''">{{ deleteMessage }}</div>
+    <br>
+    <table class="table table-striped table-bordered table-sm row-border hover"  datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+        style="width: 100%;">
+        <thead>
+            <tr>
+                <th>Codice articolo</th>
+                <th>Descrizione</th>
+                <th>Tipo</th>
+                <th>Categoria</th>
+                <th>Unità di misura</th>
+                <th>Prezzo</th>
+                <th>Sconto</th>
+                <th>IVA</th>
+                <th></th>
+                <th></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of items | async">
+                <td>{{ item.codItem }}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.type }}</td>
+                <td>{{ item.category }}</td>
+                <td>{{ item.price }}</td>
+                <td>{{ item.measure }}</td>
+                <td>{{ item.discount }}</td>
+                <td>{{ item.vat }}</td>
+                <td><button [routerLink]="['detail', item.codItem]">Edit</button></td>
+                <td><button (click)="delete(item)">Delete</button></td>
+
+            </tr>
+            
+        </tbody>
+        <!-- <td>{{ item.type == "vf" ? question.correctAnswerBoolean : question.correctAnswerText }}</td>
+        <td>
+            <div *ngFor="let skill of skills | async">
+                <div *ngIf="skill.id == question.idSkill">
+                        {{ skill.description }}
+                </div>
+            </div>
+        </td>
+        <td>{{ item.wrongAnswers != '' ? question.wrongAnswers : "-" }}</td> -->
+    </table>
+    <button routerLink="/home">TORNA ALLA HOME</button>
+</div>

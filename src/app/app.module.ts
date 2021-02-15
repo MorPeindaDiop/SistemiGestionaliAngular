@@ -13,6 +13,8 @@ import { environment } from 'src/environments/environment';
 
 import { ItemsEffects } from './redux/item/item.effects';
 
+import { SharedModule } from './shared/shared.module';
+import { DataTablesModule } from 'angular-datatables';
 @NgModule({
   declarations: [
     AppComponent
@@ -30,6 +32,8 @@ import { ItemsEffects } from './redux/item/item.effects';
       maxAge: 25,
       logOnly: environment.production,
     }),
+    SharedModule,
+    DataTablesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
