@@ -10,11 +10,11 @@ export const initialState: ItemsState = {
     items: []
 };
 
-export const itemsReducer = createReducer(
+const reducer = createReducer(
     initialState,
     on(initItems, (state, { response }) => ({ ...state, items: response.result }))
 );
 
-export function reducer(state: ItemsState | undefined, action: Action) {
-    return itemsReducer(state, action);
+export function itemsReducer(state: ItemsState | undefined, action: Action) {
+    return reducer(state, action);
 }
