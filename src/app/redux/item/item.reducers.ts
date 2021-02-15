@@ -1,4 +1,4 @@
-import { Action, createReducer, on } from '@ngrx/store';
+import { Action, createReducer, on } from "@ngrx/store";
 import { Item } from "src/app/core/model/item";
 import { initItems } from './item.actions';
 
@@ -15,6 +15,6 @@ export const itemsReducer = createReducer(
     on(initItems, (state, { response }) => ({ ...state, items: response.result }))
 );
 
-export function reducer(state: ItemsState, action: Action) {
+export function reducer(state: ItemsState | undefined, action: Action) {
     return itemsReducer(state, action);
 }
