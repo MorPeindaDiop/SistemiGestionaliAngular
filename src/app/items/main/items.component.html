@@ -1,6 +1,7 @@
 <!-- <app-list [stringPath]="urlPath"></app-list> -->
 <h1>Items</h1>
 <button routerLink="create">Create new Items</button>
+<div *ngIf="deleteMessage !=''">{{ deleteMessage }}</div>
 <table class="table8">
     <tr>
         <th>Item cod</th>

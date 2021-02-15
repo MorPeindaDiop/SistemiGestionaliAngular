@@ -22,7 +22,7 @@ export class ItemsService {
   deleteItem(item: Item): Observable<Response> {
     console.log("sono dentro alla chiamata delete")
     console.log(JSON.stringify(item))
-    return this.http.retrievePostCall<Response>("item/delete", JSON.stringify(item))
+    return this.http.retrievePostCall<Response>("item/delete", item)
   }
 
 }

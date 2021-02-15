@@ -34,7 +34,7 @@ export class CreateComponent implements OnInit {
       ...this.itemForm.value
     }
     console.log(item)
-    this.itemsService.createItem(item);
+    this.itemsService.createItem(item).subscribe(response => {return response});
     this.router.navigateByUrl('/items');
   }
 

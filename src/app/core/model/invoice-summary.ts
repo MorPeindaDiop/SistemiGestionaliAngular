@@ -1,4 +1,4 @@
-export interface InvoiceSummery {
+export interface InvoiceSummary {
     cod_invoice : String;
     total_amount : number;
     total_products : number;
