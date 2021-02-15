@@ -11,7 +11,7 @@ import { ItemsService } from '../services/items.service';
 })
 export class ItemsComponent implements OnInit {
 
-  //subscriptions: Subscription[]
+  subscriptions: Subscription;
 
   response: Observable<Response>;
   error: String = "";
@@ -42,7 +42,7 @@ export class ItemsComponent implements OnInit {
   
   allItems() {
     console.log('all items')
-    //this.subscriptions.push(
+    this.subscriptions.add(
       this.response.subscribe(
         response => {
           this.items = response.result;
@@ -53,15 +53,15 @@ export class ItemsComponent implements OnInit {
           console.log(this.error)
         }
       )
-    //)
+    )
   }
 
   delete(item: Item) {
     console.log('delete')
     console.log(item)
-    //this.subscriptions.push(
+    this.subscriptions.add(
       this.itemService.deleteItem(item).subscribe((response) => this.deleteMessage = response.result)
-    //)
+    )
     this.removeItem(item)
   }
   
@@ -76,13 +76,11 @@ export class ItemsComponent implements OnInit {
     this.ngOnInit();
   }
 
-  // ngOnDestroy() {
-  //   if (this.subscriptions != []) {
-  //     for (let subscription of this.subscriptions) {
-  //       subscription.unsubscribe();
-  //     }
-  //   }
-  // }
+  ngOnDestroy() {
+    if (this.subscriptions) {
+      this.subscriptions.unsubscribe();
+    }
+  }
   
 
 }
