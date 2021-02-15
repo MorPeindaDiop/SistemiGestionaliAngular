@@ -12,7 +12,7 @@ export const initialState: ItemsState = {
 
 export const itemsReducer = createReducer(
     initialState,
-    on(initItems, (state, { response }) => ({ ...state, items: response.result })),
+    on(initItems, (state, { response }) => ({ ...state, items: response.result }))
 );
 
 export function reducer(state: ItemsState, action: Action) {

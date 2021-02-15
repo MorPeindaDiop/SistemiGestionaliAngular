@@ -20,6 +20,6 @@ export class ItemsService {
   deleteItem(item: Item) {
     console.log("sono dentro alla chiamata delete")
     return this.store.dispatch(deleteItem({item}))
-  
+  }
 
 }

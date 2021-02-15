@@ -14,5 +14,5 @@ export const selectItems = createSelector(
 export const getCurrentNavigatedItem = createSelector(
     selectItemsState,
     selectRouteParams,
-    (state: ItemsState, params: Params) => state.items.find(item => item.cod_item === String(params['id']))
+    (state: ItemsState, params: Params) => state.items.find(item => item.codItem === String(params['id']))
 );
