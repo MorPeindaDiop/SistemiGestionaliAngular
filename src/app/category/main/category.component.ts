@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { select, Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
 import { Category } from 'src/app/core/model/category';
-import { Response } from 'src/app/core/model/response';
+import { selectCategories } from 'src/app/redux/category';
 import { CategoriesService } from '../services/categories.service';
 
 @Component({
@@ -11,47 +13,34 @@ import { CategoriesService } from '../services/categories.service';
 })
 export class CategoryComponent implements OnInit {
 
-  response: Observable<Response>;
-  error: String = "";
-
-  categories: Category[] = [];
-  constructor(private categoriesService: CategoriesService) {
-    console.log('costruttore category')
-    //console.log(this.urlPath)
-
-    this.response = this.categoriesService.retreiveAllCategories()
-
-    console.log(this.response)
-
-    this.response.subscribe(
-      response => {
-        this.categories = response.result;
-        console.log(this.categories)
-        this.dtTrigger.next();
-      },
-      error => {
-        this.error = error.error
-        console.log(this.error)
-      }
-
-    )
-  }
   dtTrigger: Subject<any> = new Subject();
   dtOptions: DataTables.Settings = {};
-
+  
+  constructor(private store: Store, private categoriesService: CategoriesService, private router: Router) {
+    this.categoriesService.retrieveAllCategories();
+  }
+  
   ngOnInit(): void {
+    this.categoriesService;
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
-      lengthMenu: [5, 10, 25],
+      lengthMenu : [5, 10, 25],
       processing: true
     };
   }
 
-  delete(category: Category) {
+  get categories(): Observable<Category[]> {
+    return this.store.pipe(select(selectCategories));
+  }
+  
+  delete(categories: Category) {
     console.log('delete')
-    console.log(category)
-    this.categoriesService.deleteCategory(category)
+    this.categoriesService.deleteCategory(categories);
+  }
+
+  goToDetail(codCategory: String) {
+    this.router.navigateByUrl("/categories/detail/"+codCategory)
   }
 
 }

@@ -1,6 +1,6 @@
 <div class="corpo">
-    <h1>Clienti</h1>
-    <button routerLink="create">Crea un nuovo cliente</button><br>
+    <h1>CLIENTS</h1>
+    <button routerLink="create">CREATE NEW CLIENT</button><br>
     <br>
     <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"
         style="width: 100%;">
@@ -19,15 +19,14 @@
                 <th>CAP</th>
                 <th></th>
                 <th></th>
-
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let client of clients">
+            <tr *ngFor="let client of clients | async">
                 <td>{{ client.codClient }}</td>
-                <td>{{ client.business_name }}</td>
+                <td>{{ client.businessName }}</td>
                 <td>{{ client.piva }}</td>
-                <td>{{ client.fiscal_cod }}</td>
+                <td>{{ client.fiscalCod }}</td>
                 <td>{{ client.mail }}</td>
                 <td>{{ client.tel }}</td>
                 <td>{{ client.cel }}</td>
@@ -35,15 +34,10 @@
                 <td>{{ client.address }}</td>
                 <td>{{ client.province }}</td>
                 <td>{{ client.cap }}</td>
-                <td><button [routerLink]="['detail', client.codItem]">Edit</button></td>
+                <td><button (click)="goToDetail(client.codClient)">Edit</button></td>
                 <td><button (click)="delete(client)">Delete</button></td>
-
             </tr>
-           
-            
         </tbody>
-        
-
     </table>
     <button routerLink="/home">TORNA ALLA HOME</button>
 </div>

@@ -1,7 +1,7 @@
 <div class="corpo">
-<h1>CREATE MEASURE</h1>
+<h1>CREATE CATEGORY</h1>
 
-<form [formGroup]="measureForm" (ngSubmit)="save()">
+<form [formGroup]="categoryForm" (ngSubmit)="save()">
     <div >
         <!-- <label><b>Type:</b></label> -->
         <input placeholder="cod Category" formControlName="codCategory">
@@ -19,6 +19,6 @@
     <br>
     <br>
     <button type="submit">SAVE</button> &nbsp;
-    <button type="button" routerLink="/items">ANNULLA</button>
+    <button type="button" routerLink="/categories">ANNULLA</button>
 </form>
 </div>

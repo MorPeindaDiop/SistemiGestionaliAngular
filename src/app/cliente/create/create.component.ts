@@ -17,9 +17,9 @@ export class CreateComponent implements OnInit {
   constructor(private fb: FormBuilder, private clientsService: ClientsService, private router: Router) {
     this.clienteForm = this.fb.group({
       codClient: ['', Validators.required],
-      business_name: ['', Validators.required],
+      businessName: ['', Validators.required],
       piva: ['', Validators.required],
-      fiscal_cod: ['', Validators.required],
+      fiscalCod: ['', Validators.required],
       mail: ['', Validators.required],
       tel: ['', Validators.required],
       cel: ['', Validators.required],

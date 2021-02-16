@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { select, Store } from '@ngrx/store';
+import { Observable, Subject } from 'rxjs';
 import { Client } from 'src/app/core/model/client';
-import { Response } from 'src/app/core/model/response';
+import { selectClients } from 'src/app/redux/cliente';
 import { ClientsService } from '../services/clients.service';
 
 @Component({
@@ -10,57 +12,36 @@ import { ClientsService } from '../services/clients.service';
   styleUrls: ['./cliente.component.scss']
 })
 export class ClienteComponent implements OnInit {
-  response: Observable<Response>;
-  error: String = "";
-  public dataa = [
-    {name: 'Ajay', email: 'therichpost@gmail.com', website:'therichpost.com'},
-    {name: 'Jas', email: 'therichpost@gmail.com', website:'therichpost.com'},
-    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
-    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
-  {name: 'Jas', email: 'therichpost@gmail.com', website:'therichpost.com'},
-    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
-    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
-  {name: 'Jas', email: 'therichpost@gmail.com', website:'therichpost.com'},
-    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
-    {name: 'therichpost', email: 'therichpost@gmail.com', website:'therichpost.com'},
-  ];
-   clients: Client[] = [];
-  constructor(private clientService: ClientsService) {
-    console.log('costruttore clients')
-    //console.log(this.urlPath)
-
-    this.response = this.clientService.retreiveAllClients()
-
-    console.log(this.response)
-
-    this.response.subscribe(
-      response => {
-        this.clients = response.result;
-        console.log(this.clients)
-      },
-      error => {
-        this.error = error.error
-        console.log(this.error)
-      }
-      
-    )
-   }
-
+  
+  dtTrigger: Subject<any> = new Subject();
   dtOptions: DataTables.Settings = {};
-
+  
+  constructor(private store: Store, private clientsService: ClientsService, private router: Router) {
+    console.log('costruttore items')
+    this.clientsService.retrieveAllClients();
+  }
+  
   ngOnInit(): void {
+    this.clientsService;
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
-    lengthMenu : [5, 10, 25],
+      lengthMenu : [5, 10, 25],
       processing: true
     };
   }
 
+  get clients(): Observable<Client[]> {
+    return this.store.pipe(select(selectClients));
+  }
+  
   delete(client: Client) {
     console.log('delete')
-    console.log(client)
-    this.clientService.deleteClient(client)
+    this.clientsService.deleteClient(client);
+  }
+
+  goToDetail(codClient: String) {
+    this.router.navigateByUrl("/clients/detail/"+codClient)
   }
 
 }

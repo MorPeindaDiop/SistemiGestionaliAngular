@@ -1,7 +1,7 @@
 <div class="corpo">
-<h1>CREATE VAT</h1>
+<h1>CREATE CLIENT</h1>
 
-<form [formGroup]="measureForm" (ngSubmit)="save()">
+<form [formGroup]="clienteForm" (ngSubmit)="save()">
     <div >
         <!-- <label><b>Type:</b></label> -->
         <input placeholder="cod Cliente" formControlName="codClient">
@@ -9,7 +9,7 @@
     <br>
     <div>
         <!-- <label><b>Type:</b></label> -->
-        <input placeholder="Ragione sociale" formControlName="business_name">
+        <input placeholder="Ragione sociale" formControlName="businessName">
     </div>
     <br>
     <div>
@@ -19,7 +19,7 @@
     <br>
     <div>
         <!-- <label><b>Type:</b></label> -->
-        <input placeholder="Codice fiscale" formControlName="fiscal_cod">
+        <input placeholder="Codice fiscale" formControlName="fiscalCod">
     </div>
     <br>
     <div>
@@ -58,6 +58,6 @@
     </div>
     <br>
     <button type="submit">SAVE</button> &nbsp;
-    <button type="button" routerLink="/items">ANNULLA</button>
+    <button type="button" routerLink="/clients">ANNULLA</button>
 </form>
 </div>

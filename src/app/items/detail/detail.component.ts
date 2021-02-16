@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Item } from 'src/app/core/model/item';
 import { ItemsService } from '../services/items.service';
-import { getCurrentNavigatedItem } from 'src/app/redux/item';
+import { selectItems } from 'src/app/redux/item';
 
 @Component({
   selector: 'app-detail',
@@ -17,38 +17,34 @@ export class DetailComponent implements OnInit {
 
   item: Item;
 
-  constructor(private store: Store, private fb: FormBuilder, private itemsService: ItemsService, private router: Router) {
-
-    this.store.pipe(select(getCurrentNavigatedItem)).subscribe(item => item = this.item)
-    console.log(this.item)
+  constructor(private store: Store, private fb: FormBuilder, private itemsService: ItemsService, private router: Router, private activatedRoute: ActivatedRoute) {
 
     this.itemForm = this.fb.group({
-      codItem: ['', Validators.required],
-      description: ['', Validators.required],
-      price: ['', Validators.required],
-      measure: ['', Validators.required],
-      type: ['', Validators.required],
-      category: ['', Validators.required],
-      discount: ['', Validators.required],
-      vat: ['', Validators.required]
+        codItem: ['', Validators.required],
+        description: ['', Validators.required],
+        price: ['', Validators.required],
+        measure: ['', Validators.required],
+        type: ['', Validators.required],
+        category: ['', Validators.required],
+        discount: ['', Validators.required],
+        vat: ['', Validators.required]
+      }
+    )
+  }
+        
+  ngOnInit(): void {
+    this.store.pipe(select(selectItems)).subscribe(items => {
+      for (let item of items) {
+        if (item.codItem === this.activatedRoute.snapshot.paramMap.get('codItem')) {
+          this.item = item
+          console.log(this.item)
+        }
+      }
     })
 
     this.itemForm.patchValue(
       this.item
-      // {
-      // codItem: ['', Validators.required],
-      // description: ['', Validators.required],
-      // price: ['', Validators.required],
-      // measure: ['', Validators.required],
-      // type: ['', Validators.required],
-      // category: ['', Validators.required],
-      // discount: ['', Validators.required],
-      // vat: ['', Validators.required]
-    // }
     )
-  }
-
-  ngOnInit(): void {
   }
 
   save() {

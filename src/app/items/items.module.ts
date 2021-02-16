@@ -11,7 +11,11 @@ import { DataTablesModule } from 'angular-datatables';
 
 
 @NgModule({
-  declarations: [ItemsComponent, DetailComponent, CreateComponent],
+  declarations: [
+    ItemsComponent,
+    DetailComponent,
+    CreateComponent
+  ],
   imports: [
     CommonModule,
     ItemsRoutingModule,

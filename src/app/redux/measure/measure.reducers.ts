@@ -3,16 +3,16 @@ import { Measure } from "src/app/core/model/measure";
 import { initMeasure } from './measure.actions';
 
 export interface MeasuresState {
-    measure: Measure[];
+    measures: Measure[];
 }
 
 export const initialState: MeasuresState = {
-    measure: []
+    measures: []
 };
 
 const reducer = createReducer(
     initialState,
-    on(initMeasure, (state, { response }) => ({ ...state, measure: response.result }))
+    on(initMeasure, (state, { response }) => ({ ...state, measures: response.result }))
 );
 
 export function measureReducer(state: MeasuresState | undefined, action: Action) {

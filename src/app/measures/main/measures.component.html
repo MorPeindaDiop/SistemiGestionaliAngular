@@ -1,6 +1,6 @@
 <div class="corpo">
-    <h1>Misure</h1>
-    <button routerLink="create">Crea una nuova misura</button><br>
+    <h1>MEASURES</h1>
+    <button routerLink="create">CREATE NEW MEASURE</button><br>
     <br>
     <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"
         style="width: 100%;">
@@ -20,7 +20,7 @@
                 <td>{{ measure.description }}</td>
                 <td>{{ measure.symbol }}</td>
                 <td>{{ measure.note }}</td>
-                <td><button [routerLink]="['detail', measure.codMeasure]">Edit</button></td>
+                <td><button (click)="goToDetail(measure.codMeasure)">Edit</button></td>
                 <td><button (click)="delete(measure)">Delete</button></td>
             </tr>
         </tbody>

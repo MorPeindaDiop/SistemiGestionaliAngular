@@ -1,10 +1,10 @@
 <div class="corpo">
-    <h1>DETAIL ITEM</h1>
+    <h1>EDIT ITEM</h1>
     
     <form [formGroup]="itemForm" (ngSubmit)="save()">
         <div >
-            <!-- <label><b>Type:</b></label> -->
-            <input placeholder="Item cod" formControlName="codItem">
+            <label><b>Codice articolo: {{ item.codItem }}</b></label>
+            <!-- <input placeholder="Item cod" formControlName="codItem"> -->
         </div>
         <br>
         <div>

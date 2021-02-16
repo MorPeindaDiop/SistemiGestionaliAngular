@@ -1,24 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpCommunicationsService } from 'src/app/core/HttpCommunications/http-communications.service';
+import { Store } from '@ngrx/store';
 import { Category } from 'src/app/core/model/category';
-import { Response } from 'src/app/core/model/response';
+import { createCategory, deleteCategory, retrieveAllCategories } from 'src/app/redux/category/category.actions';
 
 @Injectable()
 export class CategoriesService {
 
-  constructor(private http: HttpCommunicationsService) { }
+  constructor(private store: Store) { }
 
-  retreiveAllCategories(): Observable<Response> {
-    return this.http.retrieveGetCall<Response>("category/findAll")
+  retrieveAllCategories() {
+    return this.store.dispatch(retrieveAllCategories())
   }
 
-  createCategory(category: Category): Observable<Response> {
-    return this.http.retrievePostCall<Response>("category/create", category)
+  createCategory(category: Category) {
+    return this.store.dispatch(createCategory({category}))
   }
 
-  deleteCategory(category: Category): Observable<Response> {
-    return this.http.retrievePostCall<Response>("category/delete", category)
+  deleteCategory(category: Category) {
+    return this.store.dispatch(deleteCategory({category}))
   }
 
 }

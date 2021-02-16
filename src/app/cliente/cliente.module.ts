@@ -7,10 +7,16 @@ import { SharedModule } from '../shared/shared.module';
 
 import { ClientsService } from './services/clients.service';
 import { DataTablesModule } from 'angular-datatables/src/angular-datatables.module';
+import { DetailComponent } from './detail/detail.component';
+import { CreateComponent } from './create/create.component';
 
 
 @NgModule({
-  declarations: [ClienteComponent],
+  declarations: [
+    ClienteComponent,
+    DetailComponent,
+    CreateComponent
+  ],
   imports: [
     CommonModule,
     ClienteRoutingModule,

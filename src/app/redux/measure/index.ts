@@ -4,15 +4,15 @@ import { AppState } from "..";
 import { selectRouteParams } from "../router";
 import { MeasuresState } from "./measure.reducers";
 
-export const selectMeasureState = (state: AppState) => state.measureState;
+export const selectMeasureState = (state: AppState) => state.measuresState;
 
 export const selectMeasures = createSelector(
     selectMeasureState,
-    (state: MeasuresState) => state.measure
+    (state: MeasuresState) => state.measures
 );
 
 export const getCurrentNavigatedMeasure = createSelector(
     selectMeasureState,
     selectRouteParams,
-    (state: MeasuresState, params: Params) => state.measure.find(item => item.codMeasure === String(params['codMeasure']))
+    (state: MeasuresState, params: Params) => state.measures.find(item => item.codMeasure === String(params['codMeasure']))
 );

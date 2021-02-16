@@ -1,7 +1,6 @@
 <div class="corpo">
-    <h1>Articoli</h1>
-    <button routerLink="create">Crea nuovo articolo</button><br>
-    <div *ngIf="deleteMessage !=''">{{ deleteMessage }}</div>
+    <h1>ITEMS</h1>
+    <button routerLink="create">CREATE NEW ITEM</button><br>
     <br>
     <table class="table table-striped table-bordered table-sm row-border hover"  datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
         style="width: 100%;">
@@ -25,11 +24,11 @@
                 <td>{{ item.description }}</td>
                 <td>{{ item.type }}</td>
                 <td>{{ item.category }}</td>
-                <td>{{ item.price }}</td>
                 <td>{{ item.measure }}</td>
+                <td>{{ item.price }} €</td>
                 <td>{{ item.discount }}</td>
                 <td>{{ item.vat }}</td>
-                <td><button [routerLink]="['detail', item.codItem]">Edit</button></td>
+                <td><button (click)="goToDetail(item.codItem)">Edit</button></td>
                 <td><button (click)="delete(item)">Delete</button></td>
             </tr>
         </tbody>

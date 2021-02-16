@@ -4,6 +4,7 @@ import { Measure } from 'src/app/core/model/measure';
 import { MeasuresService } from '../services/measures.service';
 import { select, Store } from '@ngrx/store';
 import { selectMeasures } from 'src/app/redux/measure';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-measures',
@@ -15,12 +16,13 @@ export class MeasuresComponent implements OnInit {
   dtTrigger: Subject<any> = new Subject();
   dtOptions: DataTables.Settings = {};
   
-  constructor(private store: Store, private measureService: MeasuresService) {
+  constructor(private router: Router, private store: Store, private measureService: MeasuresService) {
     console.log('costruttore measure')
     this.measureService.retrieveAllMeasures();
   }
 
   ngOnInit(): void {
+    this.measureService;
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
@@ -36,6 +38,10 @@ export class MeasuresComponent implements OnInit {
   delete(measure: Measure) {
     console.log('delete')
     this.measureService.deleteMeasure(measure)
+  }
+
+  goToDetail(codMeasure: String) {
+    this.router.navigateByUrl("/measures/detail/"+codMeasure)
   }
 
 }

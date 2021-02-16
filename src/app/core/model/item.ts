@@ -1,3 +1,5 @@
+import { StringDecoder } from "string_decoder";
+
 export interface Item {
     codItem : String;
     description : String;
@@ -6,6 +8,6 @@ export interface Item {
     type : String;
     category : String;
     discount : number;
-    vat : number;
+    vat : String;
 
 }

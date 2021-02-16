@@ -1,8 +1,8 @@
 export interface Client {
     codClient : String;
-    business_name : String;
+    businessName : String;
     piva : String;
-    fiscal_cod : String;
+    fiscalCod : String;
     mail : String;
     tel : String;
     cel : String;

@@ -1,6 +1,6 @@
 <div class="corpo">
-    <h1>Clienti</h1>
-    <button routerLink="create">Crea un nuovo cliente</button><br>
+    <h1>CATEGORIES</h1>
+    <button routerLink="create">CREATE NEW CATEGORY</button><br>
     <br>
     <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions" 
         style="width: 100%;">
@@ -19,7 +19,7 @@
                 <td>{{ category.codCategory }}</td>
                 <td>{{ category.description }}</td>
                 <td>{{ category.note }}</td>
-                <td><button [routerLink]="['detail', category.codItem]">Edit</button></td>
+                <td><button (click)="goToDetail(category.codCategory)">Edit</button></td>
                 <td><button (click)="delete(category)">Delete</button></td>
 
             </tr>

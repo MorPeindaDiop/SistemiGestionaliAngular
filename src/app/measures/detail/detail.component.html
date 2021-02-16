@@ -1,1 +1,30 @@
-<p>detail works!</p>
+<div class="corpo">
+    <h1>EDIT MEASURE</h1>
+    
+    <form [formGroup]="measureForm" (ngSubmit)="save()">
+        <div >
+            <label><b>Codice unità di misura: {{ measure.codMeasure }} </b></label>
+            <!-- <input placeholder="cod Measure" formControlName="codMeasure"> -->
+        </div>
+        <br>
+        <div>
+            <!-- <label><b>Type:</b></label> -->
+            <input placeholder="Description" formControlName="description">
+        </div>
+        <br>
+        <div>
+            <!-- <label><b>Type:</b></label> -->
+            <input placeholder="symbol" formControlName="symbol">
+        </div>
+        <br>
+        <div>
+            <!-- <label><b>Type:</b></label> -->
+            <input placeholder="note" formControlName="note">
+        </div>
+        <br>
+        <br>
+        <button type="submit">SAVE</button> &nbsp;
+        <button type="button" routerLink="/measures">ANNULLA</button>
+    </form>
+    </div>
+    

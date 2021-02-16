@@ -1,6 +1,6 @@
 <div class="corpo">
-    <h1>Iva</h1>
-    <button routerLink="create">Crea una nuova iva</button><br>
+    <h1>VAT</h1>
+    <button routerLink="create">CREATE NEW VAT</button><br>
     <br>
     <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"
         style="width: 100%;">
@@ -18,7 +18,7 @@
                 <td>{{ vat.codVat }}</td>
                 <td>{{ vat.vat }}</td>
                 <td>{{ vat.note }}</td>
-                <td><button [routerLink]="['detail', vat.codVat]">Edit</button></td>
+                <td><button (click)="goToDetail(vat.codVat)">Edit</button></td>
                 <td><button (click)="delete(vat)">Delete</button></td>
             </tr>
         </tbody>

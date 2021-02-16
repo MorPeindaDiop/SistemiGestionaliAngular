@@ -7,7 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { DataTablesModule } from 'angular-datatables';
 import { MeasuresService } from './services/measures.service';
 import { CreateComponent } from './create/create.component';
-import { DetailComponent } from '../vat/detail/detail.component';
+import { DetailComponent } from './detail/detail.component';
 
 
 @NgModule({

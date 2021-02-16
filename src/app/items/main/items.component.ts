@@ -4,6 +4,7 @@ import { selectItems } from 'src/app/redux/item';
 import { Observable, Subject } from 'rxjs';
 import { Item } from 'src/app/core/model/item';
 import { ItemsService } from '../services/items.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-items',
@@ -15,7 +16,7 @@ export class ItemsComponent implements OnInit {
   dtTrigger: Subject<any> = new Subject();
   dtOptions: DataTables.Settings = {};
   
-  constructor(private store: Store, private itemsService: ItemsService) {
+  constructor(private store: Store, private itemsService: ItemsService, private router: Router) {
     console.log('costruttore items')
     this.itemsService.retrieveAllItems();
   }
@@ -37,6 +38,10 @@ export class ItemsComponent implements OnInit {
   delete(item: Item) {
     console.log('delete')
     this.itemsService.deleteItem(item);
+  }
+
+  goToDetail(codItem: String) {
+    this.router.navigateByUrl("/items/detail/"+codItem)
   }
 
 }

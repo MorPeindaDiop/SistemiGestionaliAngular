@@ -5,14 +5,22 @@ import { CategoryRoutingModule } from './category-routing.module';
 import { CategoryComponent } from './main/category.component';
 import { DataTablesModule } from 'angular-datatables';
 import { CategoriesService } from './services/categories.service';
+import { DetailComponent } from './detail/detail.component';
+import { CreateComponent } from './create/create.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
-  declarations: [CategoryComponent],
+  declarations: [
+    CategoryComponent,
+    DetailComponent,
+    CreateComponent
+  ],
   imports: [
     CommonModule,
     CategoryRoutingModule,
-    DataTablesModule
+    DataTablesModule,
+    SharedModule
   ],
   providers: [
     CategoriesService

@@ -1,1 +1,64 @@
-<p>detail works!</p>
+<div class="corpo">
+    <h1>EDIT CLIENT</h1>
+    
+    <form [formGroup]="clienteForm" (ngSubmit)="save()">
+        <div >
+            <label><b>Codice Cliente: {{ client.codClient }}</b></label>
+            <input placeholder="cod Cliente" formControlName="codClient">
+        </div>
+        <br>
+        <div>
+            <!-- <label><b>Type:</b></label> -->
+            <input placeholder="Ragione sociale" formControlName="businessName">
+        </div>
+        <br>
+        <div>
+            <!-- <label><b>Type:</b></label> -->
+            <input placeholder="PIVA" formControlName="piva">
+        </div>
+        <br>
+        <div>
+            <!-- <label><b>Type:</b></label> -->
+            <input placeholder="Codice fiscale" formControlName="fiscalCod">
+        </div>
+        <br>
+        <div>
+            <!-- <label><b>Type:</b></label> -->
+            <input placeholder="Mail" formControlName="mail">
+        </div>
+        <br>
+        <div>
+            <!-- <label><b>Type:</b></label> -->
+            <input placeholder="telefono" formControlName="tel">
+        </div>
+        <br>
+        <div>
+            <!-- <label><b>Type:</b></label> -->
+            <input placeholder="cellulare" formControlName="cel">
+        </div>
+        <br>
+        <div>
+            <!-- <label><b>Type:</b></label> -->
+            <input placeholder="città" formControlName="city">
+        </div>
+        <br>
+        <div>
+            <!-- <label><b>Type:</b></label> -->
+            <input placeholder="indirizzo" formControlName="address">
+        </div>
+        <br>
+        <div>
+            <!-- <label><b>Type:</b></label> -->
+            <input placeholder="provincia" formControlName="province">
+        </div>
+        <br>
+        <div>
+            <!-- <label><b>Type:</b></label> -->
+            <input placeholder="cap" formControlName="cap">
+        </div>
+        <br>
+        <button type="submit">SAVE</button> &nbsp;
+        <button type="button" routerLink="/clients">ANNULLA</button>
+    </form>
+    </div>
+    

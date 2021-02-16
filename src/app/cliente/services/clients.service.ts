@@ -1,24 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpCommunicationsService } from 'src/app/core/HttpCommunications/http-communications.service';
+import { Store } from '@ngrx/store';
 import { Client } from 'src/app/core/model/client';
-import { Response } from 'src/app/core/model/response';
+import { createClient, deleteClient, retrieveAllClients } from 'src/app/redux/cliente/client.actions';
 
 @Injectable()
 export class ClientsService {
 
-  constructor(private http: HttpCommunicationsService) { }
+  constructor(private store: Store) { }
 
-  retreiveAllClients(): Observable<Response> {
-    return this.http.retrieveGetCall<Response>("client/findAll")
+  retrieveAllClients() {
+    return this.store.dispatch(retrieveAllClients())
   }
 
-  createClient(client: Client): Observable<Response> {
-    return this.http.retrievePostCall<Response>("client/create", client)
+  createClient(client: Client) {
+    return this.store.dispatch(createClient({client}))
   }
 
-  deleteClient(client: Client): Observable<Response> {
-    return this.http.retrievePostCall<Response>("client/delete", client)
+  deleteClient(client: Client) {
+    return this.store.dispatch(deleteClient({client}))
   }
 
 }
