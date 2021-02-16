@@ -15,7 +15,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let category of categories">
+            <tr *ngFor="let category of categories | async">
                 <td>{{ category.codCategory }}</td>
                 <td>{{ category.description }}</td>
                 <td>{{ category.note }}</td>
