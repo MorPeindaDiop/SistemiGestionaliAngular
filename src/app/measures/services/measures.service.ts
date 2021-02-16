@@ -1,24 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { HttpCommunicationsService } from 'src/app/core/HttpCommunications/http-communications.service';
+import { Store } from '@ngrx/store';
 import { Measure } from 'src/app/core/model/measure';
-import { Response } from 'src/app/core/model/response';
+import { createMeasure, deleteMeasure, retrieveAllMeasures } from 'src/app/redux/measure/measure.actions';
 
 @Injectable()
 export class MeasuresService {
 
-  constructor(private http: HttpCommunicationsService) { }
+  constructor(private store: Store) { }
 
-  retreiveAllMeasures(): Observable<Response> {
-    return this.http.retrieveGetCall<Response>("measure/findAll")
+  retrieveAllMeasures() {
+    return this.store.dispatch(retrieveAllMeasures())
   }
 
-  createMeasure(measure: Measure): Observable<Response> {
-    return this.http.retrievePostCall<Response>("measure/create", measure)
+  createMeasure(measure: Measure) {
+    return this.store.dispatch(createMeasure({measure}))
   }
 
-  deleteMeasure(measure: Measure): Observable<Response> {
-    return this.http.retrievePostCall<Response>("measure/delete", measure)
+  deleteMeasure(measure: Measure) {
+    return this.store.dispatch(deleteMeasure({measure}))
   }
 
 }

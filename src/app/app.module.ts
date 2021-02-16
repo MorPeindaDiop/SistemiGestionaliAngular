@@ -15,6 +15,8 @@ import { ItemsEffects } from './redux/item/item.effects';
 
 import { SharedModule } from './shared/shared.module';
 import { DataTablesModule } from 'angular-datatables';
+import { VatEffects } from './redux/vat/vat.effects';
+import { MeasuresEffects } from './redux/measure/measure.effects';
 @NgModule({
   declarations: [
     AppComponent
@@ -26,6 +28,8 @@ import { DataTablesModule } from 'angular-datatables';
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([
       ItemsEffects,
+      VatEffects,
+      MeasuresEffects,
     ]),
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({

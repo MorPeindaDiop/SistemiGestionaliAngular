@@ -30,7 +30,7 @@ export class CreateComponent implements OnInit {
     }
     console.log(vat)
     this.vatsService.createVat(vat);
-    this.router.navigateByUrl('/vats');
+    this.router.navigateByUrl('/vat');
   }
 
 }

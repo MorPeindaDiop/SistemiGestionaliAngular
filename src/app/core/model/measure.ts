@@ -1,5 +1,5 @@
 export interface Measure {
-    cod_measure : String;
+    codMeasure : String;
     description : String;
     symbol : String;
     note : String

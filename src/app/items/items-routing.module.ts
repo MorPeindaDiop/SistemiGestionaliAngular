@@ -6,8 +6,9 @@ import { ItemsComponent } from './main/items.component';
 
 const routes: Routes = [
   { path: '', component: ItemsComponent },
-  { path: 'detail/:id', component: DetailComponent },
-  { path: 'create', component: CreateComponent },];
+  { path: 'detail/:codItem', component: DetailComponent },
+  { path: 'create', component: CreateComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

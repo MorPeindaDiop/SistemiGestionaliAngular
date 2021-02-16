@@ -10,28 +10,20 @@
                 <th>Descrizione</th>
                 <th>Simbolo</th>
                 <th>Note</th>
-                
                 <th></th>
                 <th></th>
-
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let measure of measures">
+            <tr *ngFor="let measure of measures | async">
                 <td>{{ measure.codMeasure }}</td>
                 <td>{{ measure.description }}</td>
                 <td>{{ measure.symbol }}</td>
                 <td>{{ measure.note }}</td>
-    
-                <td><button [routerLink]="['detail', measure.codItem]">Edit</button></td>
+                <td><button [routerLink]="['detail', measure.codMeasure]">Edit</button></td>
                 <td><button (click)="delete(measure)">Delete</button></td>
-
             </tr>
-           
-            
         </tbody>
-        
-
     </table>
     <button routerLink="/home">TORNA ALLA HOME</button>
 </div>

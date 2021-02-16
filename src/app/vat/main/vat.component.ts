@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Vat } from 'src/app/core/model/vat';
 import { VatsService } from '../services/vat.service';
-import { Response } from 'src/app/core/model/response';
+import { selectVat } from 'src/app/redux/vat';
+import { select, Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-vat',
@@ -11,45 +12,29 @@ import { Response } from 'src/app/core/model/response';
 })
 export class VatComponent implements OnInit {
 
-  response: Observable<Response>;
-  error: String = "";
-  
-   vats: Vat[] = [];
-  constructor(private vatService: VatsService) {
-    console.log('costruttore vat')
-    //console.log(this.urlPath)
-
-    this.response = this.vatService.retreiveAllVats()
-
-    console.log(this.response)
-
-    this.response.subscribe(
-      response => {
-        this.vats = response.result;
-        console.log(this.vats)
-      },
-      error => {
-        this.error = error.error
-        console.log(this.error)
-      }
-      
-    )
-   }
-
+  dtTrigger: Subject<any> = new Subject();
   dtOptions: DataTables.Settings = {};
+  
+  constructor(private store: Store, private vatService: VatsService) {
+    console.log('costruttore vat')
+    this.vatService.retrieveAllVat();
+  }
 
   ngOnInit(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
-    lengthMenu : [5, 10, 25],
+      lengthMenu : [5, 10, 25],
       processing: true
     };
   }
 
+  get vat(): Observable<Vat[]> {
+    return this.store.pipe(select(selectVat));
+  }
+
   delete(vat: Vat) {
     console.log('delete')
-    console.log(vat)
     this.vatService.deleteVat(vat)
   }
 }

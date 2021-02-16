@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { selectItems } from 'src/app/redux/item';
-import { Observable, Subject, Subscription } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { Item } from 'src/app/core/model/item';
-import { Response } from 'src/app/core/model/response';
 import { ItemsService } from '../services/items.service';
 
 @Component({
@@ -12,11 +11,6 @@ import { ItemsService } from '../services/items.service';
   styleUrls: ['./items.component.scss']
 })
 export class ItemsComponent implements OnInit {
-
-  response: Observable<Response>;
-  error: String = "";
-
-  deleteMessage: String = "";
 
   dtTrigger: Subject<any> = new Subject();
   dtOptions: DataTables.Settings = {};
@@ -27,7 +21,6 @@ export class ItemsComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    console.log('on init items');
     this.itemsService;
     this.dtOptions = {
       pagingType: 'full_numbers',

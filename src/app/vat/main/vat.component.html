@@ -1,6 +1,6 @@
 <div class="corpo">
-    <h1>Misure</h1>
-    <button routerLink="create">Crea una nuova misura</button><br>
+    <h1>Iva</h1>
+    <button routerLink="create">Crea una nuova iva</button><br>
     <br>
     <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"
         style="width: 100%;">
@@ -9,28 +9,19 @@
                 <th>Codice IVA</th>
                 <th>IVA</th>
                 <th>Note</th>
-                
                 <th></th>
                 <th></th>
-
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let vat of vats">
+            <tr *ngFor="let vat of vats | async">
                 <td>{{ vat.codVat }}</td>
                 <td>{{ vat.vat }}</td>
                 <td>{{ vat.note }}</td>
-             
-    
-                <td><button [routerLink]="['detail', vat.codItem]">Edit</button></td>
+                <td><button [routerLink]="['detail', vat.codVat]">Edit</button></td>
                 <td><button (click)="delete(vat)">Delete</button></td>
-
             </tr>
-           
-            
         </tbody>
-        
-
     </table>
     <button routerLink="/home">TORNA ALLA HOME</button>
 </div>

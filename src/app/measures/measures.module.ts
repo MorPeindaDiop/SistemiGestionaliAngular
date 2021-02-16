@@ -6,10 +6,16 @@ import { MeasuresComponent } from './main/measures.component';
 import { SharedModule } from '../shared/shared.module';
 import { DataTablesModule } from 'angular-datatables';
 import { MeasuresService } from './services/measures.service';
+import { CreateComponent } from './create/create.component';
+import { DetailComponent } from '../vat/detail/detail.component';
 
 
 @NgModule({
-  declarations: [MeasuresComponent],
+  declarations: [
+    MeasuresComponent,
+    CreateComponent,
+    DetailComponent
+  ],
   imports: [
     CommonModule,
     MeasuresRoutingModule,
