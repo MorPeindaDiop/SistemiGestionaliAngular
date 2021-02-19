@@ -1,8 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { InvoiceMasterComponent } from './invoice-master/invoice-master.component';
+import { CreateComponent } from './create/create.component';
+import { DetailComponent } from './detail/detail.component';
+import { InvoiceComponent } from './main/invoice.component';
 
-const routes: Routes = [{ path: '', component: InvoiceMasterComponent }];
+const routes: Routes = [
+  { path: '', component: InvoiceComponent },
+  { path: 'detail/:codInvoice', component: DetailComponent },
+  { path: 'create', component: CreateComponent },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
