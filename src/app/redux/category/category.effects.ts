@@ -7,7 +7,6 @@ import { HttpCommunicationsService } from 'src/app/core/HttpCommunications/http-
 import { switchMap, map } from 'rxjs/operators';
 import { Response } from 'src/app/core/model/Response';
 import { initCategories, retrieveAllCategories, createCategory, deleteCategory } from './category.actions';
-import { Item } from 'src/app/core/model/item';
 import { Category } from 'src/app/core/model/category';
 
 @Injectable()

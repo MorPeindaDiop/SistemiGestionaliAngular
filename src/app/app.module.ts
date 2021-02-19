@@ -19,6 +19,10 @@ import { VatEffects } from './redux/vat/vat.effects';
 import { MeasuresEffects } from './redux/measure/measure.effects';
 import { ClientsEffects } from './redux/cliente/client.effects';
 import { CategoriesEffects } from './redux/category/category.effects';
+import { InvoicesMasterEffects } from './redux/invoiceMaster/invoiceMaster.effects';
+import { InvoicesDetailEffects } from './redux/invoiceDetail/invoiceDetail.effects';
+import { InvoicesSummaryEffects } from './redux/invoiceSummary/invoiceSummary.effects';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -33,7 +37,10 @@ import { CategoriesEffects } from './redux/category/category.effects';
       VatEffects,
       MeasuresEffects,
       ClientsEffects,
-      CategoriesEffects
+      CategoriesEffects,
+      InvoicesMasterEffects,
+      InvoicesDetailEffects,
+      InvoicesSummaryEffects
     ]),
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({

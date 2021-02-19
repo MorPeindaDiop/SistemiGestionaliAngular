@@ -2,6 +2,9 @@ import { routerReducer, RouterReducerState } from "@ngrx/router-store";
 import { ActionReducerMap } from "@ngrx/store";
 import { categoriesReducer, CategoriesState } from "./category/category.reducers";
 import { clientsReducer, ClientsState } from "./cliente/client.reducers";
+import { invoicesDetailReducer, InvoicesDetailState } from "./invoiceDetail/invoiceDetail.reducers";
+import { invoicesMasterReducer, InvoicesMasterState } from "./invoiceMaster/invoiceMaster.reducers";
+import { invoicesSummaryReducer, InvoicesSummaryState } from "./invoiceSummary/invoiceSummary.reducers";
 import { itemsReducer, ItemsState } from "./item/item.reducers";
 import { measureReducer, MeasuresState } from "./measure/measure.reducers";
 import { vatReducer, VatState } from "./vat/vat.reducers";
@@ -13,6 +16,9 @@ export interface AppState {
     measuresState: MeasuresState;
     clientsState: ClientsState;
     categoriesState: CategoriesState;
+    invoicesMasterState: InvoicesMasterState;
+    invoicesDetailState: InvoicesDetailState;
+    invoicesSummaryState: InvoicesSummaryState;
 }
 
 export const reducers: ActionReducerMap<AppState> = {
@@ -21,5 +27,8 @@ export const reducers: ActionReducerMap<AppState> = {
     vatState: vatReducer,
     measuresState: measureReducer,
     clientsState: clientsReducer,
-    categoriesState: categoriesReducer
+    categoriesState: categoriesReducer,
+    invoicesMasterState: invoicesMasterReducer,
+    invoicesDetailState: invoicesDetailReducer,
+    invoicesSummaryState: invoicesSummaryReducer
 };

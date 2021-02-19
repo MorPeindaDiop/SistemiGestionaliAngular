@@ -1,7 +1,8 @@
 export interface InvoiceMaster {
-    cod_invoice : String;
+    codInvoice : number;
+    invoiceNumber: String;
     client : String;
     payment : String;
-    order : String;
+    orderNumber : String;
     date : Date;
 }

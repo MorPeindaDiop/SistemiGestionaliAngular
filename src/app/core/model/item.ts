@@ -9,5 +9,4 @@ export interface Item {
     category : String;
     discount : number;
     vat : String;
-
 }
