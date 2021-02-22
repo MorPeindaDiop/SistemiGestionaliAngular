@@ -21,10 +21,14 @@ export class CreateComponent implements OnInit {
   invoiceDetailForm: FormGroup;
   invoiceSummaryForm: FormGroup;
 
+  public dateValue: Date = new Date();
+
   constructor(private fb: FormBuilder, private invoiceService: InvoiceService, private router: Router, private store: Store) {
     
+    this.invoiceService.retrieveAllClients();
+
     this.invoiceMasterForm = this.fb.group({
-      codInvoice: ['', Validators.required],
+      //codInvoice: ['', Validators.required],
       invoiceNumber: ['', Validators.required],
       client: ['', Validators.required],
       payment: ['', Validators.required],
@@ -78,7 +82,7 @@ export class CreateComponent implements OnInit {
       ...this.invoiceMasterForm.value
     }
     this.invoiceService.createInvoiceMaster(invoiceMaster);
-    this.router.navigateByUrl('/invoices');
+    //this.router.navigateByUrl('/invoices');
   }
 
   saveInvoiceDetail() {

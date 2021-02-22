@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { CoreModule } from '../core/core.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
+import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
+import { IgxTabsModule } from "igniteui-angular";
 
 
 @NgModule({
@@ -13,13 +15,17 @@ import { DataTablesModule } from 'angular-datatables';
     CoreModule,
     FormsModule,
     ReactiveFormsModule,
-    DataTablesModule
+    DataTablesModule,
+    DateTimePickerModule,
+    IgxTabsModule
   ],
   exports: [
     CoreModule,
     FormsModule,
     ReactiveFormsModule,
-    DataTablesModule
+    DataTablesModule,
+    DateTimePickerModule,
+    IgxTabsModule
   ]
 })
 export class SharedModule { }

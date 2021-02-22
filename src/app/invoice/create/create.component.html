@@ -4,44 +4,31 @@
     <form [formGroup]="invoiceMasterForm" (ngSubmit)="saveInvoiceMaster()">
         <div >
             <!-- <label><b>Type:</b></label> -->
-            <input placeholder="Item cod" formControlName="codItem">
+            <input placeholder="Numero fattura" formControlName="invoiceNumber">
         </div>
-        <br>
+        <div>
+            <label>Cliente:</label>
+            <select formControlName="client">
+                <option *ngFor="let client of clients | async" value="{{client.codClient}}">{{client.businessName}}</option>
+            </select>
+        </div>
         <div>
             <!-- <label><b>Type:</b></label> -->
-            <input placeholder="Description" formControlName="description">
+            <input placeholder="Numero ordine" formControlName="orderNumber">
         </div>
-        <br>
+        <div>
+            <label>Metodo di pagamento:</label>
+            <select formControlName="payment">
+                <option value="Contanti">Contanti</option>
+                <option value="Bonifico">Bonifico</option>
+                <option value="Assegno">Assegno</option>
+            </select>
+        </div>
         <div>
             <!-- <label><b>Type:</b></label> -->
-            <input placeholder="Type" formControlName="type">
+            <!-- <input placeholder="Type" formControlName="date"> -->
+            <ejs-datetimepicker placeholder='Select a date' formControlName="date" [value]= 'dateValue' format ='yyyy.MM.dd HH:mm'></ejs-datetimepicker>
         </div>
-        <br>
-        <div>
-            <!-- <label><b>Type:</b></label> -->
-            <input placeholder="Category" formControlName="category">
-        </div>
-        <br>
-        <div>
-            <!-- <label><b>Type:</b></label> -->
-            <input placeholder="Measure" formControlName="measure">
-        </div>
-        <br>
-        <div>
-            <!-- <label><b>Type:</b></label> -->
-            <input placeholder="Price" formControlName="price">
-        </div>
-        <br>
-        <div>
-            <!-- <label><b>Type:</b></label> -->
-            <input placeholder="Discount" formControlName="discount">
-        </div>
-        <br>
-        <div>
-            <!-- <label><b>Type:</b></label> -->
-            <input placeholder="Vat" formControlName="vat">
-        </div>
-        <br>
         <button type="submit">SAVE</button> &nbsp;
         <button type="button" routerLink="/items">ANNULLA</button>
     </form>

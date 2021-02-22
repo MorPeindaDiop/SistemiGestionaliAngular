@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { InvoiceDetail } from 'src/app/core/model/invoice-detail';
 import { InvoiceMaster } from 'src/app/core/model/invoice-master';
 import { InvoiceSummary } from 'src/app/core/model/invoice-summary';
+import { retrieveAllClients } from 'src/app/redux/cliente/client.actions';
 import { createInvoiceDetail, deleteInvoiceDetail, retrieveAllInvoicesDetail } from 'src/app/redux/invoiceDetail/invoiceDetail.actions';
 import { createInvoiceMaster, deleteInvoice, retrieveAllInvoicesMaster } from 'src/app/redux/invoiceMaster/invoiceMaster.actions';
 import { createInvoiceSummary, deleteInvoiceSummary, retrieveAllInvoicesSummary } from 'src/app/redux/invoiceSummary/invoiceSummary.actions';
@@ -54,6 +55,12 @@ export class InvoiceService {
   deleteInvoiceSummary(invoiceSummary: InvoiceSummary) {
     console.log("sono dentro alla chiamata delete")
     return this.store.dispatch(deleteInvoiceSummary({invoiceSummary}))
+  }
+
+
+
+  retrieveAllClients() {
+    return this.store.dispatch(retrieveAllClients())
   }
   
 }

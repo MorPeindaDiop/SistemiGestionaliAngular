@@ -4,10 +4,12 @@ import { initInvoicesMaster } from "./invoiceMaster.actions";
 
 export interface InvoicesMasterState {
     invoicesMaster: InvoiceMaster[];
+    currentInvoiceNumber: number;
 }
 
 export const initialState: InvoicesMasterState = {
-    invoicesMaster: []
+    invoicesMaster: [],
+    currentInvoiceNumber: null
 };
 
 const reducer = createReducer(
