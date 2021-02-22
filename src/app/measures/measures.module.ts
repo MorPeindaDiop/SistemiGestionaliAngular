@@ -20,7 +20,6 @@ import { DetailComponent } from './detail/detail.component';
     CommonModule,
     MeasuresRoutingModule,
     SharedModule,
-    DataTablesModule
   ],
   providers: [
     MeasuresService

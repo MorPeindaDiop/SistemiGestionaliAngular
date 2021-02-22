@@ -21,7 +21,6 @@ import { CreateComponent } from './create/create.component';
     CommonModule,
     ClienteRoutingModule,
     SharedModule,
-    DataTablesModule
   ],
   providers: [
     ClientsService

@@ -1,7 +1,7 @@
 <div class="corpo">
-    <h1>CREATE ITEM</h1>
+    <h1>CREATE INVOICE</h1>
     
-    <form [formGroup]="itemForm" (ngSubmit)="save()">
+    <form [formGroup]="invoiceMasterForm" (ngSubmit)="saveInvoiceMaster()">
         <div >
             <!-- <label><b>Type:</b></label> -->
             <input placeholder="Item cod" formControlName="codItem">

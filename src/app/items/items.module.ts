@@ -20,7 +20,6 @@ import { DataTablesModule } from 'angular-datatables';
     CommonModule,
     ItemsRoutingModule,
     SharedModule,
-    DataTablesModule
   ],
   providers: [
     ItemsService

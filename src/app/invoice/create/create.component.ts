@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Client } from 'src/app/core/model/client';
 import { InvoiceDetail } from 'src/app/core/model/invoice-detail';
 import { InvoiceMaster } from 'src/app/core/model/invoice-master';
 import { InvoiceSummary } from 'src/app/core/model/invoice-summary';
+import { selectClients } from 'src/app/redux/cliente';
 import { InvoiceService } from '../services/invoice.service';
 
 @Component({
@@ -17,7 +21,7 @@ export class CreateComponent implements OnInit {
   invoiceDetailForm: FormGroup;
   invoiceSummaryForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private invoiceService: InvoiceService, private router: Router) {
+  constructor(private fb: FormBuilder, private invoiceService: InvoiceService, private router: Router, private store: Store) {
     
     this.invoiceMasterForm = this.fb.group({
       codInvoice: ['', Validators.required],
@@ -60,6 +64,10 @@ export class CreateComponent implements OnInit {
       cap: ['', Validators.required],
     })
     
+  }
+
+  get clients(): Observable<Client[]> {
+    return this.store.pipe(select(selectClients));
   }
 
   ngOnInit(): void {
