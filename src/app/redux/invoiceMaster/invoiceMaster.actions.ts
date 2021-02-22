@@ -10,4 +10,4 @@ export const initInvoicesMaster = createAction('[InvoiceMaster] init invoice mas
 export const createInvoiceMaster = createAction('[InvoiceMaster] create invoice master', props<{invoiceMaster: InvoiceMaster}>());
 
 //delete invoice Master
-export const deleteInvoiceMaster = createAction('[InvoiceMaster] delete invoice master', props<{invoiceMaster: InvoiceMaster}>());
+export const deleteInvoice = createAction('[Invoice] delete invoice', props<{codInvoice: number}>());

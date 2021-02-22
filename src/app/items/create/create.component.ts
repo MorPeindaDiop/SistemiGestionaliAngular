@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Item } from 'src/app/core/model/item';
 import { ItemsService } from '../services/items.service';
 
@@ -13,7 +14,7 @@ export class CreateComponent implements OnInit {
 
   itemForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private itemsService: ItemsService, private router: Router) {
+  constructor(private fb: FormBuilder, private itemsService: ItemsService, private router: Router, private store: Store) {
     this.itemForm = this.fb.group({
       codItem: ['', Validators.required],
       description: ['', Validators.required],
