@@ -1,51 +1,72 @@
 <div class="corpo">
-<h1>CREATE ITEM</h1>
+    <h1>CREATE ITEM</h1>
 
-<form [formGroup]="itemForm" (ngSubmit)="save()">
-    <div >
-        <!-- <label><b>Type:</b></label> -->
-        <input placeholder="Item cod" formControlName="codItem">
-    </div>
-    <br>
-    <div>
-        <!-- <label><b>Type:</b></label> -->
-        <input placeholder="Description" formControlName="description">
-    </div>
-    <br>
-    <div>
-        <!-- <label><b>Type:</b></label> -->
-        <input placeholder="Type" formControlName="type">
-    </div>
-    <br>
-    <div>
-        <!-- <label><b>Type:</b></label> -->
-        <input placeholder="Category" formControlName="category">
-<!-- select -->
-    </div>
-    <br>
-    <div>
-        <!-- <label><b>Type:</b></label> -->
-        <input placeholder="Measure" formControlName="measure">
-<!-- select -->
-    </div>
-    <br>
-    <div>
-        <!-- <label><b>Type:</b></label> -->
-        <input placeholder="Price" formControlName="price">
-    </div>
-    <br>
-    <div>
-        <!-- <label><b>Type:</b></label> -->
-        <input placeholder="Discount" formControlName="discount">
-    </div>
-    <br>
-    <div>
-        <!-- <label><b>Type:</b></label> -->
-        <input placeholder="Vat" formControlName="vat">
-<!-- select -->
-    </div>
-    <br>
-    <button type="submit">SAVE</button> &nbsp;
-    <button type="button" routerLink="/items">ANNULLA</button>
-</form>
+    <form [formGroup]="itemForm" (ngSubmit)="save()">
+        <div>
+            <!-- <label><b>Type:</b></label> -->
+            <input placeholder="Item cod" formControlName="codItem">
+        </div>
+
+        <br>
+
+        <div>
+            <!-- <label><b>Type:</b></label> -->
+            <input placeholder="Description" formControlName="description">
+        </div>
+
+        <br>
+
+        <div>
+            <!-- <label><b>Type:</b></label> -->
+            <input placeholder="Type" formControlName="type">
+        </div>
+        
+        <br>
+
+        <div>
+            <select formControlName="category">
+                <option value="" disabled selected>Category</option>
+                <option *ngFor="let category of categories | async" value="{{category.codCategory}}">
+                    {{category.description}}</option>
+            </select>
+        </div>
+
+        <br>
+
+        <div>
+            <select formControlName="measure">
+                <option value="" disabled selected>Measures</option>
+                <option *ngFor="let measure of measures | async" value="{{measure.codMeasure}}">{{measure.description}}
+                </option>
+            </select>
+        </div>
+
+        <br>
+
+        <div>
+            <!-- <label><b>Type:</b></label> -->
+            <input placeholder="Price" formControlName="price">
+        </div>
+
+        <br>
+
+        <div>
+            <!-- <label><b>Type:</b></label> -->
+            <input placeholder="Discount" formControlName="discount">
+        </div>
+
+        <br>
+
+        <div>
+            <select formControlName="vat">
+                <option value="" disabled selected>Vats</option>
+                <option *ngFor="let vat of vat | async" value="{{vat.codVat}}">{{vat.vat}}</option>
+            </select>
+        </div>
+
+        <br>
+
+        <button type="submit">SAVE</button> &nbsp;
+        <button type="button" routerLink="/items">ANNULLA</button>
+    </form>
 </div>

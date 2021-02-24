@@ -1,8 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Category } from 'src/app/core/model/category';
 import { Item } from 'src/app/core/model/item';
+import { Measure } from 'src/app/core/model/measure';
+import { Vat } from 'src/app/core/model/vat';
+import { selectCategories } from 'src/app/redux/category';
+import { selectMeasures } from 'src/app/redux/measure';
+import { selectVat } from 'src/app/redux/vat';
 import { ItemsService } from '../services/items.service';
 
 @Component({
@@ -14,7 +21,12 @@ export class CreateComponent implements OnInit {
 
   itemForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private itemsService: ItemsService, private router: Router, private store: Store) {
+  constructor(private fb: FormBuilder,  private itemsService: ItemsService, private router: Router, private store: Store) {
+ 
+    this.itemsService.retrieveAllCategories();
+    this.itemsService.retrieveAllMeasures();
+    this.itemsService.retrieveAllVat();
+
     this.itemForm = this.fb.group({
       codItem: ['', Validators.required],
       description: ['', Validators.required],
@@ -28,6 +40,18 @@ export class CreateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  get categories(): Observable<Category[]> {
+    return this.store.pipe(select(selectCategories));
+  }
+
+  get measures(): Observable<Measure[]> {
+    return this.store.pipe(select(selectMeasures));
+  }
+
+  get vat(): Observable<Vat[]> {
+    return this.store.pipe(select(selectVat));
   }
 
   save() {
