@@ -7,7 +7,10 @@ import { HttpCommunicationsService } from 'src/app/core/HttpCommunications/http-
 import { switchMap, map } from 'rxjs/operators';
 import { Response } from 'src/app/core/model/Response';
 import { InvoiceMaster } from 'src/app/core/model/invoice-master';
-import { createInvoiceMaster, deleteInvoice, initInvoicesMaster, retrieveAllInvoicesMaster, initNewInvoiceMaster } from './invoiceMaster.actions';
+import { createInvoiceMaster, deleteInvoice, initInvoicesMaster, retrieveAllInvoicesMaster, initNewInvoiceMaster, createInvoice } from './invoiceMaster.actions';
+import { Invoice } from 'src/app/core/model/invoice';
+import { retrieveAllInvoicesDetail } from '../invoiceDetail/invoiceDetail.actions';
+import { retrieveAllInvoicesSummary } from '../invoiceSummary/invoiceSummary.actions';
 
 @Injectable()
 export class InvoicesMasterEffects {
@@ -22,7 +25,11 @@ export class InvoicesMasterEffects {
         return this.http.retrievePostCall<Response>("invoice/master/create", invoiceMaster)
     }
 
-    deleteInvoiceMaster(codInvoice: number): Observable<Response> {
+    createInvoice(invoice: Invoice): Observable<Response> {
+        return this.http.retrievePostCall<Response>("invoice/create", invoice)
+    }
+
+    deleteInvoice(codInvoice: number): Observable<Response> {
         return this.http.retrievePostCall<Response>("invoice/delete", codInvoice)
     }
 
@@ -37,13 +44,19 @@ export class InvoicesMasterEffects {
         ofType(createInvoiceMaster),
         switchMap(invoiceMaster => this.createInvoiceMaster(invoiceMaster.invoiceMaster).pipe(
             switchMap(response => [initNewInvoiceMaster( {response} ), retrieveAllInvoicesMaster()]),
-            //map(() => retrieveAllInvoicesMaster()),
+        )))
+    );
+
+    createInvoice$ = createEffect(() => this.actions$.pipe(
+        ofType(createInvoice),
+        switchMap(invoice => this.createInvoice(invoice.invoice).pipe(
+            switchMap( () => [retrieveAllInvoicesMaster(), retrieveAllInvoicesDetail(), retrieveAllInvoicesSummary()]),
         )))
     );
 
     deleteInvoiceMaster$ = createEffect(() => this.actions$.pipe(
         ofType(deleteInvoice),
-        switchMap(codInvoice => this.deleteInvoiceMaster(codInvoice.codInvoice).pipe(
+        switchMap(codInvoice => this.deleteInvoice(codInvoice.codInvoice).pipe(
             map(() => retrieveAllInvoicesMaster()),
         )))
     );

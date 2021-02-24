@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Client } from 'src/app/core/model/client';
+import { Invoice } from 'src/app/core/model/invoice';
 import { InvoiceDetail } from 'src/app/core/model/invoice-detail';
 import { InvoiceMaster } from 'src/app/core/model/invoice-master';
 import { InvoiceSummary } from 'src/app/core/model/invoice-summary';
@@ -142,50 +143,97 @@ export class CreateComponent implements OnInit {
       this.provisionalInvoiceSummary
     )
   }
-  
-  saveInvoiceMaster() {
+
+  save() {
+    //invoiceMaster
     let invoiceMaster: InvoiceMaster = {
       ...this.invoiceMasterForm.value
     }
-    this.invoiceService.createInvoiceMaster(invoiceMaster);
-  }
 
-  saveInvoiceDetail() {
+    //invoiceDetailList
     this.provisionalInvoiceDetailList.subscribe(provisionalInvoiceDetailList => {
       for (let invoiceDetail of provisionalInvoiceDetailList) {
-        let invoiceDetailWithCod: InvoiceDetail = {
-          codItem: invoiceDetail.codItem,
-          description: invoiceDetail.description,
-          measure: invoiceDetail.measure,
-          quantity: invoiceDetail.quantity,
-          lot: invoiceDetail.lot,
-          expiry: invoiceDetail.expiry,
-          unitPrice: invoiceDetail.unitPrice,
-          discount: invoiceDetail.discount,
-          totalDiscount: invoiceDetail.totalDiscount,
-          taxable: invoiceDetail.taxable,
-          codVat: invoiceDetail.codVat,
-          totalVat: invoiceDetail.totalVat,
-          totalLine: invoiceDetail.totalLine
-        }
-        this.listToSave.push(invoiceDetailWithCod)
+        // let invoiceDetailWithCod: InvoiceDetail = {
+        //   codItem: invoiceDetail.codItem,
+        //   description: invoiceDetail.description,
+        //   measure: invoiceDetail.measure,
+        //   quantity: invoiceDetail.quantity,
+        //   lot: invoiceDetail.lot,
+        //   expiry: invoiceDetail.expiry,
+        //   unitPrice: invoiceDetail.unitPrice,
+        //   discount: invoiceDetail.discount,
+        //   totalDiscount: invoiceDetail.totalDiscount,
+        //   taxable: invoiceDetail.taxable,
+        //   codVat: invoiceDetail.codVat,
+        //   totalVat: invoiceDetail.totalVat,
+        //   totalLine: invoiceDetail.totalLine
+        // }
+        this.listToSave.push(invoiceDetail)
       }
       return this.listToSave
     })
-    console.log("listToSave")
-    console.log(this.listToSave)
-    if (this.listToSave != []) {
-      this.invoiceService.createInvoiceDetail(this.listToSave);
-    }
-  }
 
-  saveInvoiceSummary() {
+    //invoiceSummary
     let invoiceSummary: InvoiceSummary = {
       ...this.invoiceSummaryForm.value
     }
-    console.log(invoiceSummary)
-    this.invoiceService.createInvoiceSummary(invoiceSummary);
+
+
+    //invoice
+    let invoice: Invoice = {
+      invoiceMaster: invoiceMaster,
+      invoiceDetailList: this.listToSave,
+      invoiceSummary: invoiceSummary
+    }
+
+    this.invoiceService.createInvoice(invoice);
     this.router.navigateByUrl('/invoices');
+
   }
+  
+  // saveInvoiceMaster() {
+  //   let invoiceMaster: InvoiceMaster = {
+  //     ...this.invoiceMasterForm.value
+  //   }
+  //   this.invoiceService.createInvoiceMaster(invoiceMaster);
+  // }
+
+  // saveInvoiceDetail() {
+  //   this.provisionalInvoiceDetailList.subscribe(provisionalInvoiceDetailList => {
+  //     for (let invoiceDetail of provisionalInvoiceDetailList) {
+  //       let invoiceDetailWithCod: InvoiceDetail = {
+  //         codItem: invoiceDetail.codItem,
+  //         description: invoiceDetail.description,
+  //         measure: invoiceDetail.measure,
+  //         quantity: invoiceDetail.quantity,
+  //         lot: invoiceDetail.lot,
+  //         expiry: invoiceDetail.expiry,
+  //         unitPrice: invoiceDetail.unitPrice,
+  //         discount: invoiceDetail.discount,
+  //         totalDiscount: invoiceDetail.totalDiscount,
+  //         taxable: invoiceDetail.taxable,
+  //         codVat: invoiceDetail.codVat,
+  //         totalVat: invoiceDetail.totalVat,
+  //         totalLine: invoiceDetail.totalLine
+  //       }
+  //       this.listToSave.push(invoiceDetailWithCod)
+  //     }
+  //     return this.listToSave
+  //   })
+  //   console.log("listToSave")
+  //   console.log(this.listToSave)
+  //   if (this.listToSave != []) {
+  //     this.invoiceService.createInvoiceDetail(this.listToSave);
+  //   }
+  // }
+
+  // saveInvoiceSummary() {
+  //   let invoiceSummary: InvoiceSummary = {
+  //     ...this.invoiceSummaryForm.value
+  //   }
+  //   console.log(invoiceSummary)
+  //   this.invoiceService.createInvoiceSummary(invoiceSummary);
+  //   this.router.navigateByUrl('/invoices');
+  // }
 
 }
