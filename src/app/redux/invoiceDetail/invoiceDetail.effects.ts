@@ -7,7 +7,7 @@ import { HttpCommunicationsService } from 'src/app/core/HttpCommunications/http-
 import { switchMap, map } from 'rxjs/operators';
 import { Response } from 'src/app/core/model/Response';
 import { InvoiceDetail } from 'src/app/core/model/invoice-detail';
-import { createInvoiceDetail, deleteInvoiceDetail, initInvoicesDetail, retrieveAllInvoicesDetail } from './invoiceDetail.actions';
+import { calculateProvisionalInvoiceDetail, createInvoiceDetail, deleteInvoiceDetail, initInvoicesDetail, initProvisionalInvoiceDetail, retrieveAllInvoicesDetail } from './invoiceDetail.actions';
 
 @Injectable()
 export class InvoicesDetailEffects {
@@ -18,8 +18,12 @@ export class InvoicesDetailEffects {
         return this.http.retrieveGetCall<Response>("invoice/detail/findAll")
     }
 
-    createInvoiceDetail(invoiceDetail: InvoiceDetail): Observable<Response> {
-        return this.http.retrievePostCall<Response>("invoice/detail/create", invoiceDetail)
+    calculateProvisionalInvoiceDetail(invoiceDetail: InvoiceDetail): Observable<Response> {
+        return this.http.retrievePostCall<Response>("invoice/provisionalCalcDetail", invoiceDetail)
+    }
+
+    createInvoiceDetail(invoiceDetailList: InvoiceDetail[]): Observable<Response> {
+        return this.http.retrievePostCall<Response>("invoice/detail/create", invoiceDetailList)
     }
 
     deleteInvoiceDetail(invoiceDetail: InvoiceDetail): Observable<Response> {
@@ -33,9 +37,16 @@ export class InvoicesDetailEffects {
         ))
     ));
 
+    calculateProvisionalInvoiceDetail$ = createEffect(() => this.actions$.pipe(
+        ofType(calculateProvisionalInvoiceDetail),
+        switchMap((invoiceDetail) => this.calculateProvisionalInvoiceDetail(invoiceDetail.invoiceDetail).pipe(
+            map((response) => initProvisionalInvoiceDetail({ response })),
+        )))
+    );
+
     createInvoiceDetail$ = createEffect(() => this.actions$.pipe(
         ofType(createInvoiceDetail),
-        switchMap(invoiceDetail => this.createInvoiceDetail(invoiceDetail.invoiceDetail).pipe(
+        switchMap(invoiceDetailList => this.createInvoiceDetail(invoiceDetailList.invoiceDetailList).pipe(
             map(() => retrieveAllInvoicesDetail()),
         )))
     );

@@ -1,10 +1,10 @@
 import { Action, createReducer, on } from "@ngrx/store";
 import { InvoiceMaster } from "src/app/core/model/invoice-master";
-import { initInvoicesMaster } from "./invoiceMaster.actions";
+import { initNewInvoiceMaster, initInvoicesMaster } from "./invoiceMaster.actions";
 
 export interface InvoicesMasterState {
     invoicesMaster: InvoiceMaster[];
-    currentInvoiceNumber: number;
+    currentInvoiceNumber: InvoiceMaster;
 }
 
 export const initialState: InvoicesMasterState = {
@@ -14,7 +14,8 @@ export const initialState: InvoicesMasterState = {
 
 const reducer = createReducer(
     initialState,
-    on(initInvoicesMaster, (state, { response }) => ({ ...state, invoicesMaster: response.result }))
+    on(initInvoicesMaster, (state, { response }) => ({ ...state, invoicesMaster: response.result })),
+    on(initNewInvoiceMaster, (state, { response }) => ({ ...state, currentInvoiceNumber: response.result }))
 );
 
 export function invoicesMasterReducer(state: InvoicesMasterState | undefined, action: Action) {

@@ -8,3 +8,8 @@ export const selectInvoicesMaster = createSelector(
     selectInvoicesMasterState,
     (state: InvoicesMasterState) => state.invoicesMaster
 );
+
+export const selectCurrentInvoiceMaster = createSelector(
+    selectInvoicesMasterState,
+    (state: InvoicesMasterState) => state.currentInvoiceNumber
+);

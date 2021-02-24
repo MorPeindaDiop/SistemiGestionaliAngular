@@ -8,3 +8,8 @@ export const selectInvoicesSummary = createSelector(
     selectInvoicesSummaryState,
     (state: InvoicesSummaryState) => state.invoicesSummary
 );
+
+export const selectProvisionalInvoiceSummary = createSelector(
+    selectInvoicesSummaryState,
+    (state: InvoicesSummaryState) => state.provisionalInvoiceSummary
+);

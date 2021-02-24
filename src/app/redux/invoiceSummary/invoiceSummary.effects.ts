@@ -7,7 +7,7 @@ import { HttpCommunicationsService } from 'src/app/core/HttpCommunications/http-
 import { switchMap, map } from 'rxjs/operators';
 import { Response } from 'src/app/core/model/Response';
 import { InvoiceSummary } from 'src/app/core/model/invoice-summary';
-import { createInvoiceSummary, deleteInvoiceSummary, initInvoicesSummary, retrieveAllInvoicesSummary } from './invoiceSummary.actions';
+import { calculateProvisionalInvoiceSummary, createInvoiceSummary, deleteInvoiceSummary, initInvoicesSummary, initProvisionalInvoiceSummary, retrieveAllInvoicesSummary } from './invoiceSummary.actions';
 
 @Injectable()
 export class InvoicesSummaryEffects {
@@ -16,6 +16,10 @@ export class InvoicesSummaryEffects {
 
     retrieveAllInvoicesSummary(): Observable<Response> {
         return this.http.retrieveGetCall<Response>("invoice/summary/findAll")
+    }
+
+    calculateProvisionalInvoiceSummary(codInvoice: number): Observable<Response> {
+        return this.http.retrievePostCall<Response>("invoice/provisionalCalcSummary", codInvoice)
     }
 
     createInvoiceSummary(invoiceSummary: InvoiceSummary): Observable<Response> {
@@ -32,6 +36,13 @@ export class InvoicesSummaryEffects {
             map((response) => initInvoicesSummary({ response }))
         ))
     ));
+
+    calculateProvisionalInvoiceSummary$ = createEffect(() => this.actions$.pipe(
+        ofType(calculateProvisionalInvoiceSummary),
+        switchMap((codInvoice) => this.calculateProvisionalInvoiceSummary(codInvoice.codInvoice).pipe(
+            map((response) => initProvisionalInvoiceSummary({ response })),
+        )))
+    );
 
     createInvoiceSummary$ = createEffect(() => this.actions$.pipe(
         ofType(createInvoiceSummary),

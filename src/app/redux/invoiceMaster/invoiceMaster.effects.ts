@@ -7,7 +7,7 @@ import { HttpCommunicationsService } from 'src/app/core/HttpCommunications/http-
 import { switchMap, map } from 'rxjs/operators';
 import { Response } from 'src/app/core/model/Response';
 import { InvoiceMaster } from 'src/app/core/model/invoice-master';
-import { createInvoiceMaster, deleteInvoice, initInvoicesMaster, retrieveAllInvoicesMaster } from './invoiceMaster.actions';
+import { createInvoiceMaster, deleteInvoice, initInvoicesMaster, retrieveAllInvoicesMaster, initNewInvoiceMaster } from './invoiceMaster.actions';
 
 @Injectable()
 export class InvoicesMasterEffects {
@@ -36,7 +36,8 @@ export class InvoicesMasterEffects {
     createInvoiceMaster$ = createEffect(() => this.actions$.pipe(
         ofType(createInvoiceMaster),
         switchMap(invoiceMaster => this.createInvoiceMaster(invoiceMaster.invoiceMaster).pipe(
-            map(() => retrieveAllInvoicesMaster()),
+            switchMap(response => [initNewInvoiceMaster( {response} ), retrieveAllInvoicesMaster()]),
+            //map(() => retrieveAllInvoicesMaster()),
         )))
     );
 

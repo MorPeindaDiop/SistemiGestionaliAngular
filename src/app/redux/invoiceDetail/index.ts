@@ -8,3 +8,8 @@ export const selectInvoicesDetail = createSelector(
     selectInvoicesDetailState,
     (state: InvoicesDetailState) => state.invoicesDetail
 );
+
+export const selectProvisionalInvoicesDetail = createSelector(
+    selectInvoicesDetailState,
+    (state: InvoicesDetailState) => state.provisionalInvoiceDetailList
+);

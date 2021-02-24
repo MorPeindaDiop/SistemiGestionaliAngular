@@ -4,9 +4,10 @@ import { InvoiceDetail } from 'src/app/core/model/invoice-detail';
 import { InvoiceMaster } from 'src/app/core/model/invoice-master';
 import { InvoiceSummary } from 'src/app/core/model/invoice-summary';
 import { retrieveAllClients } from 'src/app/redux/cliente/client.actions';
-import { createInvoiceDetail, deleteInvoiceDetail, retrieveAllInvoicesDetail } from 'src/app/redux/invoiceDetail/invoiceDetail.actions';
+import { calculateProvisionalInvoiceDetail, createInvoiceDetail, deleteInvoiceDetail, retrieveAllInvoicesDetail } from 'src/app/redux/invoiceDetail/invoiceDetail.actions';
 import { createInvoiceMaster, deleteInvoice, retrieveAllInvoicesMaster } from 'src/app/redux/invoiceMaster/invoiceMaster.actions';
-import { createInvoiceSummary, deleteInvoiceSummary, retrieveAllInvoicesSummary } from 'src/app/redux/invoiceSummary/invoiceSummary.actions';
+import { calculateProvisionalInvoiceSummary, createInvoiceSummary, deleteInvoiceSummary, retrieveAllInvoicesSummary } from 'src/app/redux/invoiceSummary/invoiceSummary.actions';
+import { retrieveAllItems } from 'src/app/redux/item/item.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -32,9 +33,17 @@ export class InvoiceService {
     return this.store.dispatch(createInvoiceMaster({invoiceMaster}))
   }
 
-  createInvoiceDetail(invoiceDetail: InvoiceDetail) {
+  calculateProvisionalInvoiceDetail(invoiceDetail: InvoiceDetail) {
+    return this.store.dispatch(calculateProvisionalInvoiceDetail({invoiceDetail}))
+  }
+
+  calculateProvisionalInvoiceSummary(codInvoice: number) {
+    return this.store.dispatch(calculateProvisionalInvoiceSummary({codInvoice}))
+  }
+
+  createInvoiceDetail(invoiceDetailList: InvoiceDetail[]) {
     console.log("sono dentro alla chiamata create")
-    return this.store.dispatch(createInvoiceDetail({invoiceDetail}))
+    return this.store.dispatch(createInvoiceDetail({invoiceDetailList}))
   }
 
   createInvoiceSummary(invoiceSummary: InvoiceSummary) {
@@ -61,6 +70,10 @@ export class InvoiceService {
 
   retrieveAllClients() {
     return this.store.dispatch(retrieveAllClients())
+  }
+
+  retrieveAllItems() {
+    return this.store.dispatch(retrieveAllItems())
   }
   
 }

@@ -4,7 +4,7 @@ import { CoreModule } from '../core/core.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataTablesModule } from 'angular-datatables';
 import { DateTimePickerModule } from '@syncfusion/ej2-angular-calendars';
-import { IgxTabsModule } from "igniteui-angular";
+import { IgxTabsModule, IgxNavbarModule, IgxIconModule } from "igniteui-angular";
 
 
 @NgModule({
@@ -17,7 +17,9 @@ import { IgxTabsModule } from "igniteui-angular";
     ReactiveFormsModule,
     DataTablesModule,
     DateTimePickerModule,
-    IgxTabsModule
+    IgxTabsModule,
+    IgxNavbarModule,
+	  IgxIconModule
   ],
   exports: [
     CoreModule,
@@ -25,7 +27,9 @@ import { IgxTabsModule } from "igniteui-angular";
     ReactiveFormsModule,
     DataTablesModule,
     DateTimePickerModule,
-    IgxTabsModule
+    IgxTabsModule,
+    IgxNavbarModule,
+	  IgxIconModule
   ]
 })
 export class SharedModule { }

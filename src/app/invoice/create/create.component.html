@@ -1,36 +1,138 @@
 <div class="corpo">
     <h1>CREATE INVOICE</h1>
+
+    <igx-tabs>
+        <igx-tabs-group label="MASTER">
+            <form [formGroup]="invoiceMasterForm" (ngSubmit)="saveInvoiceMaster()">
+                <div >
+                    <!-- <label><b>Type:</b></label> -->
+                    <input placeholder="Numero fattura" formControlName="invoiceNumber">
+                </div>
+                <div>
+                    <label>Cliente:</label>
+                    <select formControlName="client">
+                        <option *ngFor="let client of clients | async" value="{{client.codClient}}">{{client.businessName}}</option>
+                    </select>
+                </div>
+                <div>
+                    <!-- <label><b>Type:</b></label> -->
+                    <input placeholder="Numero ordine" formControlName="orderNumber">
+                </div>
+                <div>
+                    <label>Metodo di pagamento:</label>
+                    <select formControlName="payment">
+                        <option value="Contanti">Contanti</option>
+                        <option value="Bonifico">Bonifico</option>
+                        <option value="Assegno">Assegno</option>
+                    </select>
+                </div>
+                <div>
+                    <!-- <label><b>Type:</b></label> -->
+                    <!-- <input placeholder="Type" formControlName="date"> -->
+                    <ejs-datetimepicker placeholder='Select a date' formControlName="date" [value]= 'dateValue' format ='yyyy.MM.dd'></ejs-datetimepicker>
+                </div>
+                <a href="#section2"><button type="submit">SAVE</button></a> &nbsp;
+                <button type="button" routerLink="/items">ANNULLA</button>
+            </form>
+        </igx-tabs-group>
+
+
+        <igx-tabs-group label="DETAIL" *ngIf="currentInvoiceMaster != null" id="section2">
+            <div>
+                <table class="table table-striped table-bordered table-sm row-border hover" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>Codice articolo</th>
+                            <th>Descrizione</th>
+                            <th>Unità di misura</th>
+                            <th>Quantità</th>
+                            <th>Lotto</th>
+                            <th>Data scadenza</th>
+                            <th>Prezzo unitario</th>
+                            <th>Sconto</th>
+                            <th>Importo sconto</th>
+                            <th>Imponibile</th>
+                            <th>Iva</th>
+                            <th>Importo Iva</th>
+                            <th>Totale riga</th>
+                            <!-- <th></th>
+                            <th></th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let invoiceDetail of provisionalInvoiceDetailList | async">
+                            <td>{{ invoiceDetail.codItem }}</td>
+                            <td>{{ invoiceDetail.description }}</td>
+                            <td>{{ invoiceDetail.measure }}</td>
+                            <td>{{ invoiceDetail.quantity }}</td>
+                            <td>{{ invoiceDetail.lot }}</td>
+                            <td>{{ invoiceDetail.expiry }}</td>
+                            <td>{{ invoiceDetail.unitPrice }}</td>
+                            <td>{{ invoiceDetail.discount }}</td>
+                            <td>{{ invoiceDetail.totalDiscount }}</td>
+                            <td>{{ invoiceDetail.taxable }}</td>
+                            <td>{{ invoiceDetail.codVat }}</td>
+                            <td>{{ invoiceDetail.totalVat }}</td>
+                            <td>{{ invoiceDetail.totalLine }}</td>
+                            <!-- <td><button (click)="goToDetail(invoiceMaster.codInvoice)">Edit</button></td>
+                            <td><button (click)="delete(invoiceMaster.codInvoice)">Delete</button></td> -->
+                        </tr>
+                    </tbody>
+                    <!-- <td>
+                        <div *ngFor="let skill of skills | async">
+                            <div *ngIf="skill.id == question.idSkill">
+                                    {{ skill.description }}
+                            </div>
+                        </div>
+                    </td> -->
+                </table>
+            </div>
+            <div>
+                <form [formGroup]="invoiceDetailForm" (ngSubmit)="addProvisionalInvoiceDetail()">
+                    <div>
+                        <label>Articolo:</label>
+                        <select formControlName="codItem" #itemSelected>
+                            <option *ngFor="let item of items | async" value="{{item.codItem}}">{{item.description}}</option>
+                        </select>
+                    </div>
+                    <div>
+                        <div *ngFor="let item of items | async">
+                            <div *ngIf="item.codItem == itemSelected.value">
+                                <label><b>Descrizione: {{ item.description }}</b></label><br>
+                                <label><b>Unità di misura: {{ item.measure }}</b></label><br>
+                                <label><b>Iva: {{ item.vat}} %</b></label><br>
+                                <label><b>Prezzo: {{ item.price}} €</b></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <input placeholder="Quantità" formControlName="quantity">
+                    </div>
+                    <div>
+                        <input placeholder="Lotto" formControlName="lot">
+                    </div>
+                    <br>
+                    <div>
+                        <input type="date" placeholder="Scadenza" formControlName="expiry">
+                    </div>
+                    <div>
+                        <input placeholder="Sconto" formControlName="discount">
+                    </div>
+                    <button type="submit">AGGIUNGI</button> &nbsp;
+                </form>
+            </div>
+            <div>
+                <button type="button" (click)="saveInvoiceDetail()">SALVA</button>
+            </div>
+        </igx-tabs-group>
+        
+        
+        <igx-tabs-group label="SUMMARY" *ngIf="provisionalInvoiceSummary != null">
+            
+
+        </igx-tabs-group>
+    </igx-tabs>
     
-    <form [formGroup]="invoiceMasterForm" (ngSubmit)="saveInvoiceMaster()">
-        <div >
-            <!-- <label><b>Type:</b></label> -->
-            <input placeholder="Numero fattura" formControlName="invoiceNumber">
-        </div>
-        <div>
-            <label>Cliente:</label>
-            <select formControlName="client">
-                <option *ngFor="let client of clients | async" value="{{client.codClient}}">{{client.businessName}}</option>
-            </select>
-        </div>
-        <div>
-            <!-- <label><b>Type:</b></label> -->
-            <input placeholder="Numero ordine" formControlName="orderNumber">
-        </div>
-        <div>
-            <label>Metodo di pagamento:</label>
-            <select formControlName="payment">
-                <option value="Contanti">Contanti</option>
-                <option value="Bonifico">Bonifico</option>
-                <option value="Assegno">Assegno</option>
-            </select>
-        </div>
-        <div>
-            <!-- <label><b>Type:</b></label> -->
-            <!-- <input placeholder="Type" formControlName="date"> -->
-            <ejs-datetimepicker placeholder='Select a date' formControlName="date" [value]= 'dateValue' format ='yyyy.MM.dd HH:mm'></ejs-datetimepicker>
-        </div>
-        <button type="submit">SAVE</button> &nbsp;
-        <button type="button" routerLink="/items">ANNULLA</button>
-    </form>
+    
     </div>
     
