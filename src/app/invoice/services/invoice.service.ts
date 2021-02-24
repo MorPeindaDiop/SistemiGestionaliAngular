@@ -37,8 +37,8 @@ export class InvoiceService {
     return this.store.dispatch(calculateProvisionalInvoiceDetail({invoiceDetail}))
   }
 
-  calculateProvisionalInvoiceSummary(codInvoice: number) {
-    return this.store.dispatch(calculateProvisionalInvoiceSummary({codInvoice}))
+  calculateProvisionalInvoiceSummary(invoiceDetailList: InvoiceDetail[]) {
+    return this.store.dispatch(calculateProvisionalInvoiceSummary({invoiceDetailList}))
   }
 
   createInvoiceDetail(invoiceDetailList: InvoiceDetail[]) {

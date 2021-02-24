@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import { InvoiceDetail } from 'src/app/core/model/invoice-detail';
 import { InvoiceSummary } from 'src/app/core/model/invoice-summary';
 import { Response } from 'src/app/core/model/response';
 
@@ -7,7 +8,7 @@ export const retrieveAllInvoicesSummary = createAction('[InvoiceSummary] invoice
 export const initInvoicesSummary = createAction('[InvoiceSummary] init invoice summary', props<{response: Response}>());
 
 //provisional invoice summary
-export const calculateProvisionalInvoiceSummary = createAction('[InvoiceSummary] calculate provisional invoice summary', props<{codInvoice: number}>());
+export const calculateProvisionalInvoiceSummary = createAction('[InvoiceSummary] calculate provisional invoice summary', props<{invoiceDetailList: InvoiceDetail[]}>());
 export const initProvisionalInvoiceSummary = createAction('[InvoiceSummary] init provisional invoice summary', props<{response: Response}>());
 
 //create invoice summary

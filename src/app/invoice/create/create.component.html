@@ -1,9 +1,11 @@
 <div class="corpo">
     <h1>CREATE INVOICE</h1>
+    <button type="submit" (click)="saveInvoiceMaster(); saveInvoiceDetail(); saveInvoiceSummary()">SAVE</button>
+    <button type="button" routerLink="/items">ANNULLA</button>
 
     <igx-tabs>
         <igx-tabs-group label="MASTER">
-            <form [formGroup]="invoiceMasterForm" (ngSubmit)="saveInvoiceMaster()">
+            <form [formGroup]="invoiceMasterForm">
                 <div >
                     <!-- <label><b>Type:</b></label> -->
                     <input placeholder="Numero fattura" formControlName="invoiceNumber">
@@ -31,13 +33,11 @@
                     <!-- <input placeholder="Type" formControlName="date"> -->
                     <ejs-datetimepicker placeholder='Select a date' formControlName="date" [value]= 'dateValue' format ='yyyy.MM.dd'></ejs-datetimepicker>
                 </div>
-                <a href="#section2"><button type="submit">SAVE</button></a> &nbsp;
-                <button type="button" routerLink="/items">ANNULLA</button>
             </form>
         </igx-tabs-group>
 
 
-        <igx-tabs-group label="DETAIL" *ngIf="currentInvoiceMaster != null" id="section2">
+        <igx-tabs-group label="DETAIL">
             <div>
                 <table class="table table-striped table-bordered table-sm row-border hover" style="width: 100%;">
                     <thead>
@@ -87,7 +87,9 @@
                     </td> -->
                 </table>
             </div>
-            <div>
+
+            <!-- <button onclick="myFunctionOpen()">AGGIUNGI PRODOTTO</button> -->
+            <div ><!-- id="myDIV" --> 
                 <form [formGroup]="invoiceDetailForm" (ngSubmit)="addProvisionalInvoiceDetail()">
                     <div>
                         <label>Articolo:</label>
@@ -98,10 +100,10 @@
                     <div>
                         <div *ngFor="let item of items | async">
                             <div *ngIf="item.codItem == itemSelected.value">
-                                <label><b>Descrizione: {{ item.description }}</b></label><br>
-                                <label><b>Unità di misura: {{ item.measure }}</b></label><br>
-                                <label><b>Iva: {{ item.vat}} %</b></label><br>
-                                <label><b>Prezzo: {{ item.price}} €</b></label>
+                                <input placeholder="Descrizione" formControlName="description" [value]="item.description">
+                                <input placeholder="Unità di misura" formControlName="measure" [value]="item.measure">
+                                <input placeholder="Iva" formControlName="codVat" [value]="item.vat">
+                                <input placeholder="Prezzo" formControlName="unitPrice" [value]="item.price">
                             </div>
                         </div>
                     </div>
@@ -121,15 +123,45 @@
                     <button type="submit">AGGIUNGI</button> &nbsp;
                 </form>
             </div>
-            <div>
-                <button type="button" (click)="saveInvoiceDetail()">SALVA</button>
-            </div>
         </igx-tabs-group>
         
         
-        <igx-tabs-group label="SUMMARY" *ngIf="provisionalInvoiceSummary != null">
-            
-
+        <igx-tabs-group label="SUMMARY">
+            <form [formGroup]="invoiceSummaryForm">
+                <div>
+                    <label>Totale prodotti: </label>
+                    <input placeholder="" formControlName="totalProducts">
+                    <label>Totale servizi: </label>
+                    <input placeholder="" formControlName="totalServices">
+                </div>
+                <div>
+                    <label>Sconto di coda: </label>
+                    <input placeholder="" formControlName="tailDiscount">
+                    <label>Totale sconto di coda: </label>
+                    <input placeholder="" formControlName="totalTileDiscount">
+                </div>
+                <div>
+                    <label>Totale sconto di riga: </label>
+                    <input placeholder="" formControlName="totalLineDiscount">
+                </div>
+                <div>
+                    <label>Totale sconto: </label>
+                    <input placeholder="" formControlName="totalDiscount">
+                </div>
+                <div>
+                    <label>Imponibile: </label>
+                    <input placeholder="" formControlName="taxable">
+                </div>
+                <div>
+                    <label>Totale IVA: </label>
+                    <input placeholder="" formControlName="totalVat">
+                </div>
+                <div>
+                    <label>TOTALE FATTURA: </label>
+                    <input placeholder="" formControlName="totalAmount">
+                </div>
+                <!-- <button type="submit">AGGIUNGI</button> &nbsp; -->
+            </form>
         </igx-tabs-group>
     </igx-tabs>
     
