@@ -10,6 +10,7 @@ export const initInvoicesSummary = createAction('[InvoiceSummary] init invoice s
 //provisional invoice summary
 export const calculateProvisionalInvoiceSummary = createAction('[InvoiceSummary] calculate provisional invoice summary', props<{invoiceDetailList: InvoiceDetail[]}>());
 export const initProvisionalInvoiceSummary = createAction('[InvoiceSummary] init provisional invoice summary', props<{response: Response}>());
+export const deleteProvisionalInvoiceSummary = createAction('[InvoiceSummary] delete provisional invoice summary');
 
 //create invoice summary
 export const createInvoiceSummary = createAction('[InvoiceSummary] create invoice summary', props<{invoiceSummary: InvoiceSummary}>());

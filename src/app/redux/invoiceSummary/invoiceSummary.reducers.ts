@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from "@ngrx/store";
 import { InvoiceSummary } from "src/app/core/model/invoice-summary";
-import { initInvoicesSummary, initProvisionalInvoiceSummary } from "./invoiceSummary.actions";
+import { deleteProvisionalInvoiceSummary, initInvoicesSummary, initProvisionalInvoiceSummary } from "./invoiceSummary.actions";
 
 export interface InvoicesSummaryState {
     invoicesSummary: InvoiceSummary[];
@@ -15,7 +15,8 @@ export const initialState: InvoicesSummaryState = {
 const reducer = createReducer(
     initialState,
     on(initInvoicesSummary, (state, { response }) => ({ ...state, invoicesSummary: response.result })),
-    on(initProvisionalInvoiceSummary, (state, { response }) => ({ ...state, provisionalInvoiceSummary: response.result }))
+    on(initProvisionalInvoiceSummary, (state, { response }) => ({ ...state, provisionalInvoiceSummary: response.result })),
+    on(deleteProvisionalInvoiceSummary, (state) => ({ ...state, provisionalInvoiceSummary: null }))
 );
 
 export function invoicesSummaryReducer(state: InvoicesSummaryState | undefined, action: Action) {

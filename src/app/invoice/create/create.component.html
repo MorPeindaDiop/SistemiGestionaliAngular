@@ -1,7 +1,7 @@
 <div class="corpo">
     <h1>CREATE INVOICE</h1>
-    <button type="submit" (click)="save()">SAVE</button>
-    <button type="button" routerLink="/items">ANNULLA</button>
+    <button type="button" (click)="save(); deleteProvisionalCalculations()">SAVE</button>
+    <button type="button" (click)="deleteProvisionalCalculations()">ANNULLA</button>
 
     <igx-tabs>
         <igx-tabs-group label="MASTER">
@@ -55,8 +55,8 @@
                             <th>Iva</th>
                             <th>Importo Iva</th>
                             <th>Totale riga</th>
-                            <!-- <th></th>
-                            <th></th> -->
+                            <!-- <th></th> -->
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -74,8 +74,8 @@
                             <td>{{ invoiceDetail.codVat }}</td>
                             <td>{{ invoiceDetail.totalVat }}</td>
                             <td>{{ invoiceDetail.totalLine }}</td>
-                            <!-- <td><button (click)="goToDetail(invoiceMaster.codInvoice)">Edit</button></td>
-                            <td><button (click)="delete(invoiceMaster.codInvoice)">Delete</button></td> -->
+                            <!-- <td><button (click)="goToDetail(invoiceMaster.codInvoice)">Edit</button></td> -->
+                            <td><button (click)="deletePrevisionalInvoiceDetail(invoiceDetail)">Delete</button></td>
                         </tr>
                     </tbody>
                     <!-- <td>
@@ -92,35 +92,32 @@
             <div ><!-- id="myDIV" --> 
                 <form [formGroup]="invoiceDetailForm" (ngSubmit)="addProvisionalInvoiceDetail()">
                     <div>
-                        <label>Articolo:</label>
+                        <label>Seleziona articolo da aggiungere:</label>
                         <select formControlName="codItem" #itemSelected>
                             <option *ngFor="let item of items | async" value="{{item.codItem}}">{{item.description}}</option>
                         </select>
                     </div>
-                    <div>
-                        <div *ngFor="let item of items | async">
-                            <div *ngIf="item.codItem == itemSelected.value">
+                    <div *ngFor="let item of items | async">
+                        <div *ngIf="item.codItem == itemSelected.value">
+                            <div>
                                 <input placeholder="Descrizione" formControlName="description" [value]="item.description">
                                 <input placeholder="Unità di misura" formControlName="measure" [value]="item.measure">
                                 <input placeholder="Iva" formControlName="codVat" [value]="item.vat">
                                 <input placeholder="Prezzo" formControlName="unitPrice" [value]="item.price">
                             </div>
+                            <div>
+                                <input placeholder="Quantità" formControlName="quantity">
+                            </div>
+                            <div>
+                                <input placeholder="Lotto" formControlName="lot">
+                                <input type="date" placeholder="Scadenza" formControlName="expiry">
+                            </div>
+                            <div>
+                                <input placeholder="Sconto" formControlName="discount">
+                            </div>
+                            <button type="submit">AGGIUNGI</button> &nbsp;
                         </div>
                     </div>
-                    <div>
-                        <input placeholder="Quantità" formControlName="quantity">
-                    </div>
-                    <div>
-                        <input placeholder="Lotto" formControlName="lot">
-                    </div>
-                    <br>
-                    <div>
-                        <input type="date" placeholder="Scadenza" formControlName="expiry">
-                    </div>
-                    <div>
-                        <input placeholder="Sconto" formControlName="discount">
-                    </div>
-                    <button type="submit">AGGIUNGI</button> &nbsp;
                 </form>
             </div>
         </igx-tabs-group>

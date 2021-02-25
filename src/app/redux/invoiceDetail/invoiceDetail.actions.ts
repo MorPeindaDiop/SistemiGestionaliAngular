@@ -9,6 +9,8 @@ export const initInvoicesDetail = createAction('[InvoiceDetail] init invoice det
 //provisional invoice detail
 export const calculateProvisionalInvoiceDetail = createAction('[InvoiceDetail] calculate provisional invoice detail', props<{invoiceDetail: InvoiceDetail}>());
 export const initProvisionalInvoiceDetail = createAction('[InvoiceDetail] init provisional invoice detail', props<{response: Response}>());
+export const deleteProvisionalInvoiceDetail = createAction('[InvoiceDetail] delete provisional invoice detail', props<{invoiceDetail: InvoiceDetail}>())
+export const deleteProvisionalInvoicesDetail = createAction('[InvoiceDetail] delete provisional invoices detail');
 
 //create invoice detail
 export const createInvoiceDetail = createAction('[InvoiceDetail] create invoice detail', props<{invoiceDetailList: InvoiceDetail[]}>());

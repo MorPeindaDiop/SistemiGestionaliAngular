@@ -5,9 +5,9 @@ import { InvoiceDetail } from 'src/app/core/model/invoice-detail';
 import { InvoiceMaster } from 'src/app/core/model/invoice-master';
 import { InvoiceSummary } from 'src/app/core/model/invoice-summary';
 import { retrieveAllClients } from 'src/app/redux/cliente/client.actions';
-import { calculateProvisionalInvoiceDetail, createInvoiceDetail, deleteInvoiceDetail, retrieveAllInvoicesDetail } from 'src/app/redux/invoiceDetail/invoiceDetail.actions';
+import { calculateProvisionalInvoiceDetail, deleteProvisionalInvoiceDetail, deleteProvisionalInvoicesDetail, retrieveAllInvoicesDetail } from 'src/app/redux/invoiceDetail/invoiceDetail.actions';
 import { createInvoice, createInvoiceMaster, deleteInvoice, retrieveAllInvoicesMaster } from 'src/app/redux/invoiceMaster/invoiceMaster.actions';
-import { calculateProvisionalInvoiceSummary, createInvoiceSummary, deleteInvoiceSummary, retrieveAllInvoicesSummary } from 'src/app/redux/invoiceSummary/invoiceSummary.actions';
+import { calculateProvisionalInvoiceSummary, createInvoiceSummary, deleteInvoiceSummary, deleteProvisionalInvoiceSummary, retrieveAllInvoicesSummary } from 'src/app/redux/invoiceSummary/invoiceSummary.actions';
 import { retrieveAllItems } from 'src/app/redux/item/item.actions';
 
 @Injectable({
@@ -48,6 +48,14 @@ export class InvoiceService {
   deleteInvoice(codInvoice: number) {
     console.log("sono dentro alla chiamata delete")
     return this.store.dispatch(deleteInvoice({codInvoice}))
+  }
+
+  deleteProvisionalInvoiceDetail(invoiceDetail: InvoiceDetail) {
+    return this.store.dispatch(deleteProvisionalInvoiceDetail({invoiceDetail}))
+  }
+
+  deleteProvisionalCalculations() {
+    return this.store.dispatch(deleteProvisionalInvoicesDetail()), this.store.dispatch(deleteProvisionalInvoiceSummary());
   }
 
   //retrieve info
