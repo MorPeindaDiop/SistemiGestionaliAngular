@@ -5,7 +5,7 @@ import { InvoiceDetail } from 'src/app/core/model/invoice-detail';
 import { InvoiceMaster } from 'src/app/core/model/invoice-master';
 import { InvoiceSummary } from 'src/app/core/model/invoice-summary';
 import { retrieveAllClients } from 'src/app/redux/cliente/client.actions';
-import { calculateProvisionalInvoiceDetail, deleteProvisionalInvoiceDetail, deleteProvisionalInvoicesDetail, retrieveAllInvoicesDetail } from 'src/app/redux/invoiceDetail/invoiceDetail.actions';
+import { calculateProvisionalInvoiceDetail, deleteProvisionalInvoiceDetail, deleteProvisionalInvoicesDetail, editInvoiceDetailList, retrieveAllInvoicesDetail } from 'src/app/redux/invoiceDetail/invoiceDetail.actions';
 import { createInvoice, createInvoiceMaster, deleteInvoice, retrieveAllInvoicesMaster } from 'src/app/redux/invoiceMaster/invoiceMaster.actions';
 import { calculateProvisionalInvoiceSummary, createInvoiceSummary, deleteInvoiceSummary, deleteProvisionalInvoiceSummary, retrieveAllInvoicesSummary } from 'src/app/redux/invoiceSummary/invoiceSummary.actions';
 import { retrieveAllItems } from 'src/app/redux/item/item.actions';
@@ -17,6 +17,7 @@ export class InvoiceService {
 
   constructor(private store: Store) { }
 
+  //retrieve
   retrieveAllInvoicesMaster() {
     return this.store.dispatch(retrieveAllInvoicesMaster())
   }
@@ -38,15 +39,18 @@ export class InvoiceService {
     return this.store.dispatch(calculateProvisionalInvoiceSummary({invoiceDetailList}))
   }
 
+  //edit
+  editInvoiceDetailList(invoiceDetailList: InvoiceDetail[]) {
+    return this.store.dispatch(editInvoiceDetailList({invoiceDetailList}))
+  }
+
   //create
   createInvoice(invoice: Invoice) {
-    console.log("sono dentro alla chiamata delete")
     return this.store.dispatch(createInvoice({invoice}))
   }
 
   //delete
   deleteInvoice(codInvoice: number) {
-    console.log("sono dentro alla chiamata delete")
     return this.store.dispatch(deleteInvoice({codInvoice}))
   }
 

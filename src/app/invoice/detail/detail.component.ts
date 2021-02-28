@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Client } from 'src/app/core/model/client';
@@ -10,9 +10,9 @@ import { InvoiceMaster } from 'src/app/core/model/invoice-master';
 import { InvoiceSummary } from 'src/app/core/model/invoice-summary';
 import { Item } from 'src/app/core/model/item';
 import { selectClients } from 'src/app/redux/cliente';
-import { getCurrentNavigatedInvoiceDetail, selectProvisionalInvoicesDetail } from 'src/app/redux/invoiceDetail';
-import { getCurrentNavigatedInvoiceMaster } from 'src/app/redux/invoiceMaster';
-import { getCurrentNavigatedInvoiceSummary } from 'src/app/redux/invoiceSummary';
+import { getCurrentNavigatedInvoiceDetail, selectInvoicesDetail, selectProvisionalInvoicesDetail } from 'src/app/redux/invoiceDetail';
+import { getCurrentNavigatedInvoiceMaster, selectInvoicesMaster } from 'src/app/redux/invoiceMaster';
+import { getCurrentNavigatedInvoiceSummary, selectInvoicesSummary, selectProvisionalInvoiceSummary } from 'src/app/redux/invoiceSummary';
 import { selectItems } from 'src/app/redux/item';
 import { InvoiceService } from '../services/invoice.service';
 
@@ -28,14 +28,49 @@ export class DetailComponent implements OnInit {
   invoiceSummaryForm: FormGroup;
 
   invoiceMaster: InvoiceMaster;
-  invoiceDetailList: InvoiceDetail[];
+  invoiceDetailList: InvoiceDetail[] = [];
   invoiceSummary: InvoiceSummary;
 
-  constructor(private store: Store, private invoiceService: InvoiceService, private fb: FormBuilder, private router: Router) {
+  public dateValue: Date = new Date();
+
+  constructor(private store: Store, private invoiceService: InvoiceService, private fb: FormBuilder, private router: Router, private activatedRoute: ActivatedRoute) {
     this.invoiceService.retrieveAllClients();
     this.invoiceService.retrieveAllItems();
+
+    this.store.pipe(select(selectInvoicesMaster)).subscribe(invoicesMaster => {
+      for (let invoiceMaster of invoicesMaster) {
+        if (invoiceMaster.codInvoice === Number(this.activatedRoute.snapshot.paramMap.get('codInvoice'))) {
+          this.invoiceMaster = invoiceMaster
+          console.log("master");
+          console.log(this.invoiceMaster)
+        }
+      }
+    })
+
+    this.store.pipe(select(selectInvoicesDetail)).subscribe(invoicesDetail => {
+      for (let invoiceDetail of invoicesDetail) {
+        if (invoiceDetail.codInvoice === Number(this.activatedRoute.snapshot.paramMap.get('codInvoice'))) {
+          this.invoiceDetailList.push(invoiceDetail)
+          console.log("detail");
+          console.log(this.invoiceDetailList)
+        }
+      }
+    })
+
+    this.store.pipe(select(selectInvoicesSummary)).subscribe(invoicesSummary => {
+      for (let invoiceSummary of invoicesSummary) {
+        if (invoiceSummary.codInvoice === Number(this.activatedRoute.snapshot.paramMap.get('codInvoice'))) {
+          this.invoiceSummary = invoiceSummary
+          console.log("summary");
+          console.log(this.invoiceSummary)
+        }
+      }
+    })
+
+    this.invoiceService.editInvoiceDetailList(this.invoiceDetailList)
     
     this.invoiceMasterForm = this.fb.group({
+      codInvoice: ['', Validators.required],
       invoiceNumber: ['', Validators.required],
       client: ['', Validators.required],
       payment: ['', Validators.required],
@@ -44,6 +79,7 @@ export class DetailComponent implements OnInit {
     })
 
     this.invoiceDetailForm = this.fb.group({
+      codInvoice: ['', Validators.required],
       codItem: ['', Validators.required],
       description: ['', Validators.required],
       measure: ['', Validators.required],
@@ -60,6 +96,7 @@ export class DetailComponent implements OnInit {
     })
     
     this.invoiceSummaryForm = this.fb.group({
+      codInvoice: ['', Validators.required],
       totalAmount: ['', Validators.required],
       totalProducts: ['', Validators.required],
       totalServices: ['', Validators.required],
@@ -85,11 +122,16 @@ export class DetailComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    // this.store.pipe(select(getCurrentNavigatedInvoiceMaster)).subscribe({
-    //   return invoiceMaster =>
-    // });
-    this.store.pipe(select(getCurrentNavigatedInvoiceDetail));
-    this.store.pipe(select(getCurrentNavigatedInvoiceSummary));
+    this.invoiceMasterForm.patchValue(
+      this.invoiceMaster
+    )
+
+    this.invoiceSummaryForm.patchValue(
+      this.invoiceSummary
+    )
+
+    console.log("...this.invoiceMasterForm.value on init");
+    console.log(this.invoiceMasterForm.value);
   }
   
   delay(ms: number) {
@@ -103,45 +145,52 @@ export class DetailComponent implements OnInit {
     this.invoiceService.calculateProvisionalInvoiceDetail(invoiceDetail)
     this.invoiceDetailForm.reset();
 
-    // await this.delay(500);
-    // this.calculateProvisionalInvoiceSummary();
+    await this.delay(500);
+    this.calculateProvisionalInvoiceSummary();
   }
   
-  // async calculateProvisionalInvoiceSummary() {
-  //   await this.delay(500);
-  //   this.provisionalInvoiceDetailList.subscribe(provisionalInvoiceDetailList => {
-  //     this.listToSave = [];
-  //     for (let invoiceDetail of provisionalInvoiceDetailList) {
-  //       this.listToSave.push(invoiceDetail)
-  //     }
-  //     return this.listToSave
-  //   })
-  //   this.invoiceService.calculateProvisionalInvoiceSummary(this.listToSave)
-  //   await this.delay(500);
-  //   this.compileSummaryForm();
-  // }
+  async calculateProvisionalInvoiceSummary() {
+    await this.delay(500);
+    this.provisionalInvoiceDetailList.subscribe(provisionalInvoiceDetailList => {
+      this.invoiceDetailList = [];
+      for (let invoiceDetail of provisionalInvoiceDetailList) {
+        this.invoiceDetailList.push(invoiceDetail)
+      }
+      return this.invoiceDetailList
+    })
+    this.invoiceService.calculateProvisionalInvoiceSummary(this.invoiceDetailList)
+    await this.delay(500);
+    this.compileSummaryForm();
+  }
 
-  // async compileSummaryForm() {
-  //   console.log("ok")
-  //   this.store.pipe(select(selectProvisionalInvoiceSummary)).subscribe(invoiceSummary => {return this.provisionalInvoiceSummary = invoiceSummary});
-  //   this.invoiceSummaryForm.patchValue(
-  //     this.provisionalInvoiceSummary
-  //   )
-  // }
+  async compileSummaryForm() {
+    console.log("ok")
+    this.store.pipe(select(selectProvisionalInvoiceSummary)).subscribe(invoiceSummary => {return this.invoiceSummary = invoiceSummary});
+    this.invoiceSummaryForm.patchValue(
+      this.invoiceSummary
+    )
+
+    console.log("...this.invoiceMasterForm.value");
+    console.log(this.invoiceMasterForm.value);
+  }
 
   save() {
+
+    console.log("save");
     //invoiceMaster
     let invoiceMaster: InvoiceMaster = {
       ...this.invoiceMasterForm.value
     }
+    console.log("master");
+    console.log(invoiceMaster);
 
-    //invoiceDetailList
-    // this.provisionalInvoiceDetailList.subscribe(provisionalInvoiceDetailList => {
-    //   for (let invoiceDetail of provisionalInvoiceDetailList) {
-    //     this.listToSave.push(invoiceDetail)
-    //   }
-    //   return this.listToSave
-    // })
+    // invoiceDetailList
+    this.provisionalInvoiceDetailList.subscribe(provisionalInvoiceDetailList => {
+      for (let invoiceDetail of provisionalInvoiceDetailList) {
+        this.invoiceDetailList.push(invoiceDetail)
+      }
+      return this.invoiceDetailList
+    })
 
     //invoiceSummary
     let invoiceSummary: InvoiceSummary = {
@@ -149,15 +198,15 @@ export class DetailComponent implements OnInit {
     }
 
 
-    //invoice
-    // let invoice: Invoice = {
-    //   invoiceMaster: invoiceMaster,
-    //   invoiceDetailList: this.listToSave,
-    //   invoiceSummary: invoiceSummary
-    // }
+    // invoice
+    let invoice: Invoice = {
+      invoiceMaster: invoiceMaster,
+      invoiceDetailList: this.invoiceDetailList,
+      invoiceSummary: invoiceSummary
+    }
 
-    // this.invoiceService.createInvoice(invoice);
-    // this.router.navigateByUrl('/invoices');
+    this.invoiceService.createInvoice(invoice);
+    this.router.navigateByUrl('/invoices');
 
   }
 

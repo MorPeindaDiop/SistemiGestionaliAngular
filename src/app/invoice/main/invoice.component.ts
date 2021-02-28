@@ -18,6 +18,8 @@ export class InvoiceComponent implements OnInit {
   
   constructor(private store: Store, private invoiceService: InvoiceService, private router: Router) {
     this.invoiceService.retrieveAllInvoicesMaster();
+    this.invoiceService.retrieveAllInvoicesDetail();
+    this.invoiceService.retrieveAllInvoicesSummary();
   }
   
   ngOnInit(): void {
@@ -40,7 +42,7 @@ export class InvoiceComponent implements OnInit {
   }
 
   goToDetail(codInvoice: number) {
-    this.router.navigateByUrl("/invoice/detail/"+codInvoice)
+    this.router.navigateByUrl("/invoices/detail/"+codInvoice)
   }
 
 }
