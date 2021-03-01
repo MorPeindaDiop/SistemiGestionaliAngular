@@ -219,4 +219,10 @@ export class DetailComponent implements OnInit {
     this.router.navigateByUrl('/invoices');
   }
 
+  editPrevisionalInvoiceDetail(invoiceDetail: InvoiceDetail) {
+    this.invoiceDetailForm.patchValue(
+      invoiceDetail
+    )
+  }
+
 }

@@ -6,7 +6,7 @@ import { InvoiceMaster } from 'src/app/core/model/invoice-master';
 import { InvoiceSummary } from 'src/app/core/model/invoice-summary';
 import { retrieveAllClients } from 'src/app/redux/cliente/client.actions';
 import { calculateProvisionalInvoiceDetail, deleteProvisionalInvoiceDetail, deleteProvisionalInvoicesDetail, editInvoiceDetailList, retrieveAllInvoicesDetail } from 'src/app/redux/invoiceDetail/invoiceDetail.actions';
-import { createInvoice, createInvoiceMaster, deleteInvoice, retrieveAllInvoicesMaster } from 'src/app/redux/invoiceMaster/invoiceMaster.actions';
+import { calculateProvisionalTailDiscount, createInvoice, createInvoiceMaster, deleteInvoice, retrieveAllInvoicesMaster } from 'src/app/redux/invoiceMaster/invoiceMaster.actions';
 import { calculateProvisionalInvoiceSummary, createInvoiceSummary, deleteInvoiceSummary, deleteProvisionalInvoiceSummary, retrieveAllInvoicesSummary } from 'src/app/redux/invoiceSummary/invoiceSummary.actions';
 import { retrieveAllItems } from 'src/app/redux/item/item.actions';
 
@@ -37,6 +37,10 @@ export class InvoiceService {
 
   calculateProvisionalInvoiceSummary(invoiceDetailList: InvoiceDetail[]) {
     return this.store.dispatch(calculateProvisionalInvoiceSummary({invoiceDetailList}))
+  }
+
+  calculateProvisionalTailDiscount(invoice: Invoice) {
+    return this.store.dispatch(calculateProvisionalTailDiscount({invoice}))
   }
 
   //edit

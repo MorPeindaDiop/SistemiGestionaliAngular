@@ -17,3 +17,7 @@ export const deleteInvoice = createAction('[Invoice] delete invoice', props<{cod
 //create invoice Master
 export const createInvoice = createAction('[Invoice] create invoice', props<{invoice: Invoice}>());
 export const initNewInvoice = createAction('[Invoice] init new invoice', props<{response: Response}>());
+
+
+export const calculateProvisionalTailDiscount = createAction('[Invoice] calculate provisional tail discount', props<{invoice: Invoice}>());
+export const initProvisionalTailDiscount = createAction('[Invoice] init provisional tail discount', props<{response: Response}>());

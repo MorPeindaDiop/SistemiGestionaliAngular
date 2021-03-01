@@ -32,7 +32,8 @@ export class CreateComponent implements OnInit {
 
   public dateValue: Date = new Date();
 
-  
+  tailDiscount: number = 0;
+
   constructor(private fb: FormBuilder, private invoiceService: InvoiceService, private router: Router, private store: Store) {
     
     this.invoiceService.retrieveAllClients();
@@ -89,8 +90,47 @@ export class CreateComponent implements OnInit {
   }
   
   ngOnInit(): void {
+    this.onChanges();
   }
   
+  onChanges(): void {
+    this.invoiceSummaryForm.valueChanges.subscribe(val => {
+      console.log("prova")
+      console.log(val)
+      this.tailDiscount = val.tailDiscount
+      console.log(this.tailDiscount)
+      if (this.tailDiscount != 0) {
+        //invoiceMaster
+        let invoiceMaster: InvoiceMaster = {
+          ...this.invoiceMasterForm.value
+        }
+    
+        //invoiceDetailList
+        this.provisionalInvoiceDetailList.subscribe(provisionalInvoiceDetailList => {
+          for (let invoiceDetail of provisionalInvoiceDetailList) {
+            this.listToSave.push(invoiceDetail)
+          }
+        })
+    
+        //invoiceSummary
+        let invoiceSummary: InvoiceSummary = {
+          ...this.invoiceSummaryForm.value
+        }
+    
+        //invoice
+        let invoice: Invoice = {
+          invoiceMaster: invoiceMaster,
+          invoiceDetailList: this.listToSave,
+          invoiceSummary: invoiceSummary
+        }
+    
+        this.invoiceService.calculateProvisionalTailDiscount(invoice);
+        this.compileSummaryForm();
+      }
+    });
+
+  }
+
   delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
@@ -167,6 +207,16 @@ export class CreateComponent implements OnInit {
   deleteProvisionalCalculations() {
     this.invoiceService.deleteProvisionalCalculations();
     this.router.navigateByUrl('/invoices');
+  }
+
+  editPrevisionalInvoiceDetail(invoiceDetail: InvoiceDetail) {
+    this.invoiceDetailForm.patchValue(
+      invoiceDetail
+    )
+  }
+
+  prova() {
+    console.log("prova")
   }
 
 }

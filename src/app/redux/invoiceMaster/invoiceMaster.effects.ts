@@ -7,7 +7,7 @@ import { HttpCommunicationsService } from 'src/app/core/HttpCommunications/http-
 import { switchMap, map } from 'rxjs/operators';
 import { Response } from 'src/app/core/model/Response';
 import { InvoiceMaster } from 'src/app/core/model/invoice-master';
-import { createInvoiceMaster, deleteInvoice, initInvoicesMaster, retrieveAllInvoicesMaster, initNewInvoiceMaster, createInvoice } from './invoiceMaster.actions';
+import { createInvoiceMaster, deleteInvoice, initInvoicesMaster, retrieveAllInvoicesMaster, initNewInvoiceMaster, createInvoice, calculateProvisionalTailDiscount, initProvisionalTailDiscount } from './invoiceMaster.actions';
 import { Invoice } from 'src/app/core/model/invoice';
 import { retrieveAllInvoicesDetail } from '../invoiceDetail/invoiceDetail.actions';
 import { retrieveAllInvoicesSummary } from '../invoiceSummary/invoiceSummary.actions';
@@ -33,6 +33,10 @@ export class InvoicesMasterEffects {
         return this.http.retrievePostCall<Response>("invoice/delete", codInvoice)
     }
 
+    tailDiscountCalculations(invoice: Invoice): Observable<Response> {
+        return this.http.retrievePostCall<Response>("invoice/tailDiscountCalculations", invoice)
+    }
+
     getAllInvoicesMaster$: Observable<Action> = createEffect(() => this.actions$.pipe(
         ofType(retrieveAllInvoicesMaster),
         switchMap(() => this.retrieveAllInvoicesMaster().pipe(
@@ -44,6 +48,13 @@ export class InvoicesMasterEffects {
         ofType(createInvoiceMaster),
         switchMap(invoiceMaster => this.createInvoiceMaster(invoiceMaster.invoiceMaster).pipe(
             switchMap(response => [initNewInvoiceMaster( {response} ), retrieveAllInvoicesMaster()]),
+        )))
+    );
+
+    tailDiscountCalculations$ = createEffect(() => this.actions$.pipe(
+        ofType(calculateProvisionalTailDiscount),
+        switchMap(invoice => this.tailDiscountCalculations(invoice.invoice).pipe(
+            map((response) => initProvisionalTailDiscount({ response })),
         )))
     );
 

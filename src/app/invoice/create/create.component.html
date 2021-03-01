@@ -55,7 +55,7 @@
                             <th>Iva</th>
                             <th>Importo Iva</th>
                             <th>Totale riga</th>
-                            <!-- <th></th> -->
+                            <th></th>
                             <th></th>
                         </tr>
                     </thead>
@@ -74,7 +74,7 @@
                             <td>{{ invoiceDetail.codVat }}</td>
                             <td>{{ invoiceDetail.totalVat }}</td>
                             <td>{{ invoiceDetail.totalLine }}</td>
-                            <!-- <td><button (click)="goToDetail(invoiceMaster.codInvoice)">Edit</button></td> -->
+                            <td><button (click)="editPrevisionalInvoiceDetail(invoiceDetail)">Edit</button></td>
                             <td><button (click)="deletePrevisionalInvoiceDetail(invoiceDetail)">Delete</button></td>
                         </tr>
                     </tbody>
@@ -124,38 +124,38 @@
         
         
         <igx-tabs-group label="SUMMARY">
-            <form [formGroup]="invoiceSummaryForm">
+            <form [formGroup]="invoiceSummaryForm" (onChange)="prova()">
                 <div>
                     <label>Totale prodotti: </label>
-                    <input placeholder="" formControlName="totalProducts">
+                    <input placeholder="Totale prodotti" formControlName="totalProducts">
                     <label>Totale servizi: </label>
-                    <input placeholder="" formControlName="totalServices">
+                    <input placeholder="Totale servizi" formControlName="totalServices">
                 </div>
                 <div>
                     <label>Sconto di coda: </label>
-                    <input placeholder="" formControlName="tailDiscount">
+                    <input placeholder="Sconto di coda" formControlName="tailDiscount">
                     <label>Totale sconto di coda: </label>
-                    <input placeholder="" formControlName="totalTileDiscount">
+                    <input placeholder="Totale sconto di coda" formControlName="totalTileDiscount">
                 </div>
                 <div>
                     <label>Totale sconto di riga: </label>
-                    <input placeholder="" formControlName="totalLineDiscount">
+                    <input placeholder="Totale sconto di riga" formControlName="totalLineDiscount">
                 </div>
                 <div>
                     <label>Totale sconto: </label>
-                    <input placeholder="" formControlName="totalDiscount">
+                    <input placeholder="Totale sconto" formControlName="totalDiscount">
                 </div>
                 <div>
                     <label>Imponibile: </label>
-                    <input placeholder="" formControlName="taxable">
+                    <input placeholder="Imponibile" formControlName="taxable">
                 </div>
                 <div>
                     <label>Totale IVA: </label>
-                    <input placeholder="" formControlName="totalVat">
+                    <input placeholder="Totale IVA" formControlName="totalVat">
                 </div>
                 <div>
                     <label>TOTALE FATTURA: </label>
-                    <input placeholder="" formControlName="totalAmount">
+                    <input placeholder="TOTALE FATTURA" formControlName="totalAmount">
                 </div>
                 <!-- <button type="submit">AGGIUNGI</button> &nbsp; -->
             </form>
