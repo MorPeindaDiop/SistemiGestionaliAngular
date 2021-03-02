@@ -1,25 +1,31 @@
-<h1>CREATE CATEGORY</h1>
-<div class="corpo">
 
+ <div class="form-style-9">
+    <form [formGroup]="clienteForm" (ngSubmit)="save()">
+        <h1>CREATE CATEGORY</h1>
+        <ul>
+        <li>
+            <label for="inp" class="inp">
+                <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="codCategory">
+                <span class="label">codCategory</span>
+                <span class="focus-bg"></span>
+              </label>
 
-<form [formGroup]="categoryForm" (ngSubmit)="save()">
-    <div >
-        <!-- <label><b>Type:</b></label> -->
-        <input placeholder="cod Category" formControlName="codCategory">
+            <label for="inp" class="inp">
+                <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="description">
+                <span class="label">description</span>
+                <span class="focus-bg"></span>
+              </label>
+        
+            <label for="inp" class="inp">
+                <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="note">
+                <span class="label">note</span>
+                <span class="focus-bg"></span>
+              </label>
+         </li>
+        <li>
+        <input type="submit" value="SALVA"/>
+        <input type="button" routerLink="/clients" value="ANNULLA">
+        </li>
+     </ul>
+    </form>
     </div>
-    <br>
-    <div>
-        <!-- <label><b>Type:</b></label> -->
-        <input placeholder="Description" formControlName="description">
-    </div>
-    <br>
-    <div>
-        <!-- <label><b>Type:</b></label> -->
-        <input placeholder="note" formControlName="note">
-    </div>
-    <br>
-    <br>
-    <button type="submit">SAVE</button> &nbsp;
-    <button type="button" routerLink="/categories">ANNULLA</button>
-</form>
-</div>

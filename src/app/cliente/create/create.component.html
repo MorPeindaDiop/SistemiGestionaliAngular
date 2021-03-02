@@ -1,64 +1,82 @@
-<h1>CREATE CLIENT</h1>
-<div class="corpo">
 
+ <div class="form-style-9">
+        <form [formGroup]="clienteForm" (ngSubmit)="save()">
+            <h1>CREATE CLIENT</h1>
+            <ul>
+            <li>
+                <label for="inp" class="inp">
+                    <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="codClient">
+                    <span class="label">codClient</span>
+                    <span class="focus-bg"></span>
+                  </label>
 
-<form [formGroup]="clienteForm" (ngSubmit)="save()">
-    <div >
-        <!-- <label><b>Type:</b></label> -->
-        <input placeholder="cod Cliente" formControlName="codClient">
-    </div>
-    <br>
-    <div>
-        <!-- <label><b>Type:</b></label> -->
-        <input placeholder="Ragione sociale" formControlName="businessName">
-    </div>
-    <br>
-    <div>
-        <!-- <label><b>Type:</b></label> -->
-        <input placeholder="PIVA" formControlName="piva">
-    </div>
-    <br>
-    <div>
-        <!-- <label><b>Type:</b></label> -->
-        <input placeholder="Codice fiscale" formControlName="fiscalCod">
-    </div>
-    <br>
-    <div>
-        <!-- <label><b>Type:</b></label> -->
-        <input placeholder="Mail" formControlName="mail">
-    </div>
-    <br>
-    <div>
-        <!-- <label><b>Type:</b></label> -->
-        <input placeholder="telefono" formControlName="tel">
-    </div>
-    <br>
-    <div>
-        <!-- <label><b>Type:</b></label> -->
-        <input placeholder="cellulare" formControlName="cel">
-    </div>
-    <br>
-    <div>
-        <!-- <label><b>Type:</b></label> -->
-        <input placeholder="città" formControlName="city">
-    </div>
-    <br>
-    <div>
-        <!-- <label><b>Type:</b></label> -->
-        <input placeholder="indirizzo" formControlName="address">
-    </div>
-    <br>
-    <div>
-        <!-- <label><b>Type:</b></label> -->
-        <input placeholder="provincia" formControlName="province">
-    </div>
-    <br>
-    <div>
-        <!-- <label><b>Type:</b></label> -->
-        <input placeholder="cap" formControlName="cap">
-    </div>
-    <br>
-    <button type="submit">SAVE</button> &nbsp;
-    <button type="button" routerLink="/clients">ANNULLA</button>
-</form>
-</div>
+                <label for="inp" class="inp">
+                    <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="buisnessName">
+                    <span class="label">buisnessName</span>
+                    <span class="focus-bg"></span>
+                  </label>
+            
+                <label for="inp" class="inp">
+                    <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="piva">
+                    <span class="label">piva</span>
+                    <span class="focus-bg"></span>
+                  </label>
+             </li>
+             <li>
+                <label for="inp" class="inp">
+                    <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="fiscalCod">
+                    <span class="label">fiscalCod</span>
+                    <span class="focus-bg"></span>
+                  </label>
+            
+                <label for="inp" class="inp">
+                    <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="mail">
+                    <span class="label">mail</span>
+                    <span class="focus-bg"></span>
+                  </label>
+           
+                <label for="inp" class="inp">
+                    <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="tel">
+                    <span class="label">tel</span>
+                    <span class="focus-bg"></span>
+                  </label>
+            </li>
+            <li>
+                <label for="inp" class="inp">
+                    <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="cel">
+                    <span class="label">cel</span>
+                    <span class="focus-bg"></span>
+                  </label>
+
+                <label for="inp" class="inp">
+                    <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="city">
+                    <span class="label">city</span>
+                    <span class="focus-bg"></span>
+                  </label>
+            
+                <label for="inp" class="inp">
+                    <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="address">
+                    <span class="label">address</span>
+                    <span class="focus-bg"></span>
+                  </label>
+            </li>
+            <li>
+                <label for="inp" class="inp">
+                    <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="province">
+                    <span class="label">province</span>
+                    <span class="focus-bg"></span>
+                  </label>
+    
+                <label for="inp" class="inp">
+                    <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="cap">
+                    <span class="label">cap</span>
+                    <span class="focus-bg"></span>
+                  </label>
+            </li>
+            <li>
+            <input type="submit" value="SALVA"/>
+            <input type="button" routerLink="/clients" value="ANNULLA">
+            </li>
+         </ul>
+        </form>
+        </div>
