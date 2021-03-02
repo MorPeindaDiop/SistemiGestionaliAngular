@@ -97,9 +97,11 @@ export class CreateComponent implements OnInit {
     this.invoiceSummaryForm.valueChanges.subscribe(val => {
       console.log("prova")
       console.log(val)
-      this.tailDiscount = val.tailDiscount
-      console.log(this.tailDiscount)
-      if (this.tailDiscount != 0) {
+      if (this.tailDiscount != val.tailDiscount && val.tailDiscount != 0) {
+        
+        this.tailDiscount = val.tailDiscount
+        console.log(this.tailDiscount)
+
         //invoiceMaster
         let invoiceMaster: InvoiceMaster = {
           ...this.invoiceMasterForm.value
