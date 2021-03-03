@@ -1,51 +1,64 @@
-<h1>EDIT ITEM</h1>
-<div class="corpo">
-    
-    
+<div class="form-style-9">
     <form [formGroup]="itemForm" (ngSubmit)="save()">
-        <div >
-            <label><b>Codice articolo: {{ item.codItem }}</b></label>
-            <!-- <input placeholder="Item cod" formControlName="codItem"> -->
-        </div>
-        <br>
-        <div>
-            <!-- <label><b>Type:</b></label> -->
-            <input placeholder="Description" formControlName="description">
-            
-        </div>
-        <br>
-        <div>
-            <!-- <label><b>Type:</b></label> -->
-            <input placeholder="Type" formControlName="type">
-        </div>
-        <br>
-        <div>
-            <!-- <label><b>Type:</b></label> -->
-            <input placeholder="Category" formControlName="category">
-        </div>
-        <br>
-        <div>
-            <!-- <label><b>Type:</b></label> -->
-            <input placeholder="Measure" formControlName="measure">
-        </div>
-        <br>
-        <div>
-            <!-- <label><b>Type:</b></label> -->
-            <input placeholder="Price" formControlName="price">
-        </div>
-        <br>
-        <div>
-            <!-- <label><b>Type:</b></label> -->
-            <input placeholder="Discount" formControlName="discount">
-        </div>
-        <br>
-        <div>
-            <!-- <label><b>Type:</b></label> -->
-            <input placeholder="Vat" formControlName="vat">
-        </div>
-        <br>
-        <button type="submit">SAVE</button> &nbsp;
-        <button type="button" routerLink="/items">ANNULLA</button>
+    <h1>EDIT ITEM</h1>
+    <label><b>Code item: {{ item.codItem }}</b></label>
+    <ul>
+    <li>
+
+        <label for="inp" class="inp">
+            <input type="text" id="inp" placeholder="description" name="field1" formControlName="description">
+            <span class="label">description</span>
+            <span class="focus-bg"></span>
+          </label>
+          &nbsp;&nbsp;
+        <label for="inp" class="inp">
+            <input type="text" id="inp" placeholder="type" name="field1" formControlName="type">
+            <span class="label">type</span>
+            <span class="focus-bg"></span>
+          </label>
+          &nbsp;&nbsp;
+          <label for="inp" class="inp">
+            <input type="text" id="inp" placeholder="category" name="field1" formControlName="category">
+            <span class="label">category</span>
+            <span class="focus-bg"></span>
+          </label>
+     </li>
+     <li>
+        
+         
+        <label for="inp" class="inp">
+            <input type="text" id="inp" placeholder="measure" name="field1" formControlName="measure">
+            <span class="label">measure</span>
+            <span class="focus-bg"></span>
+          </label>
+          &nbsp;&nbsp;
+          <label for="inp" class="inp">
+            <input type="text" id="inp" placeholder="price" name="field1" formControlName="price">
+            <span class="label">price</span>
+            <span class="focus-bg"></span>
+          </label>
+          &nbsp;&nbsp;
+        <label for="inp" class="inp">
+            <input type="text" id="inp" placeholder="discount" name="field1" formControlName="discount">
+            <span class="label">discount</span>
+            <span class="focus-bg"></span>
+          </label>
+          
+    </li>
+    <li>
+        
+        <label for="inp" class="inp">
+            <input type="text" id="inp" placeholder="vat" name="field1" formControlName="vat">
+            <span class="label">vat</span>
+            <span class="focus-bg"></span>
+          </label>
+    </li>
+    <li>
+    <input type="submit" value="SALVA"/>&nbsp;&nbsp;
+    <input type="button" routerLink="/items" value="ANNULLA">
+    </li>
+    </ul>
     </form>
     </div>
-    
+
+
