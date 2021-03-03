@@ -1,5 +1,5 @@
 <div class="form-style-9">
-<form [formGroup]="clienteForm" (ngSubmit)="save()">
+<form [formGroup]="itemForm" (ngSubmit)="save()">
 <h1>CREATE ITEM</h1>
 <ul>
 <li>
@@ -33,7 +33,7 @@
     <label for="inp" class="inp">
         <select formControlName="measures">
             <option value="" disabled selected>Measures</option>
-            <option *ngFor="let category of categories | async" value="{{measures.codMeasure}}">
+            <option *ngFor="let measure of measures | async" value="{{measure.codMeasure}}">
                 {{measures.description}}</option>
         </select>
     </label>
@@ -41,8 +41,8 @@
     <label for="inp" class="inp">
         <select formControlName="vats">
             <option value="" disabled selected>Vats</option>
-            <option *ngFor="let category of categories | async" value="{{measures.codVat}}">
-                {{vats.description}}</option>
+            <option *ngFor="let vat of vats | async" value="{{vat.codVat}}">
+                {{vat.description}}</option>
         </select>
     </label>
 </li>
