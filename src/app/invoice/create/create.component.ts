@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
@@ -9,11 +9,15 @@ import { InvoiceDetail } from 'src/app/core/model/invoice-detail';
 import { InvoiceMaster } from 'src/app/core/model/invoice-master';
 import { InvoiceSummary } from 'src/app/core/model/invoice-summary';
 import { Item } from 'src/app/core/model/item';
+import { Measure } from 'src/app/core/model/measure';
+import { Vat } from 'src/app/core/model/vat';
 import { selectClients } from 'src/app/redux/cliente';
 import { selectProvisionalInvoicesDetail } from 'src/app/redux/invoiceDetail';
 import { selectCurrentInvoiceMaster } from 'src/app/redux/invoiceMaster';
 import { selectProvisionalInvoiceSummary } from 'src/app/redux/invoiceSummary';
 import { selectItems } from 'src/app/redux/item';
+import { selectMeasures } from 'src/app/redux/measure';
+import { selectVat } from 'src/app/redux/vat';
 import { InvoiceService } from '../services/invoice.service';
 
 @Component({
@@ -21,7 +25,7 @@ import { InvoiceService } from '../services/invoice.service';
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss']
 })
-export class CreateComponent implements OnInit {
+export class CreateComponent implements OnInit, OnChanges {
 
   invoiceMasterForm: FormGroup;
   invoiceDetailForm: FormGroup;
@@ -76,6 +80,10 @@ export class CreateComponent implements OnInit {
     })
     
   }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes)
+    throw new Error('Method not implemented.');
+  }
 
   get clients(): Observable<Client[]> {
     return this.store.pipe(select(selectClients));
@@ -83,6 +91,13 @@ export class CreateComponent implements OnInit {
   
   get items(): Observable<Item[]> {
     return this.store.pipe(select(selectItems));
+  }
+
+  get vats(): Observable<Vat[]> {
+    return this.store.pipe(select(selectVat));
+  }
+  get measures(): Observable<Measure[]> {
+    return this.store.pipe(select(selectMeasures));
   }
   
   get provisionalInvoiceDetailList(): Observable<InvoiceDetail[]> {

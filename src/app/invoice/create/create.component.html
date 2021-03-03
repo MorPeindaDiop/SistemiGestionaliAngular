@@ -63,7 +63,13 @@
                         <tr *ngFor="let invoiceDetail of provisionalInvoiceDetailList | async">
                             <td>{{ invoiceDetail.codItem }}</td>
                             <td>{{ invoiceDetail.description }}</td>
-                            <td>{{ invoiceDetail.measure }}</td>
+                            <td><!-- {{ invoiceDetail.measure }} -->
+                                <div *ngFor="let measure of measures | async">
+                                    <div *ngIf="measure.codMeasure == invoiceDetail.measure">
+                                            {{ measure.symbol }}
+                                    </div>
+                                </div>
+                            </td>
                             <td>{{ invoiceDetail.quantity }}</td>
                             <td>{{ invoiceDetail.lot }}</td>
                             <td>{{ invoiceDetail.expiry }}</td>
