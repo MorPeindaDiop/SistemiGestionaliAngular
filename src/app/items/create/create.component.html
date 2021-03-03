@@ -41,8 +41,8 @@
     <label for="inp" class="inp">
         <select formControlName="vats">
             <option value="" disabled selected>Vats</option>
-            <option *ngFor="let vat of vats | async" value="{{vat.codVat}}">
-                {{vat.description}}</option>
+            <option *ngFor="let vat of vat | async" value="{{vat.codVat}}">
+                {{vat.vat}}</option>
         </select>
     </label>
 </li>
