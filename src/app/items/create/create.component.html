@@ -31,10 +31,10 @@
     </label>
 
     <label for="inp" class="inp">
-        <select formControlName="measures">
+        <select formControlName="measure">
             <option value="" disabled selected>Measures</option>
             <option *ngFor="let measure of measures | async" value="{{measure.codMeasure}}">
-                {{measures.description}}</option>
+                {{measure.description}}</option>
         </select>
     </label>
 
