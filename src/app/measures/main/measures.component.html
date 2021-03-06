@@ -1,17 +1,40 @@
+<br>
+<br>
+<br>
+<head>
+    <style>
+        .colo{
+            color:#0066cc;
+           margin-left:640px;
+        }
+        .colo2{
+            color:#0066cc;
+            
+        }
+        .colo3{
+            background-color:#0066cc;
+            color: white;
+            text-align: center;
+        }
+        .sp{
+            text-align: center;
+        }
+    </style>
+</head>
 <div class="corpo">
-    <h1>MEASURES</h1>
-    <button routerLink="create">CREATE NEW MEASURE</button><br>
+    <h1 class="colo">Misure</h1>
+    <button routerLink="create"type="button" class="btn btn-primary colo2"><font color="white">CREA NUOVE MISURE</font></button><br>
     <br>
     <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"
         style="width: 100%;">
         <thead>
             <tr>
-                <th>Codice Misura</th>
-                <th>Descrizione</th>
-                <th>Simbolo</th>
-                <th>Note</th>
-                <th></th>
-                <th></th>
+                <th class="colo3">Codice Misura</th>
+                <th class="colo3">Descrizione</th>
+                <th class="colo3">Simbolo</th>
+                <th class="colo3">Note</th>
+                <th class="colo3"></th>
+                <th class="colo3"></th>
             </tr>
         </thead>
         <tbody>
@@ -20,10 +43,10 @@
                 <td>{{ measure.description }}</td>
                 <td>{{ measure.symbol }}</td>
                 <td>{{ measure.note }}</td>
-                <td><button (click)="goToDetail(measure.codMeasure)">Edit</button></td>
-                <td><button (click)="delete(measure)">Delete</button></td>
+                <td class=" sp"><button (click)="goToDetail(measure.codMeasure)"type="button" class="btn btn-primary" ><font color="white">Edit</font></button></td>
+                <td class=" sp"><button (click)="delete(measure)"type="button" class="btn btn-danger ">Delete</button></td>
             </tr>
         </tbody>
     </table>
-    <button routerLink="/home">TORNA ALLA HOME</button>
+    <button routerLink="/home"type="button" class="btn btn-primary colo2"><font color="white">TORNA ALLA HOME</font></button>
 </div>

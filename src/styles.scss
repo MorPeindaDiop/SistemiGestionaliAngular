@@ -526,8 +526,12 @@ html, body
 		text-transform: uppercase;
 		outline: 0;
 		color: black;
+		
 	}
-	
+.hov:hover {
+		background-color:  #0066cc;
+		color:white;
+	  }
 	#menu li:hover a, #menu li.active a, #menu li.active span
 	{
 	}
@@ -790,6 +794,7 @@ html, body
 		float: left;
 		width: 320px;
 		padding: 80px 40px 80px 40px;
+		padding-left: 135px;
 	}
 	
 	#three-column .title
@@ -826,3 +831,4 @@ html, body
         src: url("/assets/fonts.css") format("truetype");
     }
     
+	
