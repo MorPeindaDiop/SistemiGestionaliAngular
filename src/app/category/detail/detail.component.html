@@ -1,26 +1,33 @@
-<h1>EDIT CATEGORY</h1>
-<div class="corpo">
-    
-    
+<div class="form-style-9">
     <form [formGroup]="categoryForm" (ngSubmit)="save()">
-        <div >
-            <label><b>Codice Categoria: {{ category.codCategory }}</b></label>
-            <!-- <input placeholder="cod Category" formControlName="codCategory"> -->
-        </div>
-        <br>
-        <div>
-            <!-- <label><b>Type:</b></label> -->
-            <input placeholder="Description" formControlName="description">
-        </div>
-        <br>
-        <div>
-            <!-- <label><b>Type:</b></label> -->
-            <input placeholder="note" formControlName="note">
-        </div>
-        <br>
-        <br>
-        <button type="submit">SAVE</button> &nbsp;
-        <button type="button" routerLink="/categories">ANNULLA</button>
+    <h1>EDIT CATEGORY</h1>
+    <label><b>Code category: {{ category.codCategory }}</b></label>
+    <ul>
+    <li>
+
+        <label for="inp" class="inp">
+            <input type="text" id="inp" placeholder="description" name="field1" formControlName="description">
+            <span class="label">description</span>
+            <span class="focus-bg"></span>
+          </label>
+          &nbsp;&nbsp;
+        <label for="inp" class="inp">
+            <input type="text" id="inp" placeholder="note" name="field1" formControlName="note">
+            <span class="label">note</span>
+            <span class="focus-bg"></span>
+          </label>
+          &nbsp;&nbsp;
+          
+     </li>
+   
+    <li>
+    <input type="submit" value="SALVA"/>&nbsp;&nbsp;
+    <input type="button" routerLink="/categories" value="ANNULLA">
+    </li>
+    </ul>
     </form>
     </div>
+
+
+
     
