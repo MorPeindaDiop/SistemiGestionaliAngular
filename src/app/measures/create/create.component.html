@@ -1,30 +1,39 @@
-<h1>CREATE MEASURE</h1>
-<div class="corpo">
 
-
-<form [formGroup]="measureForm" (ngSubmit)="save()">
-    <div >
-        <!-- <label><b>Type:</b></label> -->
-        <input placeholder="cod Measure" formControlName="codMeasure">
+ <div class="form-style-9">
+    <form [formGroup]="measureForm" (ngSubmit)="save()">
+        <h1>CREATE MEASURE</h1>
+        <ul>
+        <li>
+            <label for="inp" class="inp">
+                <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="codMeasure">
+                <span class="label">codMeasure</span>
+                <span class="focus-bg"></span>
+              </label>
+              &nbsp;&nbsp;
+            <label for="inp" class="inp">
+                <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="description">
+                <span class="label">description</span>
+                <span class="focus-bg"></span>
+              </label>
+         </li>
+         <li>
+            <label for="inp" class="inp">
+                <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="symbol">
+                <span class="label">symbol</span>
+                <span class="focus-bg"></span>
+              </label>
+              &nbsp;&nbsp;
+            <label for="inp" class="inp">
+                <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="note">
+                <span class="label">note</span>
+                <span class="focus-bg"></span>
+              </label>
+        </li>
+        <li>
+        <input type="submit" value="SALVA"/>
+         &nbsp;&nbsp;
+        <input type="button" routerLink="/measures" value="ANNULLA">
+        </li>
+     </ul>
+    </form>
     </div>
-    <br>
-    <div>
-        <!-- <label><b>Type:</b></label> -->
-        <input placeholder="Description" formControlName="description">
-    </div>
-    <br>
-    <div>
-        <!-- <label><b>Type:</b></label> -->
-        <input placeholder="symbol" formControlName="symbol">
-    </div>
-    <br>
-    <div>
-        <!-- <label><b>Type:</b></label> -->
-        <input placeholder="note" formControlName="note">
-    </div>
-    <br>
-    <br>
-    <button type="submit">SAVE</button> &nbsp;
-    <button type="button" routerLink="/items">ANNULLA</button>
-</form>
-</div>

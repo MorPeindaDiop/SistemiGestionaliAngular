@@ -1,31 +1,36 @@
-<h1>EDIT MEASURE</h1>
-<div class="corpo">
-   
-    
+<div class="form-style-9">
     <form [formGroup]="measureForm" (ngSubmit)="save()">
-        <div >
-            <label><b>Codice unità di misura: {{ measure.codMeasure }} </b></label>
-            <!-- <input placeholder="cod Measure" formControlName="codMeasure"> -->
-        </div>
-        <br>
-        <div>
-            <!-- <label><b>Type:</b></label> -->
-            <input placeholder="Description" formControlName="description">
-        </div>
-        <br>
-        <div>
-            <!-- <label><b>Type:</b></label> -->
-            <input placeholder="symbol" formControlName="symbol">
-        </div>
-        <br>
-        <div>
-            <!-- <label><b>Type:</b></label> -->
-            <input placeholder="note" formControlName="note">
-        </div>
-        <br>
-        <br>
-        <button type="submit">SAVE</button> &nbsp;
-        <button type="button" routerLink="/measures">ANNULLA</button>
+    <h1>EDIT MEASURE</h1>
+    <label><b>Code unite of measure: {{ measure.codMeasure }}</b></label>
+    <ul>
+    <li>
+
+        <label for="inp" class="inp">
+            <input type="text" id="inp" placeholder="description" name="field1" formControlName="description">
+            <span class="label">description</span>
+            <span class="focus-bg"></span>
+          </label>
+          &nbsp;&nbsp;
+        <label for="inp" class="inp">
+            <input type="text" id="inp" placeholder="symbol" name="field1" formControlName="symbol">
+            <span class="label">symbol</span>
+            <span class="focus-bg"></span>
+          </label>
+          &nbsp;&nbsp;
+          <label for="inp" class="inp">
+            <input type="text" id="inp" placeholder="note" name="field1" formControlName="note">
+            <span class="label">note</span>
+            <span class="focus-bg"></span>
+          </label>
+     </li>
+   
+    <li>
+    <input type="submit" value="SALVA"/>&nbsp;&nbsp;
+    <input type="button" routerLink="/measures" value="ANNULLA">
+    </li>
+    </ul>
     </form>
     </div>
+
+
     
