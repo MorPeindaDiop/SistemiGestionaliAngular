@@ -1,14 +1,15 @@
+<br>
+<br>
+<br>
 <div class="corpo">
-    <h1>CREATE INVOICE</h1>
-    <button type="button" (click)="save(); deleteProvisionalCalculations()">SAVE</button>
-    <button type="button" (click)="deleteProvisionalCalculations()">ANNULLA</button>
-
+    <h1>Crea Fattura</h1>
+   
     <igx-tabs>
         <igx-tabs-group label="MASTER">
             <form [formGroup]="invoiceMasterForm">
                 <div >
                     <!-- <label><b>Type:</b></label> -->
-                    <input placeholder="Numero fattura" formControlName="invoiceNumber">
+                    <label>Numero Fattura:</label> <input placeholder="Numero fattura" formControlName="invoiceNumber">
                 </div>
                 <div>
                     <label>Cliente:</label>
@@ -31,6 +32,7 @@
                 <div>
                     <!-- <label><b>Type:</b></label> -->
                     <!-- <input placeholder="Type" formControlName="date"> -->
+                    
                     <ejs-datetimepicker placeholder='Select a date' formControlName="date" [value]= 'dateValue' format ='yyyy.MM.dd'></ejs-datetimepicker>
                 </div>
             </form>
@@ -164,4 +166,5 @@
     
     
     </div>
-    
+    &nbsp;&nbsp;<button type="button" (click)="save(); deleteProvisionalCalculations()" class="btn btn-primary" ><font color="white">SAVE</font></button>&nbsp;&nbsp;&nbsp;&nbsp;
+    <button type="button" (click)="deleteProvisionalCalculations()"class="btn btn-danger ">ANNULLA</button>
