@@ -47,6 +47,7 @@
     "jspdf": "^2.2.0",
     "nativescript-email": "^1.6.0",
     "ng-multiselect-dropdown": "^0.2.10",
+    "ngb-modal": "^2.0.3",
     "ngx-countdown": "^11.0.0",
     "nodemailer": "^6.4.16",
     "npm": "^7.5.2",
