@@ -1,6 +1,6 @@
 <div class="form-style-9">
   <form [formGroup]="measureForm" (ngSubmit)="save()">
-  <h1>Modifica misura</h1>
+  <h1 class="colo">Modifica misura</h1>
   <label><b>Codice unità di misura: {{ measureForm.value.codMeasure }}</b></label>
   <ul>
   <li>
@@ -24,10 +24,9 @@
         </label>
       </li>
 
-      <li>
         <input class="btn btn-primary" type="submit" value="SALVA" />&nbsp;&nbsp;
         <input class="btn btn-danger" type="button" routerLink="/measures" value="ANNULLA">
-      </li>
+     
     </ul>
   </form>
 </div>

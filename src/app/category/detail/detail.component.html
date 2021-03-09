@@ -1,6 +1,6 @@
 <div class="form-style-9">
   <form [formGroup]="categoryForm" (ngSubmit)="save()">
-    <h1>Modifica categoria</h1>
+    <h1 class="colo">Modifica categoria</h1>
     <label><b>Codice categoria: {{ categoryForm.value.codCategory }}</b></label>
     <ul>
       <li>
@@ -20,10 +20,10 @@
 
       </li>
 
-      <li>
-        <input type="submit" value="SALVA" />&nbsp;&nbsp;
-        <input type="button" routerLink="/categories" value="ANNULLA">
-      </li>
+     
+        <input class="btn btn-primary"type="submit" value="SALVA" />&nbsp;&nbsp;
+        <input class="btn btn-danger" type="button" routerLink="/categories" value="ANNULLA">
+      
     </ul>
   </form>
 </div>

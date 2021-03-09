@@ -1,6 +1,6 @@
 <div class="form-style-9">
   <form [formGroup]="vatForm" (ngSubmit)="save()">
-  <h1>Modifica IVA</h1>
+  <h1 class="colo">Modifica IVA</h1>
   <label><b>Codice IVA: {{ vatForm.value.codVat }}</b></label>
   <ul>
   <li>
@@ -20,10 +20,10 @@
 
       </li>
 
-      <li>
-        <input type="submit" value="SALVA" />&nbsp;&nbsp;
-        <input type="button" routerLink="/vat" value="ANNULLA">
-      </li>
+      
+        <input class="btn btn-primary" type="submit" value="SALVA" />&nbsp;&nbsp;
+        <input class="btn btn-danger" type="button" routerLink="/vat" value="ANNULLA">
+      
     </ul>
   </form>
 </div>

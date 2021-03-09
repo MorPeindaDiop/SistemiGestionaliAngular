@@ -110,7 +110,7 @@ body {
   margin: 50px auto;
   box-shadow: 1px 1px 25px rgba(20, 8, 126, 0.35);
   border-radius: 10px;
-  border: 6px solid #0ea1f7;
+  border: 6px solid #0066cc;
 }
 
 .form-style-9 ul {
@@ -181,4 +181,7 @@ body {
 .form-style-9 ul li input[type="submit"]:hover {
   background: linear-gradient(to bottom, #2D77A2 5%, #337DA8 100%);
   background-color: #28739E;
+}
+.colo {
+  color: #0066cc;
 }
