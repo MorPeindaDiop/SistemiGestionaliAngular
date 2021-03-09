@@ -1,6 +1,6 @@
 <div class="form-style-9">
   <form [formGroup]="clienteForm" (ngSubmit)="save()">
-  <h1>EDIT CLIENT</h1>
+  <h1 class="colo">Modifica Cliente</h1>
   <label><b>Codice Cliente: {{ clienteForm.value.codClient }}</b></label>
   <ul>
   <li>
@@ -12,65 +12,65 @@
         &nbsp;&nbsp;
         <label for="inp" class="inp">
           <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="piva">
-          <span class="label">type</span>
+          <span class="label">Tipo</span>
           <span class="focus-bg"></span>
         </label>
         &nbsp;&nbsp;
         <label for="inp" class="inp">
           <input type="text" id="inp" pplaceholder="&nbsp;" name="field1" formControlName="fiscalCod">
-          <span class="label">category</span>
+          <span class="label">Categoria</span>
           <span class="focus-bg"></span>
         </label>
       </li>
       <li>
         <label for="inp" class="inp">
           <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="mail">
-          <span class="label">measure</span>
+          <span class="label">Mail</span>
           <span class="focus-bg"></span>
         </label>
         &nbsp;&nbsp;
         <label for="inp" class="inp">
           <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="tel">
-          <span class="label">price</span>
+          <span class="label">Prezzo</span>
           <span class="focus-bg"></span>
         </label>
         &nbsp;&nbsp;
         <label for="inp" class="inp">
           <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="cel">
-          <span class="label">discount</span>
+          <span class="label">Sconto</span>
           <span class="focus-bg"></span>
         </label>
       </li>
       <li>
         <label for="inp" class="inp">
           <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="city">
-          <span class="label">measure</span>
+          <span class="label">Città</span>
           <span class="focus-bg"></span>
         </label>
         &nbsp;&nbsp;
         <label for="inp" class="inp">
           <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="address">
-          <span class="label">price</span>
+          <span class="label">Indirizzo</span>
           <span class="focus-bg"></span>
         </label>
       </li>
       <li>
         <label for="inp" class="inp">
           <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="province">
-          <span class="label">discount</span>
+          <span class="label">Provincia</span>
           <span class="focus-bg"></span>
         </label>
         &nbsp;&nbsp;
         <label for="inp" class="inp">
           <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="cap">
-          <span class="label">discount</span>
+          <span class="label">Cap</span>
           <span class="focus-bg"></span>
         </label>
       </li>
-      <li>
-        <input type="submit" value="SALVA" />&nbsp;&nbsp;
-        <input type="button" routerLink="/clients" value="ANNULLA">
-      </li>
+      
+      <input class="btn btn-primary" type="submit" value="SALVA" />
+      &nbsp;&nbsp;
+      <input class="btn btn-danger" type="button" routerLink="/clients" value="ANNULLA">
     </ul>
   </form>
 </div>
