@@ -1,6 +1,7 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Client } from 'src/app/core/model/client';
@@ -26,6 +27,8 @@ export class CreateComponent implements OnInit, OnChanges {
   invoiceDetailForm: FormGroup;
   invoiceSummaryForm: FormGroup;
 
+  clientSelected: Client = null;
+
   provisionalInvoiceSummary: InvoiceSummary;
   listToSave: InvoiceDetail[] = [];
 
@@ -33,7 +36,7 @@ export class CreateComponent implements OnInit, OnChanges {
 
   tailDiscount: number = 0;
 
-  constructor(private fb: FormBuilder, private invoiceService: InvoiceService, private router: Router, private store: Store) {
+  constructor(private fb: FormBuilder, private invoiceService: InvoiceService, private router: Router, private store: Store, private modalService: NgbModal) {
 
     this.invoiceService.retrieveAllClients();
     this.invoiceService.retrieveAllItems();
@@ -44,7 +47,7 @@ export class CreateComponent implements OnInit, OnChanges {
     
     this.invoiceMasterForm = this.fb.group({
       invoiceNumber: ['', Validators.required],
-      client: ['', Validators.required],
+      client: [this.clientSelected != null ? this.clientSelected.codClient: null , Validators.required],
       payment: ['', Validators.required],
       orderNumber: ['', Validators.required],
       date: [new Date(), Validators.required]
@@ -181,7 +184,12 @@ export class CreateComponent implements OnInit, OnChanges {
   save() {
     //invoiceMaster
     let invoiceMaster: InvoiceMaster = {
-      ...this.invoiceMasterForm.value
+      codInvoice: null,
+      invoiceNumber: this.invoiceMasterForm.value.invoiceNumber,
+      client: this.clientSelected != null ? this.clientSelected.codClient : null,
+      payment: this.invoiceMasterForm.value.payment,
+      orderNumber: this.invoiceMasterForm.value.orderNumber,
+      date: this.invoiceMasterForm.value.date
     }
 
     //invoiceDetailList
@@ -225,8 +233,40 @@ export class CreateComponent implements OnInit, OnChanges {
     )
   }
 
+  addClientSelected(client: Client) {
+    this.clientSelected = client;
+  }
+
   prova() {
     console.log("prova")
+  }
+
+  openBackDropCustomClass(content) {
+    this.modalService.open(content, {backdropClass: 'light-blue-backdrop'});
+  }
+
+  openWindowCustomClass(content) {
+    this.modalService.open(content, { windowClass: 'dark-modal' });
+  }
+
+  openSm(content) {
+    this.modalService.open(content, { size: 'sm' });
+  }
+
+  openLg(content) {
+    this.modalService.open(content, { size: 'lg' });
+  }
+
+  openXl(content) {
+    this.modalService.open(content, { size: 'xl' });
+  }
+
+  openVerticallyCentered(content) {
+    this.modalService.open(content, { centered: true });
+  }
+
+  openScrollableContent(longContent) {
+    this.modalService.open(longContent, { scrollable: true });
   }
 
 }

@@ -7,8 +7,6 @@ import { CreateComponent } from './create/create.component';
 import { DetailComponent } from './detail/detail.component';
 import { InvoiceComponent } from './main/invoice.component';
 import { InvoiceService } from './services/invoice.service';
-import { ModalModule } from 'ngb-modal';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -20,8 +18,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     CommonModule,
     InvoiceRoutingModule,
-    SharedModule,
-    NgbModule
+    SharedModule
   ],
   providers: [
     InvoiceService

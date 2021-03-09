@@ -15,3 +15,18 @@ button {
   -webkit-border-radius: 8px;
   border-radius: 8px;
 }
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "master master summary summary summary"
+    "detail detail detail detail detail"
+    "detail detail detail detail detail";
+}
+.master { grid-area: master; }
+.summary { grid-area: summary; }
+.detail { grid-area: detail; }
