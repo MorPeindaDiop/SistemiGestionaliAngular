@@ -1,17 +1,132 @@
-<br>
-<br>
-<br>
-<div class="corpo">
-    <h1>Crea Fattura</h1>
 
-    <igx-tabs>
-        <igx-tabs-group label="MASTER">
+<div class="form-style-9">
+    <h1 class="colo">Crea Fattura</h1>
+
+    <!-- <igx-tabs>
+        <igx-tabs-group label="MASTER"> -->
             <form [formGroup]="invoiceMasterForm">
-
-
-                <div>
+                <ul>
+                    <li style="list-style: none;"> 
+                      <label for="inp" class="inp">
+                        <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="NumeroFattura">
+                        <span class="label">Numero Fattura</span>
+                        <span class="focus-bg"></span>
+                      </label>
+                      &nbsp;&nbsp;
+                      <label for="inp" class="inp">
+                        <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="NumeroOrdine">
+                        <span class="label">Numero Ordine</span>
+                        <span class="focus-bg"></span>
+                      </label>
+                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <label for="inp" class="inp">
+                        <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="TotaleProdotti">
+                        <span class="label">Totale Prodotti</span>
+                        <span class="focus-bg"></span>
+                      </label>
+                      &nbsp;&nbsp;
+                      <label for="inp" class="inp">
+                        <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="TotaleSerzivi">
+                        <span class="label">Totale Servizi</span>
+                        <span class="focus-bg"></span>
+                      </label>
+                    </li>  
+                    <li style="list-style: none;"> 
+                    <label for="inp" class="inp">
+                        <label style="color:#0066cc ;">CLIENTE:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="focus-bg"></span>
+                        <select formControlName="client">
+                           <option *ngFor="let client of clients | async" value="{{client.codClient}} ">
+                               {{client.businessName}}
+                            </option>
+                       </select></label>
+                       &nbsp;&nbsp;
+                      
+                        <label for="inp" class="inp">
+                            <label style="color:#0066cc ;">METODO PAGAMENTO:</label>&nbsp;&nbsp;
+                            <span class="focus-bg"></span>
+                            <select formControlName="payment">
+                                <option value="Contanti">Contanti</option>
+                                <option value="Bonifico">Bonifico</option>
+                                <option value="Assegno">Assegno</option>
+                           
+                           </select></label>
+                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                           <label for="inp" class="inp">
+                            <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="ScontoDiCoda">
+                            <span class="label">Sconto di Coda</span>
+                            <span class="focus-bg"></span>
+                          </label>
+                          &nbsp;&nbsp;
+                          <label for="inp" class="inp">
+                            <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="TotaleScontoCoda">
+                            <span class="label">Totale Sconto Coda</span>
+                            <span class="focus-bg"></span>
+                          </label>
+                </li>
+                <li style="list-style: none;"> 
+                    <label for="inp" class="inp">
+                
+                    <input type="date" name="bday">
+                    <span class="focus-bg"></span>
+                       </label>
+                    &nbsp;&nbsp;
+                    <label for="inp" class="inp">
+                        <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="TotaleScontoRiga">
+                        <span class="label">Totale Sconto Riga</span>
+                        <span class="focus-bg"></span>
+                      </label>
+                      &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+                      <label for="inp" class="inp">
+                        <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="TotaleSconto">
+                        <span class="label">Totale Sconto</span>
+                        <span class="focus-bg"></span>
+                      </label>
+                      &nbsp;&nbsp;
+                      <label for="inp" class="inp">
+                        <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="Imponibile">
+                        <span class="label">Imponibile</span>
+                        <span class="focus-bg"></span>
+                      </label>
+              
+              
+                </li>
+                <li style="list-style: none;"> 
+            
+                <label for="inp" class="inp">
+                    <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="TotaleIVA">
+                    <span class="label">Totale IVA</span>
+                    <span class="focus-bg"></span>
+                  </label>
+                  &nbsp;&nbsp;&nbsp; &nbsp;
+                  <label for="inp" class="inp">
+                    <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="TotaleFattura">
+                    <span class="label">Totale Fattura</span>
+                    <span class="focus-bg"></span>
+                  </label>
+          
+            </li>
+            
+            
+            
+            </ul>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+                    <!-- <div> -->
                     <!-- <label><b>Type:</b></label> -->
-                    <label>Numero Fattura:</label> <input placeholder="Numero fattura" formControlName="invoiceNumber">
+                    <!-- <label>Numero Fattura:</label> <input placeholder="Numero fattura" formControlName="invoiceNumber">
                 </div>
                 <div>
                     <label>Cliente:</label>
@@ -20,9 +135,9 @@
                             {{client.businessName}}</option>
                     </select>
                 </div>
-                <div>
+                <div> -->
                     <!-- <label><b>Type:</b></label> -->
-                    <input placeholder="Numero ordine" formControlName="orderNumber">
+                    <!-- <input placeholder="Numero ordine" formControlName="orderNumber">
                 </div>
                 <div>
                     <label>Metodo di pagamento:</label>
@@ -32,22 +147,66 @@
                         <option value="Assegno">Assegno</option>
                     </select>
                 </div>
-                <div>
+                <div> -->
                     <!-- <label><b>Type:</b></label> -->
                     <!-- <input placeholder="Type" formControlName="date"> -->
 
-                    <ejs-datetimepicker placeholder='Select a date' formControlName="date" [value]='dateValue'
+                    <!-- <ejs-datetimepicker placeholder='Select a date' formControlName="date" [value]='dateValue'
                         format='yyyy.MM.dd'></ejs-datetimepicker>
                 </div>
-            </form>
-        </igx-tabs-group>
+            </form> -->
+       <!---</igx-tabs-group> 
+  <igx-tabs-group label="SUMMARY"> -->
+    <!-- <form [formGroup]="invoiceSummaryForm" (onChange)="prova()">
+        <div>
+            <label>Totale prodotti: </label>
+            <input placeholder="Totale prodotti" formControlName="totalProducts">
+            <label>Totale servizi: </label>
+            <input placeholder="Totale servizi" formControlName="totalServices">
+        </div>
+        <div>
+            <label>Sconto di coda: </label>
+            <input placeholder="Sconto di coda" formControlName="tailDiscount">
+            <label>Totale sconto di coda: </label>
+            <input placeholder="Totale sconto di coda" formControlName="totalTileDiscount">
+        </div>
+        <div>
+            <label>Totale sconto di riga: </label>
+            <input placeholder="Totale sconto di riga" formControlName="totalLineDiscount">
+        </div>
+        <div>
+            <label>Totale sconto: </label>
+            <input placeholder="Totale sconto" formControlName="totalDiscount">
+        </div>
+        <div>
+            <label>Imponibile: </label>
+            <input placeholder="Imponibile" formControlName="taxable">
+        </div>
+        <div>
+            <label>Totale IVA: </label>
+            <input placeholder="Totale IVA" formControlName="totalVat">
+        </div>
+        <div>
+            <label>TOTALE FATTURA: </label>
+            <input placeholder="TOTALE FATTURA" formControlName="totalAmount">
+        </div> -->
+        <!-- <button type="submit">AGGIUNGI</button> &nbsp; -->
+    <!-- </form> -->
+<!-- </igx-tabs-group>
+</igx-tabs> -->
 
-
-        <igx-tabs-group label="DETAIL">
+      <!---  <igx-tabs-group label="DETAIL"> -->
+        <div>
+            <label style="color:#0066cc">SELEZIONA ARTICOLO DA AGGIUNGERE:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+            <select formControlName="codItem" #itemSelected>
+                <option *ngFor="let item of items | async" value="{{item.codItem}}">{{item.description}}
+                </option>
+            </select>
+        </div>
             <div>
                 <table class="table table-striped table-bordered table-sm row-border hover" style="width: 100%;">
                     <thead>
-                        <tr>
+                        <tr class="colo2">
                             <th>Codice articolo</th>
                             <th>Descrizione</th>
                             <th>Unità di misura</th>
@@ -61,8 +220,7 @@
                             <th>Iva</th>
                             <th>Importo Iva</th>
                             <th>Totale riga</th>
-                            <th></th>
-                            <th></th>
+                          
                         </tr>
                     </thead>
                     <tbody>
@@ -80,8 +238,7 @@
                             <td>{{ invoiceDetail.codVat }}</td>
                             <td>{{ invoiceDetail.totalVat }}</td>
                             <td>{{ invoiceDetail.totalLine }}</td>
-                            <td><button (click)="editPrevisionalInvoiceDetail(invoiceDetail)">Edit</button></td>
-                            <td><button (click)="deletePrevisionalInvoiceDetail(invoiceDetail)">Delete</button></td>
+                       
                         </tr>
                     </tbody>
                     <!-- <td>
@@ -98,13 +255,7 @@
             <div>
                 <!-- id="myDIV" -->
                 <form [formGroup]="invoiceDetailForm" (ngSubmit)="addProvisionalInvoiceDetail()">
-                    <div>
-                        <label>Seleziona articolo da aggiungere:</label>
-                        <select formControlName="codItem" #itemSelected>
-                            <option *ngFor="let item of items | async" value="{{item.codItem}}">{{item.description}}
-                            </option>
-                        </select>
-                    </div>
+                  
                     <div *ngFor="let item of items | async">
                         <div *ngIf="item.codItem == itemSelected.value">
                             <div>
@@ -124,55 +275,22 @@
                             <div>
                                 <input placeholder="Sconto" formControlName="discount">
                             </div>
-                            <button type="submit">AGGIUNGI</button> &nbsp;
+                            <br>
+                            <button type="submit"class="btn btn-primary">
+                                <font color="white">AGGIUNGI</font></button>
+                                
                         </div>
                     </div>
                 </form>
             </div>
-        </igx-tabs-group>
+        <!-- </igx-tabs-group>-->
 
 
-        <igx-tabs-group label="SUMMARY">
-            <form [formGroup]="invoiceSummaryForm" (onChange)="prova()">
-                <div>
-                    <label>Totale prodotti: </label>
-                    <input placeholder="Totale prodotti" formControlName="totalProducts">
-                    <label>Totale servizi: </label>
-                    <input placeholder="Totale servizi" formControlName="totalServices">
-                </div>
-                <div>
-                    <label>Sconto di coda: </label>
-                    <input placeholder="Sconto di coda" formControlName="tailDiscount">
-                    <label>Totale sconto di coda: </label>
-                    <input placeholder="Totale sconto di coda" formControlName="totalTileDiscount">
-                </div>
-                <div>
-                    <label>Totale sconto di riga: </label>
-                    <input placeholder="Totale sconto di riga" formControlName="totalLineDiscount">
-                </div>
-                <div>
-                    <label>Totale sconto: </label>
-                    <input placeholder="Totale sconto" formControlName="totalDiscount">
-                </div>
-                <div>
-                    <label>Imponibile: </label>
-                    <input placeholder="Imponibile" formControlName="taxable">
-                </div>
-                <div>
-                    <label>Totale IVA: </label>
-                    <input placeholder="Totale IVA" formControlName="totalVat">
-                </div>
-                <div>
-                    <label>TOTALE FATTURA: </label>
-                    <input placeholder="TOTALE FATTURA" formControlName="totalAmount">
-                </div>
-                <!-- <button type="submit">AGGIUNGI</button> &nbsp; -->
-            </form>
-        </igx-tabs-group>
-    </igx-tabs>
+      
 
 
-</div>
+<!-- </div> -->
+<br>
 &nbsp;&nbsp;<button type="button" (click)="save(); deleteProvisionalCalculations()" class="btn btn-primary">
     <font color="white">SAVE</font>
 </button>&nbsp;&nbsp;&nbsp;&nbsp;
