@@ -3,7 +3,7 @@
 <div class="corpo">
     <button type="button" (click)="save(); deleteProvisionalCalculations()" class="btn btn-primary" style="float: right;">
         <font color="white">SAVE</font>
-    </button>
+    </button> 
     <button type="button" (click)="deleteProvisionalCalculations()" class="btn btn-danger " style="float: right;">ANNULLA</button>
     
     <h2>Nuova Fattura</h2>
@@ -18,7 +18,7 @@
                         <span class="focus-bg"></span>
                     </label> -->
 
-                    <button class="btn btn-outline-primary mb-2 mr-2" (click)="openVerticallyCentered(content)">Seleziona</button>
+                    <button class="btn btn-outline-primary mb-2 mr-2" (click)="openXl(content)">Seleziona cliente</button>
                     <ng-template #content let-modal  style="max-width: none; margin: none;">
                         <div class="modal-header">
                           <h4 class="modal-title">Clienti</h4>
@@ -66,7 +66,7 @@
                             </tbody>
                         </table>
                         </div>
-                    </ng-template>
+                    </ng-template> <br>
 
                     <label>Cliente: {{ clientSelected != null ? clientSelected.businessName : ""}}</label>
 
