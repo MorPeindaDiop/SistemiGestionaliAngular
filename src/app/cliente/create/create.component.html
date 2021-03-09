@@ -1,6 +1,6 @@
 <div class="form-style-9">
   <form [formGroup]="clienteForm" (ngSubmit)="save()">
-    <h1>CREAZIONE CLIENTE</h1>
+    <h1 class="colo">Crea Cliente</h1>
     <ul>
       <li>
         <label for="inp" class="inp">
@@ -72,11 +72,11 @@
           <span class="focus-bg"></span>
         </label>
       </li>
-      <li>
-        <input type="submit" value="SALVA" />
+     
+        <input class="btn btn-primary" type="submit" value="SALVA" />
         &nbsp;&nbsp;
-        <input type="button" routerLink="/clients" value="ANNULLA">
-      </li>
+        <input class="btn btn-danger" type="button" routerLink="/clients" value="ANNULLA">
+      
     </ul>
   </form>
 </div>

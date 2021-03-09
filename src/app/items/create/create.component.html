@@ -1,6 +1,6 @@
 <div class="form-style-9">
     <form [formGroup]="itemForm" (ngSubmit)="save()">
-        <h1>CREAZIONE ARTICOLO</h1>
+        <h1  class="colo">Crea Articolo</h1>
         <ul>
             <li>
                 <label for="inp" class="inp">
@@ -59,10 +59,11 @@
                     <span class="focus-bg"></span>
                 </label>
             </li>
-            <li>
-                <input type="submit" value="SALVA" />&nbsp;&nbsp;
-                <input type="button" routerLink="/items" value="ANNULLA">
-            </li>
+           
+        <input class="btn btn-primary" type="submit" value="SALVA" />
+        &nbsp;&nbsp;
+        <input class="btn btn-danger" type="button" routerLink="/items" value="ANNULLA">
+      
         </ul>
     </form>
 </div>
