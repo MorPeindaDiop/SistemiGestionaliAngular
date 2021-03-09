@@ -19,6 +19,10 @@ export class ClienteComponent implements OnInit {
   constructor(private store: Store, private clientsService: ClientsService, private router: Router) {
     this.clientsService.retrieveAllClients();
   }
+  
+  get clients(): Observable<Client[]> {
+    return this.store.pipe(select(selectClients));
+  }
 
   ngOnInit(): void {
     this.clientsService;
@@ -30,12 +34,7 @@ export class ClienteComponent implements OnInit {
     };
   }
 
-  get clients(): Observable<Client[]> {
-    return this.store.pipe(select(selectClients));
-  }
-
   delete(client: Client) {
-    console.log('delete')
     this.clientsService.deleteClient(client);
   }
 

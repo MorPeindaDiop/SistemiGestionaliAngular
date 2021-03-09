@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
@@ -20,7 +20,7 @@ import { InvoiceService } from '../services/invoice.service';
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss']
 })
-export class CreateComponent implements OnInit {
+export class CreateComponent implements OnInit, OnChanges {
 
   invoiceMasterForm: FormGroup;
   invoiceDetailForm: FormGroup;
@@ -78,6 +78,11 @@ export class CreateComponent implements OnInit {
       taxable: ['', Validators.required],
     })
 
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log("sono dentro on change")
+    console.log(changes.invoiceMasterForm)
+    throw new Error('Method not implemented.');
   }
 
   get clients(): Observable<Client[]> {

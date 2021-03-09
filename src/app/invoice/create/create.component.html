@@ -3,6 +3,10 @@
 <br>
 <div class="corpo">
     <h1>Crea Fattura</h1>
+    &nbsp;&nbsp;<button type="button" (click)="save(); deleteProvisionalCalculations()" class="btn btn-primary">
+        <font color="white">SAVE</font>
+    </button>&nbsp;&nbsp;&nbsp;&nbsp;
+    <button type="button" (click)="deleteProvisionalCalculations()" class="btn btn-danger ">ANNULLA</button>
 
     <igx-tabs>
         <igx-tabs-group label="MASTER">
@@ -173,7 +177,3 @@
 
 
 </div>
-&nbsp;&nbsp;<button type="button" (click)="save(); deleteProvisionalCalculations()" class="btn btn-primary">
-    <font color="white">SAVE</font>
-</button>&nbsp;&nbsp;&nbsp;&nbsp;
-<button type="button" (click)="deleteProvisionalCalculations()" class="btn btn-danger ">ANNULLA</button>
