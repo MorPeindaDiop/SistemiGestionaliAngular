@@ -1,19 +1,19 @@
 <div class="form-style-9">
   <form [formGroup]="vatForm" (ngSubmit)="save()">
-  <h1>EDIT VAT</h1>
-  <label><b>Code vat: {{ vatForm.value.codVat }}</b></label>
+  <h1>Modifica IVA</h1>
+  <label><b>Codice IVA: {{ vatForm.value.codVat }}</b></label>
   <ul>
   <li>
 
         <label for="inp" class="inp">
           <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="vat">
-          <span class="label">vat</span>
+          <span class="label">IVA</span>
           <span class="focus-bg"></span>
         </label>
         &nbsp;&nbsp;
         <label for="inp" class="inp">
           <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="note">
-          <span class="label">note</span>
+          <span class="label">Note</span>
           <span class="focus-bg"></span>
         </label>
         &nbsp;&nbsp;

@@ -1,25 +1,25 @@
 <div class="form-style-9">
   <form [formGroup]="itemForm" (ngSubmit)="save()">
-  <h1>EDIT ITEM</h1>
-  <label><b>Code item: {{ itemForm.value.codItem }}</b></label>
+  <h1>Modifica articolo</h1>
+  <label><b>Codice articolo: {{ itemForm.value.codItem }}</b></label>
   <ul>
   <li>
 
         <label for="inp" class="inp">
           <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="description">
-          <span class="label">description</span>
+          <span class="label">Descrizione</span>
           <span class="focus-bg"></span>
         </label>
         &nbsp;&nbsp;
         <label for="inp" class="inp">
           <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="type">
-          <span class="label">type</span>
+          <span class="label">Tipo</span>
           <span class="focus-bg"></span>
         </label>
         &nbsp;&nbsp;
         <label for="inp" class="inp">
           <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="category">
-          <span class="label">category</span>
+          <span class="label">Categoria</span>
           <span class="focus-bg"></span>
         </label>
       </li>
@@ -28,19 +28,19 @@
 
         <label for="inp" class="inp">
           <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="measure">
-          <span class="label">measure</span>
+          <span class="label">Unità di misura</span>
           <span class="focus-bg"></span>
         </label>
         &nbsp;&nbsp;
         <label for="inp" class="inp">
           <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="price">
-          <span class="label">price</span>
+          <span class="label">Prezzo</span>
           <span class="focus-bg"></span>
         </label>
         &nbsp;&nbsp;
         <label for="inp" class="inp">
           <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="discount">
-          <span class="label">discount</span>
+          <span class="label">Sconto</span>
           <span class="focus-bg"></span>
         </label>
 
@@ -49,7 +49,7 @@
 
         <label for="inp" class="inp">
           <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="vat">
-          <span class="label">vat</span>
+          <span class="label">IVA</span>
           <span class="focus-bg"></span>
         </label>
       </li>
