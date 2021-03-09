@@ -34,7 +34,7 @@ export class CreateComponent implements OnInit {
   tailDiscount: number = 0;
 
   constructor(private fb: FormBuilder, private invoiceService: InvoiceService, private router: Router, private store: Store) {
-    
+
     this.invoiceService.retrieveAllClients();
     this.invoiceService.retrieveAllItems();
 
@@ -65,7 +65,7 @@ export class CreateComponent implements OnInit {
       totalVat: ['', Validators.required],
       totalLine: ['', Validators.required],
     })
-    
+
     this.invoiceSummaryForm = this.fb.group({
       totalAmount: ['', Validators.required],
       totalProducts: ['', Validators.required],
@@ -77,31 +77,31 @@ export class CreateComponent implements OnInit {
       totalVat: ['', Validators.required],
       taxable: ['', Validators.required],
     })
-    
+
   }
 
   get clients(): Observable<Client[]> {
     return this.store.pipe(select(selectClients));
   }
-  
+
   get items(): Observable<Item[]> {
     return this.store.pipe(select(selectItems));
   }
-  
+
   get provisionalInvoiceDetailList(): Observable<InvoiceDetail[]> {
     return this.store.pipe(select(selectProvisionalInvoicesDetail));
   }
-  
+
   ngOnInit(): void {
     this.onChanges();
   }
-  
+
   onChanges(): void {
     this.invoiceSummaryForm.valueChanges.subscribe(val => {
       console.log("prova")
       console.log(val)
       if (this.tailDiscount != val.tailDiscount && val.tailDiscount != 0) {
-        
+
         this.tailDiscount = val.tailDiscount
         console.log(this.tailDiscount)
 
@@ -109,26 +109,26 @@ export class CreateComponent implements OnInit {
         let invoiceMaster: InvoiceMaster = {
           ...this.invoiceMasterForm.value
         }
-    
+
         //invoiceDetailList
         this.provisionalInvoiceDetailList.subscribe(provisionalInvoiceDetailList => {
           for (let invoiceDetail of provisionalInvoiceDetailList) {
             this.listToSave.push(invoiceDetail)
           }
         })
-    
+
         //invoiceSummary
         let invoiceSummary: InvoiceSummary = {
           ...this.invoiceSummaryForm.value
         }
-    
+
         //invoice
         let invoice: Invoice = {
           invoiceMaster: invoiceMaster,
           invoiceDetailList: this.listToSave,
           invoiceSummary: invoiceSummary
         }
-    
+
         this.invoiceService.calculateProvisionalTailDiscount(invoice);
         this.compileSummaryForm();
       }
@@ -139,7 +139,7 @@ export class CreateComponent implements OnInit {
   delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
-    
+
   async addProvisionalInvoiceDetail() {
     let invoiceDetail: InvoiceDetail = {
       ...this.invoiceDetailForm.value
@@ -150,7 +150,7 @@ export class CreateComponent implements OnInit {
     await this.delay(500);
     this.calculateProvisionalInvoiceSummary();
   }
-  
+
   async calculateProvisionalInvoiceSummary() {
     await this.delay(500);
     this.provisionalInvoiceDetailList.subscribe(provisionalInvoiceDetailList => {
@@ -167,7 +167,7 @@ export class CreateComponent implements OnInit {
 
   async compileSummaryForm() {
     console.log("ok")
-    this.store.pipe(select(selectProvisionalInvoiceSummary)).subscribe(invoiceSummary => {return this.provisionalInvoiceSummary = invoiceSummary});
+    this.store.pipe(select(selectProvisionalInvoiceSummary)).subscribe(invoiceSummary => { return this.provisionalInvoiceSummary = invoiceSummary });
     this.invoiceSummaryForm.patchValue(
       this.provisionalInvoiceSummary
     )
@@ -208,7 +208,7 @@ export class CreateComponent implements OnInit {
   deletePrevisionalInvoiceDetail(invoiceDetail: InvoiceDetail) {
     this.invoiceService.deleteProvisionalInvoiceDetail(invoiceDetail);
   }
-  
+
   deleteProvisionalCalculations() {
     this.invoiceService.deleteProvisionalCalculations();
     this.router.navigateByUrl('/invoices');

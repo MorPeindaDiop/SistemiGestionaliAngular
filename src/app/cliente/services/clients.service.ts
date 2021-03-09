@@ -13,11 +13,11 @@ export class ClientsService {
   }
 
   createClient(client: Client) {
-    return this.store.dispatch(createClient({client}))
+    return this.store.dispatch(createClient({ client }))
   }
 
   deleteClient(client: Client) {
-    return this.store.dispatch(deleteClient({client}))
+    return this.store.dispatch(deleteClient({ client }))
   }
 
 }

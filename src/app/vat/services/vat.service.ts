@@ -13,11 +13,11 @@ export class VatsService {
   }
 
   createVat(vat: Vat) {
-    return this.store.dispatch(createVat({vat}))
+    return this.store.dispatch(createVat({ vat }))
   }
 
   deleteVat(vat: Vat) {
-    return this.store.dispatch(deleteVat({vat}))
+    return this.store.dispatch(deleteVat({ vat }))
   }
 
 }

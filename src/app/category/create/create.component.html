@@ -1,32 +1,33 @@
-<div class="body"><div class="form-style-9">
-  <form [formGroup]="categoryForm" (ngSubmit)="save()">
+<div class="body">
+  <div class="form-style-9">
+    <form [formGroup]="categoryForm" (ngSubmit)="save()">
       <h1>CREATE CATEGORY</h1>
       <ul>
-      <li>
+        <li>
           <label for="inp" class="inp">
-              <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="codCategory">
-              <span class="label">codCategory</span>
-              <span class="focus-bg"></span>
-            </label>
-            &nbsp;&nbsp;
+            <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="codCategory">
+            <span class="label">codCategory</span>
+            <span class="focus-bg"></span>
+          </label>
+          &nbsp;&nbsp;
           <label for="inp" class="inp">
-              <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="description">
-              <span class="label">description</span>
-              <span class="focus-bg"></span>
-            </label>
-            &nbsp;&nbsp;
+            <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="description">
+            <span class="label">description</span>
+            <span class="focus-bg"></span>
+          </label>
+          &nbsp;&nbsp;
           <label for="inp" class="inp">
-              <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="note">
-              <span class="label">note</span>
-              <span class="focus-bg"></span>
-            </label>
-       </li>
-      <li>
-      <input type="submit" value="SALVA"/>
-      &nbsp;&nbsp;
-      <input type="button" routerLink="/categories" value="ANNULLA">
-      </li>
-   </ul>
-  </form>
+            <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="note">
+            <span class="label">note</span>
+            <span class="focus-bg"></span>
+          </label>
+        </li>
+        <li>
+          <input type="submit" value="SALVA" />
+          &nbsp;&nbsp;
+          <input type="button" routerLink="/categories" value="ANNULLA">
+        </li>
+      </ul>
+    </form>
   </div>
 </div>

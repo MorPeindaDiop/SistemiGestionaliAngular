@@ -3,20 +3,21 @@
 <br>
 <div class="corpo">
     <h1>Crea Fattura</h1>
-   
+
     <igx-tabs>
         <igx-tabs-group label="MASTER">
             <form [formGroup]="invoiceMasterForm">
 
-                
-                <div >
+
+                <div>
                     <!-- <label><b>Type:</b></label> -->
                     <label>Numero Fattura:</label> <input placeholder="Numero fattura" formControlName="invoiceNumber">
                 </div>
                 <div>
                     <label>Cliente:</label>
                     <select formControlName="client">
-                        <option *ngFor="let client of clients | async" value="{{client.codClient}}">{{client.businessName}}</option>
+                        <option *ngFor="let client of clients | async" value="{{client.codClient}}">
+                            {{client.businessName}}</option>
                     </select>
                 </div>
                 <div>
@@ -34,8 +35,9 @@
                 <div>
                     <!-- <label><b>Type:</b></label> -->
                     <!-- <input placeholder="Type" formControlName="date"> -->
-                    
-                    <ejs-datetimepicker placeholder='Select a date' formControlName="date" [value]= 'dateValue' format ='yyyy.MM.dd'></ejs-datetimepicker>
+
+                    <ejs-datetimepicker placeholder='Select a date' formControlName="date" [value]='dateValue'
+                        format='yyyy.MM.dd'></ejs-datetimepicker>
                 </div>
             </form>
         </igx-tabs-group>
@@ -93,18 +95,21 @@
             </div>
 
             <!-- <button onclick="myFunctionOpen()">AGGIUNGI PRODOTTO</button> -->
-            <div ><!-- id="myDIV" --> 
+            <div>
+                <!-- id="myDIV" -->
                 <form [formGroup]="invoiceDetailForm" (ngSubmit)="addProvisionalInvoiceDetail()">
                     <div>
                         <label>Seleziona articolo da aggiungere:</label>
                         <select formControlName="codItem" #itemSelected>
-                            <option *ngFor="let item of items | async" value="{{item.codItem}}">{{item.description}}</option>
+                            <option *ngFor="let item of items | async" value="{{item.codItem}}">{{item.description}}
+                            </option>
                         </select>
                     </div>
                     <div *ngFor="let item of items | async">
                         <div *ngIf="item.codItem == itemSelected.value">
                             <div>
-                                <input placeholder="Descrizione" formControlName="description" [value]="item.description">
+                                <input placeholder="Descrizione" formControlName="description"
+                                    [value]="item.description">
                                 <input placeholder="Unità di misura" formControlName="measure" [value]="item.measure">
                                 <input placeholder="Iva" formControlName="codVat" [value]="item.vat">
                                 <input placeholder="Prezzo" formControlName="unitPrice" [value]="item.price">
@@ -125,8 +130,8 @@
                 </form>
             </div>
         </igx-tabs-group>
-        
-        
+
+
         <igx-tabs-group label="SUMMARY">
             <form [formGroup]="invoiceSummaryForm" (onChange)="prova()">
                 <div>
@@ -165,8 +170,10 @@
             </form>
         </igx-tabs-group>
     </igx-tabs>
-    
-    
-    </div>
-    &nbsp;&nbsp;<button type="button" (click)="save(); deleteProvisionalCalculations()" class="btn btn-primary" ><font color="white">SAVE</font></button>&nbsp;&nbsp;&nbsp;&nbsp;
-    <button type="button" (click)="deleteProvisionalCalculations()"class="btn btn-danger ">ANNULLA</button>
+
+
+</div>
+&nbsp;&nbsp;<button type="button" (click)="save(); deleteProvisionalCalculations()" class="btn btn-primary">
+    <font color="white">SAVE</font>
+</button>&nbsp;&nbsp;&nbsp;&nbsp;
+<button type="button" (click)="deleteProvisionalCalculations()" class="btn btn-danger ">ANNULLA</button>

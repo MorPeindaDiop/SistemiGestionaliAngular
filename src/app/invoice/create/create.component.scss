@@ -1,17 +1,17 @@
 igx-tabs {
-    display: block;
+  display: block;
 
-    + igx-tabs {
-        margin-top: 120px;
-    }
+  +igx-tabs {
+    margin-top: 120px;
+  }
 }
 
 igx-tabs-group {
-    padding: 8px;
+  padding: 8px;
 }
 
-button{
-    -moz-border-radius: 8px;
--webkit-border-radius: 8px;
-border-radius: 8px;
+button {
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
 }

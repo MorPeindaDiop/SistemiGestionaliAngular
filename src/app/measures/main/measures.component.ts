@@ -15,7 +15,7 @@ export class MeasuresComponent implements OnInit {
 
   dtTrigger: Subject<any> = new Subject();
   dtOptions: DataTables.Settings = {};
-  
+
   constructor(private router: Router, private store: Store, private measureService: MeasuresService) {
     this.measureService.retrieveAllMeasures();
   }
@@ -25,7 +25,7 @@ export class MeasuresComponent implements OnInit {
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
-      lengthMenu : [5, 10, 25],
+      lengthMenu: [5, 10, 25],
       processing: true
     };
   }
@@ -40,7 +40,7 @@ export class MeasuresComponent implements OnInit {
   }
 
   goToDetail(codMeasure: String) {
-    this.router.navigateByUrl("/measures/detail/"+codMeasure)
+    this.router.navigateByUrl("/measures/detail/" + codMeasure)
   }
 
 }

@@ -1,38 +1,59 @@
 div {
-    padding: 0pc;
-    width: 100%;
-  }
-  
-  img {
-    margin-left: 5mm;
-  }
-  
-  footer .container {
-    position: relative;
-  }
-  
-  .container {
-    margin: 0 auto;
-  }
-  
-  .titolo {
-    margin-top: 3%;
-    text-align: center;
-  }
-  a{
-    margin: 0 auto;
-  }
- li{
-   list-style-type: none;
- }
- .navbar{
-   border: none;
-   box-shadow: inset 10px 10px 5px #dedede;
- }
- .prova{
-   padding-bottom: 2%;
- }
- 
+  padding: 0pc;
+  width: 100%;
+}
 
- 
-  
+img {
+  margin-left: 5mm;
+}
+
+footer .container {
+  position: relative;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+.titolo {
+  margin-top: 3%;
+  text-align: center;
+}
+
+a {
+  margin: 0 auto;
+}
+
+li {
+  list-style-type: none;
+}
+
+.navbar {
+  border: none;
+  box-shadow: inset 10px 10px 5px #dedede;
+}
+
+.prova {
+  padding-bottom: 2%;
+  margin-top: 5%;
+}
+
+.colo {
+  color: #0066cc;
+  margin-left: 635px;
+}
+
+.colo2 {
+  color: #0066cc;
+
+}
+
+.colo3 {
+  background-color: #0066cc;
+  color: white;
+  text-align: center;
+}
+
+.sp {
+  text-align: center;
+}

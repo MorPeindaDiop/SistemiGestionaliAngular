@@ -15,19 +15,19 @@ export class InvoiceComponent implements OnInit {
 
   dtTrigger: Subject<any> = new Subject();
   dtOptions: DataTables.Settings = {};
-  
+
   constructor(private store: Store, private invoiceService: InvoiceService, private router: Router) {
     this.invoiceService.retrieveAllInvoicesMaster();
     this.invoiceService.retrieveAllInvoicesDetail();
     this.invoiceService.retrieveAllInvoicesSummary();
   }
-  
+
   ngOnInit(): void {
     this.invoiceService;
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
-      lengthMenu : [5, 10, 25],
+      lengthMenu: [5, 10, 25],
       processing: true
     };
   }
@@ -35,14 +35,14 @@ export class InvoiceComponent implements OnInit {
   get invoicesMaster(): Observable<InvoiceMaster[]> {
     return this.store.pipe(select(selectInvoicesMaster));
   }
-  
+
   delete(codInvoice: number) {
     console.log('delete')
     this.invoiceService.deleteInvoice(codInvoice);
   }
 
   goToDetail(codInvoice: number) {
-    this.router.navigateByUrl("/invoices/detail/"+codInvoice)
+    this.router.navigateByUrl("/invoices/detail/" + codInvoice)
   }
 
 }
