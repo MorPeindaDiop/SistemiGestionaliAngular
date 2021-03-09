@@ -1,6 +1,4 @@
-<br>
-<br>
-<br>
+
 <div class="corpo">
     <h1 class="colo">Fattura Master</h1>
     <button routerLink="create" type="button" class="btn btn-primary colo2">
@@ -31,10 +29,10 @@
                 <td>{{ invoiceMaster.date }} </td>
                 <td class=" sp"><button (click)="goToDetail(invoiceMaster.codInvoice)" type="button"
                         class="btn btn-primary">
-                        <font color="white">Edit</font>
+                        <font color="white">Modifica</font>
                     </button></td>
                 <td class=" sp"><button (click)="delete(invoiceMaster.codInvoice)" type="button"
-                        class="btn btn-danger ">Delete</button></td>
+                        class="btn btn-danger ">Cancella</button></td>
             </tr>
         </tbody>
         <!-- <td>{{ item.type == "vf" ? question.correctAnswerBoolean : question.correctAnswerText }}</td>
