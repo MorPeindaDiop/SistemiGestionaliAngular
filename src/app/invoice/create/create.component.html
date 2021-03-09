@@ -1,26 +1,25 @@
 <br>
 <br>
-<br>
 <div class="corpo">
-    <h1>Crea Fattura</h1>
-    &nbsp;&nbsp;<button type="button" (click)="save(); deleteProvisionalCalculations()" class="btn btn-primary">
+    <button type="button" (click)="save(); deleteProvisionalCalculations()" class="btn btn-primary" style="float: right;">
         <font color="white">SAVE</font>
-    </button>&nbsp;&nbsp;&nbsp;&nbsp;
-    <button type="button" (click)="deleteProvisionalCalculations()" class="btn btn-danger ">ANNULLA</button>
-
+    </button>
+    <button type="button" (click)="deleteProvisionalCalculations()" class="btn btn-danger " style="float: right;">ANNULLA</button>
+    
+    <h2>Nuova Fattura</h2>
 
     <div class="grid-container">
         <div class="master">
             <form [formGroup]="invoiceMasterForm">
                 <div>
-                    <!-- <label><b>Type:</b></label> -->
-                    <label>Numero Fattura:</label> <input placeholder="Numero fattura" formControlName="invoiceNumber">
-                </div>
-                <div>
-                    <label>Cliente:</label>
+                    <!-- <label for="inp" class="inp">
+                        <input type="text" id="inp" placeholder="&nbsp;" [value]="clientSelected.businessName">
+                        <span class="label">Cliente</span>
+                        <span class="focus-bg"></span>
+                    </label> -->
 
                     <button class="btn btn-outline-primary mb-2 mr-2" (click)="openVerticallyCentered(content)">Seleziona</button>
-                    <ng-template #content let-modal>
+                    <ng-template #content let-modal  style="max-width: none; margin: none;">
                         <div class="modal-header">
                           <h4 class="modal-title">Clienti</h4>
                           <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -67,16 +66,25 @@
                             </tbody>
                         </table>
                         </div>
-                        <!-- <div class="modal-footer">
-                          <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
-                        </div> -->
                     </ng-template>
-                    <p *ngIf="clientSelected != null">{{ clientSelected.businessName }}</p>
+
+                    <label>Cliente: {{ clientSelected != null ? clientSelected.businessName : ""}}</label>
+
+                    <!--  -->
                     
                       <!-- <select formControlName="client">
                         <option *ngFor="let client of clients | async" value="{{client.codClient}}">
                             {{client.businessName}}</option>
                     </select> -->
+                </div>
+                <div>
+                    <!-- <label><b>Type:</b></label> -->
+                    <!-- <label>Numero Fattura:</label> <input placeholder="Numero fattura" formControlName="invoiceNumber"> -->
+                    <label for="inp" class="inp">
+                        <input type="text" id="inp" placeholder="&nbsp;" formControlName="invoiceNumber">
+                        <span class="label">Numero Fattura</span>
+                        <span class="focus-bg"></span>
+                    </label>
                 </div>
                 <div>
                     <!-- <label><b>Type:</b></label> -->

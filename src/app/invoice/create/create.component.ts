@@ -47,7 +47,7 @@ export class CreateComponent implements OnInit, OnChanges {
     
     this.invoiceMasterForm = this.fb.group({
       invoiceNumber: ['', Validators.required],
-      client: [this.clientSelected != null ? this.clientSelected.codClient: null , Validators.required],
+      client: ['', Validators.required],
       payment: ['', Validators.required],
       orderNumber: ['', Validators.required],
       date: [new Date(), Validators.required]
@@ -108,21 +108,20 @@ export class CreateComponent implements OnInit, OnChanges {
     this.invoiceSummaryForm.valueChanges.subscribe(val => {
       console.log("prova")
       console.log(val)
-      if (this.tailDiscount != val.tailDiscount && val.tailDiscount != 0) {
+      console.log(val.tailDiscount.changes)
+      if (val.tailDiscount.changes /*!= this.tailDiscount && val.tailDiscount != 0*/) {
 
         this.tailDiscount = val.tailDiscount
         console.log(this.tailDiscount)
 
         //invoiceMaster
-        let invoiceMaster: InvoiceMaster = {
-          ...this.invoiceMasterForm.value
-        }
+        // let invoiceMaster: InvoiceMaster = {
+        //   ...this.invoiceMasterForm.value
+        // }
 
         //invoiceDetailList
         this.provisionalInvoiceDetailList.subscribe(provisionalInvoiceDetailList => {
-          for (let invoiceDetail of provisionalInvoiceDetailList) {
-            this.listToSave.push(invoiceDetail)
-          }
+          this.listToSave = provisionalInvoiceDetailList
         })
 
         //invoiceSummary
@@ -132,7 +131,7 @@ export class CreateComponent implements OnInit, OnChanges {
 
         //invoice
         let invoice: Invoice = {
-          invoiceMaster: invoiceMaster,
+          invoiceMaster: null,
           invoiceDetailList: this.listToSave,
           invoiceSummary: invoiceSummary
         }
@@ -155,12 +154,12 @@ export class CreateComponent implements OnInit, OnChanges {
     this.invoiceService.calculateProvisionalInvoiceDetail(invoiceDetail)
     this.invoiceDetailForm.reset();
 
-    await this.delay(500);
+    await this.delay(200);
     this.calculateProvisionalInvoiceSummary();
   }
 
   async calculateProvisionalInvoiceSummary() {
-    await this.delay(500);
+    await this.delay(200);
     this.provisionalInvoiceDetailList.subscribe(provisionalInvoiceDetailList => {
       this.listToSave = [];
       for (let invoiceDetail of provisionalInvoiceDetailList) {
@@ -169,7 +168,7 @@ export class CreateComponent implements OnInit, OnChanges {
       return this.listToSave
     })
     this.invoiceService.calculateProvisionalInvoiceSummary(this.listToSave)
-    await this.delay(500);
+    await this.delay(200);
     this.compileSummaryForm();
   }
 
