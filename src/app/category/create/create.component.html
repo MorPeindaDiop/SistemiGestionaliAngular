@@ -1,7 +1,7 @@
 <div class="body">
   <div class="form-style-9">
     <form [formGroup]="categoryForm" (ngSubmit)="save()">
-      <h1>CREATE CATEGORY</h1>
+      <h1 class="colo">Crea Categoria</h1>
       <ul>
         <li>
           <label for="inp" class="inp">
@@ -22,11 +22,10 @@
             <span class="focus-bg"></span>
           </label>
         </li>
-        <li>
-          <input type="submit" value="SALVA" />
-          &nbsp;&nbsp;
-          <input type="button" routerLink="/categories" value="ANNULLA">
-        </li>
+     
+        <input class="btn btn-primary" type="submit" value="SALVA" />
+        &nbsp;&nbsp;
+        <input class="btn btn-danger" type="button" routerLink="/categories" value="ANNULLA">
       </ul>
     </form>
   </div>

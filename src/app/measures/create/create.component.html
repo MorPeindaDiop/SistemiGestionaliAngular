@@ -1,6 +1,6 @@
 <div class="form-style-9">
   <form [formGroup]="measureForm" (ngSubmit)="save()">
-    <h1>CREATE MEASURE</h1>
+    <h1 class="colo">Crea Misura</h1>
     <ul>
       <li>
         <label for="inp" class="inp">
@@ -28,11 +28,10 @@
           <span class="focus-bg"></span>
         </label>
       </li>
-      <li>
-        <input type="submit" value="SALVA" />
+      <input class="btn btn-primary" type="submit" value="SALVA" />
         &nbsp;&nbsp;
-        <input type="button" routerLink="/measures" value="ANNULLA">
-      </li>
+        <input class="btn btn-danger" type="button" routerLink="/measures" value="ANNULLA">
+      
     </ul>
   </form>
 </div>

@@ -1,6 +1,6 @@
 <div class="form-style-9">
   <form [formGroup]="vatForm" (ngSubmit)="save()">
-    <h1>CREATE VAT</h1>
+    <h1 class="colo">Crea IVA</h1>
     <ul>
       <li>
         <label for="inp" class="inp">
@@ -21,11 +21,10 @@
           <span class="focus-bg"></span>
         </label>
       </li>
-      <li>
-        <input type="submit" value="SALVA" />
+      <input class="btn btn-primary" type="submit" value="SALVA" />
         &nbsp;&nbsp;
-        <input type="button" routerLink="/vat" value="ANNULLA">
-      </li>
+        <input class="btn btn-danger" type="button" routerLink="/vat" value="ANNULLA">
+      
     </ul>
   </form>
 </div>
