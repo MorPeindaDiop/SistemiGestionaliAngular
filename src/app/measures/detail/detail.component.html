@@ -1,17 +1,17 @@
 <div class="form-style-9">
   <form [formGroup]="measureForm" (ngSubmit)="save()">
-  <h1>EDIT MEASURE</h1>
-  <label><b>Code unite of measure: {{ measure.codMeasure }}</b></label>
-  <ul>
-  <li>
+    <h1>EDIT MEASURE</h1>
+    <label><b>Code unite of measure: {{ measure.codMeasure }}</b></label>
+    <ul>
+      <li>
 
-      <label for="inp" class="inp">
+        <label for="inp" class="inp">
           <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="description">
           <span class="label">description</span>
           <span class="focus-bg"></span>
         </label>
         &nbsp;&nbsp;
-      <label for="inp" class="inp">
+        <label for="inp" class="inp">
           <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="symbol">
           <span class="label">symbol</span>
           <span class="focus-bg"></span>
@@ -22,12 +22,12 @@
           <span class="label">note</span>
           <span class="focus-bg"></span>
         </label>
-   </li>
- 
-  <li>
-  <input type="submit" value="SALVA"/>&nbsp;&nbsp;
-  <input type="button" routerLink="/measures" value="ANNULLA">
-  </li>
-  </ul>
+      </li>
+
+      <li>
+        <input type="submit" value="SALVA" />&nbsp;&nbsp;
+        <input type="button" routerLink="/measures" value="ANNULLA">
+      </li>
+    </ul>
   </form>
-  </div>
+</div>

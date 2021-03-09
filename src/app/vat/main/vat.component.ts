@@ -15,7 +15,7 @@ export class VatComponent implements OnInit {
 
   dtTrigger: Subject<any> = new Subject();
   dtOptions: DataTables.Settings = {};
-  
+
   constructor(private router: Router, private store: Store, private vatService: VatsService) {
     console.log('costruttore vat')
     this.vatService.retrieveAllVat();
@@ -26,7 +26,7 @@ export class VatComponent implements OnInit {
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
-      lengthMenu : [5, 10, 25],
+      lengthMenu: [5, 10, 25],
       processing: true
     };
   }
@@ -41,6 +41,6 @@ export class VatComponent implements OnInit {
   }
 
   goToDetail(codVat: String) {
-    this.router.navigateByUrl("/vat/detail/"+codVat)
+    this.router.navigateByUrl("/vat/detail/" + codVat)
   }
 }

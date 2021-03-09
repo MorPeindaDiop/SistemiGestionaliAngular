@@ -20,18 +20,18 @@ export class DetailComponent implements OnInit {
   constructor(private store: Store, private fb: FormBuilder, private itemsService: ItemsService, private router: Router, private activatedRoute: ActivatedRoute) {
 
     this.itemForm = this.fb.group({
-        codItem: ['', Validators.required],
-        description: ['', Validators.required],
-        price: ['', Validators.required],
-        measure: ['', Validators.required],
-        type: ['', Validators.required],
-        category: ['', Validators.required],
-        discount: ['', Validators.required],
-        vat: ['', Validators.required]
-      }
+      codItem: ['', Validators.required],
+      description: ['', Validators.required],
+      price: ['', Validators.required],
+      measure: ['', Validators.required],
+      type: ['', Validators.required],
+      category: ['', Validators.required],
+      discount: ['', Validators.required],
+      vat: ['', Validators.required]
+    }
     )
   }
-        
+
   ngOnInit(): void {
     this.store.pipe(select(selectItems)).subscribe(items => {
       for (let item of items) {

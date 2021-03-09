@@ -1,68 +1,68 @@
 <div class="form-style-9">
     <form [formGroup]="itemForm" (ngSubmit)="save()">
-    <h1>CREATE ITEM</h1>
-    <ul>
-    <li>
-        <label for="inp" class="inp">
-            <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="codItem">
-            <span class="label">itemCod</span>
-            <span class="focus-bg"></span>
-          </label>
-          &nbsp;&nbsp;
-        <label for="inp" class="inp">
-            <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="description">
-            <span class="label">description</span>
-            <span class="focus-bg"></span>
-          </label>
-          &nbsp;&nbsp;
-        <label for="inp" class="inp">
-            <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="type">
-            <span class="label">type</span>
-            <span class="focus-bg"></span>
-          </label>
-     </li>
-     <li>
-        <label for="inp" class="inp">
-            <select formControlName="category" class="form-control">
-                <option value="" disabled selected>Category</option>
-                <option *ngFor="let category of categories | async" value="{{category.codCategory}}">
-                    {{category.description}}</option>
-            </select>
-        </label>
-        &nbsp;&nbsp;
-        <label for="inp" class="inp">
-            <select formControlName="measure" class="form-control">
-                <option value="" disabled selected>Measures</option>
-                <option *ngFor="let measure of measures | async" value="{{measure.codMeasure}}">
-                    {{measure.description}}</option>
-            </select>
-        </label>
-        &nbsp;&nbsp;
-        <label for="inp" class="inp">
-            <select formControlName="vat" class="form-control" >
-                <option value="" disabled selected>Vats</option>
-                <option *ngFor="let vat of vat | async" value="{{vat.codVat}}">
-                    {{vat.vat}}</option>
-            </select>
-        </label>
-    </li>
-    <li>
-        <label for="inp" class="inp">
-            <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="price">
-            <span class="label">price</span>
-            <span class="focus-bg"></span>
-          </label>
-          &nbsp;&nbsp;
-        <label for="inp" class="inp">
-            <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="discount">
-            <span class="label">discount</span>
-            <span class="focus-bg"></span>
-          </label>
-    </li>
-    <li>
-    <input type="submit" value="SALVA"/>&nbsp;&nbsp;
-    <input type="button" routerLink="/items" value="ANNULLA">
-    </li>
-    </ul>
+        <h1>CREATE ITEM</h1>
+        <ul>
+            <li>
+                <label for="inp" class="inp">
+                    <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="codItem">
+                    <span class="label">itemCod</span>
+                    <span class="focus-bg"></span>
+                </label>
+                &nbsp;&nbsp;
+                <label for="inp" class="inp">
+                    <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="description">
+                    <span class="label">description</span>
+                    <span class="focus-bg"></span>
+                </label>
+                &nbsp;&nbsp;
+                <label for="inp" class="inp">
+                    <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="type">
+                    <span class="label">type</span>
+                    <span class="focus-bg"></span>
+                </label>
+            </li>
+            <li>
+                <label for="inp" class="inp">
+                    <select formControlName="category" class="form-control">
+                        <option value="" disabled selected>Category</option>
+                        <option *ngFor="let category of categories | async" value="{{category.codCategory}}">
+                            {{category.description}}</option>
+                    </select>
+                </label>
+                &nbsp;&nbsp;
+                <label for="inp" class="inp">
+                    <select formControlName="measure" class="form-control">
+                        <option value="" disabled selected>Measures</option>
+                        <option *ngFor="let measure of measures | async" value="{{measure.codMeasure}}">
+                            {{measure.description}}</option>
+                    </select>
+                </label>
+                &nbsp;&nbsp;
+                <label for="inp" class="inp">
+                    <select formControlName="vat" class="form-control">
+                        <option value="" disabled selected>Vats</option>
+                        <option *ngFor="let vat of vat | async" value="{{vat.codVat}}">
+                            {{vat.vat}}</option>
+                    </select>
+                </label>
+            </li>
+            <li>
+                <label for="inp" class="inp">
+                    <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="price">
+                    <span class="label">price</span>
+                    <span class="focus-bg"></span>
+                </label>
+                &nbsp;&nbsp;
+                <label for="inp" class="inp">
+                    <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="discount">
+                    <span class="label">discount</span>
+                    <span class="focus-bg"></span>
+                </label>
+            </li>
+            <li>
+                <input type="submit" value="SALVA" />&nbsp;&nbsp;
+                <input type="button" routerLink="/items" value="ANNULLA">
+            </li>
+        </ul>
     </form>
-    </div>
+</div>

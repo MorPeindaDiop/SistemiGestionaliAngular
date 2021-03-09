@@ -12,21 +12,21 @@ import { ClientsService } from '../services/clients.service';
   styleUrls: ['./cliente.component.scss']
 })
 export class ClienteComponent implements OnInit {
-  
+
   dtTrigger: Subject<any> = new Subject();
   dtOptions: DataTables.Settings = {};
-  
+
   constructor(private store: Store, private clientsService: ClientsService, private router: Router) {
     console.log('costruttore items')
     this.clientsService.retrieveAllClients();
   }
-  
+
   ngOnInit(): void {
     this.clientsService;
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
-      lengthMenu : [5, 10, 25],
+      lengthMenu: [5, 10, 25],
       processing: true
     };
   }
@@ -34,14 +34,14 @@ export class ClienteComponent implements OnInit {
   get clients(): Observable<Client[]> {
     return this.store.pipe(select(selectClients));
   }
-  
+
   delete(client: Client) {
     console.log('delete')
     this.clientsService.deleteClient(client);
   }
 
   goToDetail(codClient: String) {
-    this.router.navigateByUrl("/clients/detail/"+codClient)
+    this.router.navigateByUrl("/clients/detail/" + codClient)
   }
 
 }

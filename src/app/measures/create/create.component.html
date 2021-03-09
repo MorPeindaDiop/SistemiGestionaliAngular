@@ -1,38 +1,38 @@
 <div class="form-style-9">
   <form [formGroup]="measureForm" (ngSubmit)="save()">
-      <h1>CREATE MEASURE</h1>
-      <ul>
+    <h1>CREATE MEASURE</h1>
+    <ul>
       <li>
-          <label for="inp" class="inp">
-              <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="codMeasure">
-              <span class="label">codMeasure</span>
-              <span class="focus-bg"></span>
-            </label>
-            &nbsp;&nbsp;
-          <label for="inp" class="inp">
-              <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="description">
-              <span class="label">description</span>
-              <span class="focus-bg"></span>
-            </label>
-       </li>
-       <li>
-          <label for="inp" class="inp">
-              <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="symbol">
-              <span class="label">symbol</span>
-              <span class="focus-bg"></span>
-            </label>
-            &nbsp;&nbsp;
-          <label for="inp" class="inp">
-              <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="note">
-              <span class="label">note</span>
-              <span class="focus-bg"></span>
-            </label>
+        <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="codMeasure">
+          <span class="label">codMeasure</span>
+          <span class="focus-bg"></span>
+        </label>
+        &nbsp;&nbsp;
+        <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="description">
+          <span class="label">description</span>
+          <span class="focus-bg"></span>
+        </label>
       </li>
       <li>
-      <input type="submit" value="SALVA"/>
-       &nbsp;&nbsp;
-      <input type="button" routerLink="/measures" value="ANNULLA">
+        <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="symbol">
+          <span class="label">symbol</span>
+          <span class="focus-bg"></span>
+        </label>
+        &nbsp;&nbsp;
+        <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="note">
+          <span class="label">note</span>
+          <span class="focus-bg"></span>
+        </label>
       </li>
-   </ul>
+      <li>
+        <input type="submit" value="SALVA" />
+        &nbsp;&nbsp;
+        <input type="button" routerLink="/measures" value="ANNULLA">
+      </li>
+    </ul>
   </form>
-  </div>
+</div>

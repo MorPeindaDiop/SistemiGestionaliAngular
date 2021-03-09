@@ -68,7 +68,7 @@ export class DetailComponent implements OnInit {
     })
 
     this.invoiceService.editInvoiceDetailList(this.invoiceDetailList)
-    
+
     this.invoiceMasterForm = this.fb.group({
       codInvoice: ['', Validators.required],
       invoiceNumber: ['', Validators.required],
@@ -94,7 +94,7 @@ export class DetailComponent implements OnInit {
       totalVat: ['', Validators.required],
       totalLine: ['', Validators.required],
     })
-    
+
     this.invoiceSummaryForm = this.fb.group({
       codInvoice: ['', Validators.required],
       totalAmount: ['', Validators.required],
@@ -112,15 +112,15 @@ export class DetailComponent implements OnInit {
   get clients(): Observable<Client[]> {
     return this.store.pipe(select(selectClients));
   }
-  
+
   get items(): Observable<Item[]> {
     return this.store.pipe(select(selectItems));
   }
-  
+
   get provisionalInvoiceDetailList(): Observable<InvoiceDetail[]> {
     return this.store.pipe(select(selectProvisionalInvoicesDetail));
   }
-  
+
   ngOnInit(): void {
     this.invoiceMasterForm.patchValue(
       this.invoiceMaster
@@ -133,11 +133,11 @@ export class DetailComponent implements OnInit {
     console.log("...this.invoiceMasterForm.value on init");
     console.log(this.invoiceMasterForm.value);
   }
-  
+
   delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
-    
+
   async addProvisionalInvoiceDetail() {
     let invoiceDetail: InvoiceDetail = {
       ...this.invoiceDetailForm.value
@@ -148,7 +148,7 @@ export class DetailComponent implements OnInit {
     await this.delay(500);
     this.calculateProvisionalInvoiceSummary();
   }
-  
+
   async calculateProvisionalInvoiceSummary() {
     await this.delay(500);
     this.provisionalInvoiceDetailList.subscribe(provisionalInvoiceDetailList => {
@@ -165,7 +165,7 @@ export class DetailComponent implements OnInit {
 
   async compileSummaryForm() {
     console.log("ok")
-    this.store.pipe(select(selectProvisionalInvoiceSummary)).subscribe(invoiceSummary => {return this.invoiceSummary = invoiceSummary});
+    this.store.pipe(select(selectProvisionalInvoiceSummary)).subscribe(invoiceSummary => { return this.invoiceSummary = invoiceSummary });
     this.invoiceSummaryForm.patchValue(
       this.invoiceSummary
     )
@@ -213,7 +213,7 @@ export class DetailComponent implements OnInit {
   deletePrevisionalInvoiceDetail(invoiceDetail: InvoiceDetail) {
     this.invoiceService.deleteProvisionalInvoiceDetail(invoiceDetail);
   }
-  
+
   deleteProvisionalCalculations() {
     this.invoiceService.deleteProvisionalCalculations();
     this.router.navigateByUrl('/invoices');

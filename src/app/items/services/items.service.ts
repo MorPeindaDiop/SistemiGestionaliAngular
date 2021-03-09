@@ -29,12 +29,12 @@ export class ItemsService {
 
   createItem(item: Item) {
     console.log("sono dentro alla chiamata create")
-    return this.store.dispatch(createItem({item}))
+    return this.store.dispatch(createItem({ item }))
   }
 
   deleteItem(item: Item) {
     console.log("sono dentro alla chiamata delete")
-    return this.store.dispatch(deleteItem({item}))
+    return this.store.dispatch(deleteItem({ item }))
   }
 
 }

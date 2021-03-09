@@ -29,37 +29,37 @@ export class InvoiceService {
   retrieveAllInvoicesSummary() {
     return this.store.dispatch(retrieveAllInvoicesSummary())
   }
-  
+
   //calcoli
   calculateProvisionalInvoiceDetail(invoiceDetail: InvoiceDetail) {
-    return this.store.dispatch(calculateProvisionalInvoiceDetail({invoiceDetail}))
+    return this.store.dispatch(calculateProvisionalInvoiceDetail({ invoiceDetail }))
   }
 
   calculateProvisionalInvoiceSummary(invoiceDetailList: InvoiceDetail[]) {
-    return this.store.dispatch(calculateProvisionalInvoiceSummary({invoiceDetailList}))
+    return this.store.dispatch(calculateProvisionalInvoiceSummary({ invoiceDetailList }))
   }
 
   calculateProvisionalTailDiscount(invoice: Invoice) {
-    return this.store.dispatch(calculateProvisionalTailDiscount({invoice}))
+    return this.store.dispatch(calculateProvisionalTailDiscount({ invoice }))
   }
 
   //edit
   editInvoiceDetailList(invoiceDetailList: InvoiceDetail[]) {
-    return this.store.dispatch(editInvoiceDetailList({invoiceDetailList}))
+    return this.store.dispatch(editInvoiceDetailList({ invoiceDetailList }))
   }
 
   //create
   createInvoice(invoice: Invoice) {
-    return this.store.dispatch(createInvoice({invoice}))
+    return this.store.dispatch(createInvoice({ invoice }))
   }
 
   //delete
   deleteInvoice(codInvoice: number) {
-    return this.store.dispatch(deleteInvoice({codInvoice}))
+    return this.store.dispatch(deleteInvoice({ codInvoice }))
   }
 
   deleteProvisionalInvoiceDetail(invoiceDetail: InvoiceDetail) {
-    return this.store.dispatch(deleteProvisionalInvoiceDetail({invoiceDetail}))
+    return this.store.dispatch(deleteProvisionalInvoiceDetail({ invoiceDetail }))
   }
 
   deleteProvisionalCalculations() {
@@ -74,5 +74,5 @@ export class InvoiceService {
   retrieveAllItems() {
     return this.store.dispatch(retrieveAllItems())
   }
-  
+
 }

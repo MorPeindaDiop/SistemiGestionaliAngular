@@ -13,11 +13,11 @@ export class CategoriesService {
   }
 
   createCategory(category: Category) {
-    return this.store.dispatch(createCategory({category}))
+    return this.store.dispatch(createCategory({ category }))
   }
 
   deleteCategory(category: Category) {
-    return this.store.dispatch(deleteCategory({category}))
+    return this.store.dispatch(deleteCategory({ category }))
   }
 
 }
