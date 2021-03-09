@@ -17,7 +17,6 @@ export class ClienteComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   
   constructor(private store: Store, private clientsService: ClientsService, private router: Router) {
-    console.log('costruttore items')
     this.clientsService.retrieveAllClients();
   }
   

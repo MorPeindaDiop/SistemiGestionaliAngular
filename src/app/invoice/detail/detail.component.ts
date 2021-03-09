@@ -37,6 +37,10 @@ export class DetailComponent implements OnInit {
     this.invoiceService.retrieveAllClients();
     this.invoiceService.retrieveAllItems();
 
+    this.invoiceService.retrieveAllInvoicesMaster();
+    this.invoiceService.retrieveAllInvoicesDetail();
+    this.invoiceService.retrieveAllInvoicesSummary();
+
     this.store.pipe(select(selectInvoicesMaster)).subscribe(invoicesMaster => {
       for (let invoiceMaster of invoicesMaster) {
         if (invoiceMaster.codInvoice === Number(this.activatedRoute.snapshot.paramMap.get('codInvoice'))) {

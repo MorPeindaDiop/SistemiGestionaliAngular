@@ -14,6 +14,9 @@ export class CreateComponent implements OnInit {
   categoryForm: FormGroup;
 
   constructor(private fb: FormBuilder, private categoriesService: CategoriesService, private router: Router) {
+    
+    this.categoriesService.retrieveAllCategories();
+    
     this.categoryForm = this.fb.group({
       codCategory: ['', Validators.required],
       description: ['', Validators.required],

@@ -17,7 +17,6 @@ export class VatComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   
   constructor(private router: Router, private store: Store, private vatService: VatsService) {
-    console.log('costruttore vat')
     this.vatService.retrieveAllVat();
   }
 
@@ -36,7 +35,6 @@ export class VatComponent implements OnInit {
   }
 
   delete(vat: Vat) {
-    console.log('delete')
     this.vatService.deleteVat(vat)
   }
 

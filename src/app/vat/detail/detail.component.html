@@ -1,7 +1,7 @@
 <div class="form-style-9">
   <form [formGroup]="vatForm" (ngSubmit)="save()">
   <h1>EDIT VAT</h1>
-  <label><b>Code vat: {{ vat.codVat }}</b></label>
+  <label><b>Code vat: {{ vatForm.value.codVat }}</b></label>
   <ul>
   <li>
 

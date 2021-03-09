@@ -15,8 +15,6 @@ export class DetailComponent implements OnInit {
 
   categoryForm: FormGroup;
 
-  category: Category;
-
   constructor(private store: Store, private activatedRoute: ActivatedRoute, private fb: FormBuilder, private categoriesService: CategoriesService, private router: Router) {
     this.categoryForm = this.fb.group({
       codCategory: ['', Validators.required],
@@ -26,18 +24,18 @@ export class DetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.categoriesService.retrieveAllCategories();
+
     this.store.pipe(select(selectCategories)).subscribe(categories => {
       for (let category of categories) {
         if (category.codCategory === this.activatedRoute.snapshot.paramMap.get('codCategory')) {
-          this.category = category
-          console.log(this.category)
+          this.categoryForm.patchValue(
+            category
+          )
         }
       }
     })
-
-    this.categoryForm.patchValue(
-      this.category
-    )
   }
 
   save() {

@@ -15,8 +15,6 @@ export class DetailComponent implements OnInit {
 
   clienteForm: FormGroup;
 
-  client: Client;
-
   constructor(private store: Store, private fb: FormBuilder, private clientsService: ClientsService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.clienteForm = this.fb.group({
       codClient: ['', Validators.required],
@@ -34,18 +32,18 @@ export class DetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.clientsService.retrieveAllClients();
+
     this.store.pipe(select(selectClients)).subscribe(clients => {
       for (let client of clients) {
         if (client.codClient === this.activatedRoute.snapshot.paramMap.get('codClient')) {
-          this.client = client
-          console.log(this.client)
+          this.clienteForm.patchValue(
+            client
+          )
         }
       }
     })
-
-    this.clienteForm.patchValue(
-      this.client
-    )
   }
 
   save() {

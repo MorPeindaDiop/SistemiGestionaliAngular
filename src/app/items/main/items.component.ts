@@ -17,7 +17,6 @@ export class ItemsComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   
   constructor(private store: Store, private itemsService: ItemsService, private router: Router) {
-    console.log('costruttore items')
     this.itemsService.retrieveAllItems();
   }
   
@@ -36,7 +35,6 @@ export class ItemsComponent implements OnInit {
   }
   
   delete(item: Item) {
-    console.log('delete')
     this.itemsService.deleteItem(item);
   }
 

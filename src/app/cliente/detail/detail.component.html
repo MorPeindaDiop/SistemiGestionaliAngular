@@ -1,7 +1,7 @@
 <div class="form-style-9">
   <form [formGroup]="clienteForm" (ngSubmit)="save()">
   <h1>EDIT CLIENT</h1>
-  <label><b>Codice Cliente: {{ client.codClient }}</b></label>
+  <label><b>Codice Cliente: {{ clienteForm.value.codClient }}</b></label>
   <ul>
   <li>
       <label for="inp" class="inp">

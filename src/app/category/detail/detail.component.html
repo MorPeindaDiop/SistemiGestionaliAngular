@@ -1,7 +1,7 @@
 <div class="form-style-9">
     <form [formGroup]="categoryForm" (ngSubmit)="save()">
     <h1>EDIT CATEGORY</h1>
-    <label><b>Code category: {{ category.codCategory }}</b></label>
+    <label><b>Code category: {{ categoryForm.value.codCategory }}</b></label>
     <ul>
     <li>
 

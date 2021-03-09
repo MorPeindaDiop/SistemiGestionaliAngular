@@ -17,7 +17,6 @@ export class MeasuresComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   
   constructor(private router: Router, private store: Store, private measureService: MeasuresService) {
-    console.log('costruttore measure')
     this.measureService.retrieveAllMeasures();
   }
 

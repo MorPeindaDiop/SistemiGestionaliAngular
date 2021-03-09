@@ -11,7 +11,6 @@ import { InvoiceSummary } from 'src/app/core/model/invoice-summary';
 import { Item } from 'src/app/core/model/item';
 import { selectClients } from 'src/app/redux/cliente';
 import { selectProvisionalInvoicesDetail } from 'src/app/redux/invoiceDetail';
-import { selectCurrentInvoiceMaster } from 'src/app/redux/invoiceMaster';
 import { selectProvisionalInvoiceSummary } from 'src/app/redux/invoiceSummary';
 import { selectItems } from 'src/app/redux/item';
 import { InvoiceService } from '../services/invoice.service';
@@ -38,6 +37,10 @@ export class CreateComponent implements OnInit {
     
     this.invoiceService.retrieveAllClients();
     this.invoiceService.retrieveAllItems();
+
+    this.invoiceService.retrieveAllInvoicesMaster();
+    this.invoiceService.retrieveAllInvoicesDetail();
+    this.invoiceService.retrieveAllInvoicesSummary();
     
     this.invoiceMasterForm = this.fb.group({
       invoiceNumber: ['', Validators.required],

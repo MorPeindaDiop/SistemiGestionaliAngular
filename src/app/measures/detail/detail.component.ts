@@ -15,8 +15,6 @@ export class DetailComponent implements OnInit {
 
   measureForm: FormGroup;
 
-  measure: Measure;
-
   constructor(private store: Store, private fb: FormBuilder, private measuresService: MeasuresService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.measureForm = this.fb.group({
       codMeasure: ['', Validators.required],
@@ -27,17 +25,18 @@ export class DetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.measuresService.retrieveAllMeasures();
+
     this.store.pipe(select(selectMeasures)).subscribe(measures => {
       for (let measure of measures) {
         if (measure.codMeasure === this.activatedRoute.snapshot.paramMap.get('codMeasure')) {
-          this.measure = measure
+          this.measureForm.patchValue(
+            measure
+          )
         }
       }
     })
-
-    this.measureForm.patchValue(
-      this.measure
-    )
   }
 
   save() {
