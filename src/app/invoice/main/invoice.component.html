@@ -1,6 +1,6 @@
 
 <div class="corpo">
-    <h1 class="colo">Fattura Master</h1>
+    <h1 class="colo">Fatture</h1>
     <button routerLink="create" type="button" class="btn btn-primary colo2">
         <font color="white">CREA NUOVA FATTURA</font>
     </button><br>
@@ -9,10 +9,9 @@
         style="width: 100%;" dt-columns="dtColumns">
         <thead>
             <tr>
-                <th class="colo3">Codice fattura</th>
                 <th class="colo3">Numero fattura</th>
                 <th class="colo3">Cliente</th>
-                <th class="colo3">Tipo pagamento</th>
+                <th class="colo3">Condizione di pagamento</th>
                 <th class="colo3">Numero ordine</th>
                 <th class="colo3">Data fattura</th>
                 <th class="colo3"></th>
@@ -21,7 +20,6 @@
         </thead>
         <tbody>
             <tr *ngFor="let invoiceMaster of invoicesMaster | async">
-                <td>{{ invoiceMaster.codInvoice }}</td>
                 <td>{{ invoiceMaster.invoiceNumber }}</td>
                 <td>{{ invoiceMaster.client }}</td>
                 <td>{{ invoiceMaster.payment }}</td>
