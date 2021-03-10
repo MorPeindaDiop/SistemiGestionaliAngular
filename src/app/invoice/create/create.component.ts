@@ -10,10 +10,14 @@ import { InvoiceDetail } from 'src/app/core/model/invoice-detail';
 import { InvoiceMaster } from 'src/app/core/model/invoice-master';
 import { InvoiceSummary } from 'src/app/core/model/invoice-summary';
 import { Item } from 'src/app/core/model/item';
+import { Measure } from 'src/app/core/model/measure';
+import { Vat } from 'src/app/core/model/vat';
 import { selectClients } from 'src/app/redux/cliente';
 import { selectProvisionalInvoicesDetail } from 'src/app/redux/invoiceDetail';
 import { selectProvisionalInvoiceSummary } from 'src/app/redux/invoiceSummary';
 import { selectItems } from 'src/app/redux/item';
+import { selectMeasures } from 'src/app/redux/measure';
+import { selectVat } from 'src/app/redux/vat';
 import { InvoiceService } from '../services/invoice.service';
 
 @Component({
