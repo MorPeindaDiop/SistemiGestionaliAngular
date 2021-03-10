@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Category } from 'src/app/core/model/category';
 import { CategoriesService } from '../services/categories.service';
 
@@ -13,15 +14,20 @@ export class CreateComponent implements OnInit {
 
   categoryForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private categoriesService: CategoriesService, private router: Router) {
+  constructor(private fb: FormBuilder, private categoriesService: CategoriesService, private router: Router, private store: Store) {
     
     this.categoriesService.retrieveAllCategories();
+    // this.store.pipe().subscribe();
     
     this.categoryForm = this.fb.group({
       codCategory: ['', Validators.required],
       description: ['', Validators.required],
       note: ['', Validators.required],
-    })
+    }
+    // , {
+    //   validator: for ()if (codCategory )
+    // }
+    )
   }
 
   ngOnInit(): void {

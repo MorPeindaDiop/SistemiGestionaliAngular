@@ -23,6 +23,7 @@ import { CategoriesEffects } from './redux/category/category.effects';
 import { InvoicesMasterEffects } from './redux/invoiceMaster/invoiceMaster.effects';
 import { InvoicesDetailEffects } from './redux/invoiceDetail/invoiceDetail.effects';
 import { InvoicesSummaryEffects } from './redux/invoiceSummary/invoiceSummary.effects';
+import { ModalModule } from 'ngb-modal';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { InvoicesSummaryEffects } from './redux/invoiceSummary/invoiceSummary.ef
       logOnly: environment.production,
     }),
     SharedModule,
-    DataTablesModule
+    DataTablesModule,
+    ModalModule
   ],
   providers: [],
   bootstrap: [AppComponent]
