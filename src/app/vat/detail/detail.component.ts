@@ -15,8 +15,6 @@ export class DetailComponent implements OnInit {
 
   vatForm: FormGroup;
 
-  vat: Vat;
-
   constructor(private store: Store, private fb: FormBuilder, private vatsService: VatsService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.vatForm = this.fb.group({
       codVat: ['', Validators.required],
@@ -26,17 +24,18 @@ export class DetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.vatsService.retrieveAllVat();
+
     this.store.pipe(select(selectVat)).subscribe(vats => {
       for (let vat of vats) {
         if (vat.codVat === this.activatedRoute.snapshot.paramMap.get('codVat')) {
-          this.vat = vat
+          this.vatForm.patchValue(
+            vat
+          )
         }
       }
     })
-
-    this.vatForm.patchValue(
-      this.vat
-    )
   }
 
   save() {

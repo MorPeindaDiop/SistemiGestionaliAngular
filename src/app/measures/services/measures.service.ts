@@ -13,11 +13,11 @@ export class MeasuresService {
   }
 
   createMeasure(measure: Measure) {
-    return this.store.dispatch(createMeasure({measure}))
+    return this.store.dispatch(createMeasure({ measure }))
   }
 
   deleteMeasure(measure: Measure) {
-    return this.store.dispatch(deleteMeasure({measure}))
+    return this.store.dispatch(deleteMeasure({ measure }))
   }
 
 }

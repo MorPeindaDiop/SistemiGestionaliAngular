@@ -1,36 +1,32 @@
 <div class="form-style-9">
-    <form [formGroup]="measureForm" (ngSubmit)="save()">
-    <h1>EDIT MEASURE</h1>
-    <label><b>Code unite of measure: {{ measure.codMeasure }}</b></label>
-    <ul>
-    <li>
+  <form [formGroup]="measureForm" (ngSubmit)="save()">
+  <h1 class="colo">Modifica misura</h1>
+  <label><b>Codice unità di misura: {{ measureForm.value.codMeasure }}</b></label>
+  <ul>
+  <li>
 
         <label for="inp" class="inp">
-            <input type="text" id="inp" placeholder="description" name="field1" formControlName="description">
-            <span class="label">description</span>
-            <span class="focus-bg"></span>
-          </label>
-          &nbsp;&nbsp;
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="description">
+          <span class="label">Descrizione</span>
+          <span class="focus-bg"></span>
+        </label>
+        &nbsp;&nbsp;
         <label for="inp" class="inp">
-            <input type="text" id="inp" placeholder="symbol" name="field1" formControlName="symbol">
-            <span class="label">symbol</span>
-            <span class="focus-bg"></span>
-          </label>
-          &nbsp;&nbsp;
-          <label for="inp" class="inp">
-            <input type="text" id="inp" placeholder="note" name="field1" formControlName="note">
-            <span class="label">note</span>
-            <span class="focus-bg"></span>
-          </label>
-     </li>
-   
-    <li>
-    <input type="submit" value="SALVA"/>&nbsp;&nbsp;
-    <input type="button" routerLink="/measures" value="ANNULLA">
-    </li>
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="symbol">
+          <span class="label">Simbolo</span>
+          <span class="focus-bg"></span>
+        </label>
+        &nbsp;&nbsp;
+        <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="note">
+          <span class="label">Note</span>
+          <span class="focus-bg"></span>
+        </label>
+      </li>
+
+        <input class="btn btn-primary" type="submit" value="SALVA" />&nbsp;&nbsp;
+        <input class="btn btn-danger" type="button" routerLink="/measures" value="ANNULLA">
+     
     </ul>
-    </form>
-    </div>
-
-
-    
+  </form>
+</div>

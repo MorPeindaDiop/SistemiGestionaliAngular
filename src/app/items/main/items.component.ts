@@ -15,18 +15,17 @@ export class ItemsComponent implements OnInit {
 
   dtTrigger: Subject<any> = new Subject();
   dtOptions: DataTables.Settings = {};
-  
+
   constructor(private store: Store, private itemsService: ItemsService, private router: Router) {
-    console.log('costruttore items')
     this.itemsService.retrieveAllItems();
   }
-  
+
   ngOnInit(): void {
     this.itemsService;
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
-      lengthMenu : [5, 10, 25],
+      lengthMenu: [5, 10, 25],
       processing: true
     };
   }
@@ -34,14 +33,13 @@ export class ItemsComponent implements OnInit {
   get items(): Observable<Item[]> {
     return this.store.pipe(select(selectItems));
   }
-  
+
   delete(item: Item) {
-    console.log('delete')
     this.itemsService.deleteItem(item);
   }
 
   goToDetail(codItem: String) {
-    this.router.navigateByUrl("/items/detail/"+codItem)
+    this.router.navigateByUrl("/items/detail/" + codItem)
   }
 
 }

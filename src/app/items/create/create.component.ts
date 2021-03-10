@@ -21,8 +21,8 @@ export class CreateComponent implements OnInit {
 
   itemForm: FormGroup;
 
-  constructor(private fb: FormBuilder,  private itemsService: ItemsService, private router: Router, private store: Store) {
- 
+  constructor(private fb: FormBuilder, private itemsService: ItemsService, private router: Router, private store: Store) {
+
     this.itemsService.retrieveAllCategories();
     this.itemsService.retrieveAllMeasures();
     this.itemsService.retrieveAllVat();

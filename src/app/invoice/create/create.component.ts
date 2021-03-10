@@ -13,7 +13,6 @@ import { Measure } from 'src/app/core/model/measure';
 import { Vat } from 'src/app/core/model/vat';
 import { selectClients } from 'src/app/redux/cliente';
 import { selectProvisionalInvoicesDetail } from 'src/app/redux/invoiceDetail';
-import { selectCurrentInvoiceMaster } from 'src/app/redux/invoiceMaster';
 import { selectProvisionalInvoiceSummary } from 'src/app/redux/invoiceSummary';
 import { selectItems } from 'src/app/redux/item';
 import { selectMeasures } from 'src/app/redux/measure';
@@ -39,9 +38,13 @@ export class CreateComponent implements OnInit, OnChanges {
   tailDiscount: number = 0;
 
   constructor(private fb: FormBuilder, private invoiceService: InvoiceService, private router: Router, private store: Store) {
-    
+
     this.invoiceService.retrieveAllClients();
     this.invoiceService.retrieveAllItems();
+
+    this.invoiceService.retrieveAllInvoicesMaster();
+    this.invoiceService.retrieveAllInvoicesDetail();
+    this.invoiceService.retrieveAllInvoicesSummary();
     
     this.invoiceMasterForm = this.fb.group({
       invoiceNumber: ['', Validators.required],
@@ -66,7 +69,7 @@ export class CreateComponent implements OnInit, OnChanges {
       totalVat: ['', Validators.required],
       totalLine: ['', Validators.required],
     })
-    
+
     this.invoiceSummaryForm = this.fb.group({
       totalAmount: ['', Validators.required],
       totalProducts: ['', Validators.required],
@@ -78,7 +81,7 @@ export class CreateComponent implements OnInit, OnChanges {
       totalVat: ['', Validators.required],
       taxable: ['', Validators.required],
     })
-    
+
   }
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes)
@@ -88,11 +91,12 @@ export class CreateComponent implements OnInit, OnChanges {
   get clients(): Observable<Client[]> {
     return this.store.pipe(select(selectClients));
   }
-  
+
   get items(): Observable<Item[]> {
     return this.store.pipe(select(selectItems));
   }
 
+<<<<<<< HEAD
   get vats(): Observable<Vat[]> {
     return this.store.pipe(select(selectVat));
   }
@@ -100,20 +104,22 @@ export class CreateComponent implements OnInit, OnChanges {
     return this.store.pipe(select(selectMeasures));
   }
   
+=======
+>>>>>>> prova
   get provisionalInvoiceDetailList(): Observable<InvoiceDetail[]> {
     return this.store.pipe(select(selectProvisionalInvoicesDetail));
   }
-  
+
   ngOnInit(): void {
     this.onChanges();
   }
-  
+
   onChanges(): void {
     this.invoiceSummaryForm.valueChanges.subscribe(val => {
       console.log("prova")
       console.log(val)
       if (this.tailDiscount != val.tailDiscount && val.tailDiscount != 0) {
-        
+
         this.tailDiscount = val.tailDiscount
         console.log(this.tailDiscount)
 
@@ -121,26 +127,26 @@ export class CreateComponent implements OnInit, OnChanges {
         let invoiceMaster: InvoiceMaster = {
           ...this.invoiceMasterForm.value
         }
-    
+
         //invoiceDetailList
         this.provisionalInvoiceDetailList.subscribe(provisionalInvoiceDetailList => {
           for (let invoiceDetail of provisionalInvoiceDetailList) {
             this.listToSave.push(invoiceDetail)
           }
         })
-    
+
         //invoiceSummary
         let invoiceSummary: InvoiceSummary = {
           ...this.invoiceSummaryForm.value
         }
-    
+
         //invoice
         let invoice: Invoice = {
           invoiceMaster: invoiceMaster,
           invoiceDetailList: this.listToSave,
           invoiceSummary: invoiceSummary
         }
-    
+
         this.invoiceService.calculateProvisionalTailDiscount(invoice);
         this.compileSummaryForm();
       }
@@ -151,7 +157,7 @@ export class CreateComponent implements OnInit, OnChanges {
   delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
-    
+
   async addProvisionalInvoiceDetail() {
     let invoiceDetail: InvoiceDetail = {
       ...this.invoiceDetailForm.value
@@ -162,7 +168,7 @@ export class CreateComponent implements OnInit, OnChanges {
     await this.delay(500);
     this.calculateProvisionalInvoiceSummary();
   }
-  
+
   async calculateProvisionalInvoiceSummary() {
     await this.delay(500);
     this.provisionalInvoiceDetailList.subscribe(provisionalInvoiceDetailList => {
@@ -179,7 +185,7 @@ export class CreateComponent implements OnInit, OnChanges {
 
   async compileSummaryForm() {
     console.log("ok")
-    this.store.pipe(select(selectProvisionalInvoiceSummary)).subscribe(invoiceSummary => {return this.provisionalInvoiceSummary = invoiceSummary});
+    this.store.pipe(select(selectProvisionalInvoiceSummary)).subscribe(invoiceSummary => { return this.provisionalInvoiceSummary = invoiceSummary });
     this.invoiceSummaryForm.patchValue(
       this.provisionalInvoiceSummary
     )
@@ -220,7 +226,7 @@ export class CreateComponent implements OnInit, OnChanges {
   deletePrevisionalInvoiceDetail(invoiceDetail: InvoiceDetail) {
     this.invoiceService.deleteProvisionalInvoiceDetail(invoiceDetail);
   }
-  
+
   deleteProvisionalCalculations() {
     this.invoiceService.deleteProvisionalCalculations();
     this.router.navigateByUrl('/invoices');

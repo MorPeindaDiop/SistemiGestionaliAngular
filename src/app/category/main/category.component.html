@@ -1,37 +1,17 @@
-<br>
-<br>
-<br>
-<head>
-    <style>
-        .colo{
-            color:#0066cc;
-           margin-left:618px;
-        }
-        .colo2{
-            color:#0066cc;
-            
-        }
-        .colo3{
-            background-color:#0066cc;
-            color: white;
-            text-align: center;
-        }
-        .sp{
-            text-align: center;
-        }
-    </style>
-    </head>
+
 <div class="corpo">
     <h1 class="colo">Categorie</h1>
-    <button routerLink="create"type="button" class="btn btn-primary colo2"><font color="white">CREA NUOVA CATEGOIRA</font></button><br>
+    <button routerLink="create" type="button" class="btn btn-primary colo2">
+        <font color="white">CREA NUOVA CATEGOIRA</font>
+    </button><br>
     <br>
-    <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions" 
+    <table class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions"
         style="width: 100%;">
         <thead>
             <tr>
                 <th class="colo3">Codice Categoria</th>
                 <th class="colo3">Descrizione</th>
-                <th class="colo3">>Note</th>
+                <th class="colo3">Note</th>
                 <th class="colo3"></th>
                 <th class="colo3"></th>
 
@@ -42,15 +22,19 @@
                 <td>{{ category.codCategory }}</td>
                 <td>{{ category.description }}</td>
                 <td>{{ category.note }}</td>
-                <td class=" sp"><button (click)="goToDetail(category.codCategory)"type="button" class="btn btn-primary" ><font color="white">Edit</font></button></td>
-                <td class=" sp"><button (click)="delete(category)"type="button" class="btn btn-danger ">Delete</button></td>
+                <td class=" sp"><button (click)="goToDetail(category.codCategory)" type="button"
+                        class="btn btn-primary">
+                        <font color="white">Modifica</font>
+                    </button></td>
+                <td class=" sp"><button (click)="delete(category)" type="button" class="btn btn-danger ">Cancella</button>
+                </td>
 
             </tr>
-           
-            
+
         </tbody>
-        
 
     </table>
-    <button routerLink="/home"type="button" class="btn btn-primary colo2"><font color="white">TORNA ALLA HOME</font></button>
+    <button routerLink="/home" type="button" class="btn btn-primary colo2">
+        <font color="white">TORNA ALLA HOME</font>
+    </button>
 </div>

@@ -1,80 +1,76 @@
 <div class="form-style-9">
-        <form [formGroup]="clienteForm" (ngSubmit)="save()">
-        <h1>EDIT CLIENT</h1>
-        <label><b>Codice Cliente: {{ client.codClient }}</b></label>
-        <ul>
-        <li>
-            <label for="inp" class="inp">
-                <input type="text" id="inp" placeholder="Ragione sociale" name="field1" formControlName="businessName">
-                <span class="label">Ragione sociale</span>
-                <span class="focus-bg"></span>
-              </label>
-              &nbsp;&nbsp;
-            <label for="inp" class="inp">
-                <input type="text" id="inp" placeholder="PIVA" name="field1" formControlName="piva">
-                <span class="label">type</span>
-                <span class="focus-bg"></span>
-              </label>
-              &nbsp;&nbsp;
-              <label for="inp" class="inp">
-                <input type="text" id="inp" placeholder="Codice fiscale" name="field1" formControlName="fiscalCod">
-                <span class="label">category</span>
-                <span class="focus-bg"></span>
-              </label>
-         </li>
-         <li>
-            <label for="inp" class="inp">
-                <input type="text" id="inp" placeholder="Mail" name="field1" formControlName="mail">
-                <span class="label">measure</span>
-                <span class="focus-bg"></span>
-              </label>
-              &nbsp;&nbsp;
-              <label for="inp" class="inp">
-                <input type="text" id="inp" placeholder="telefono" name="field1" formControlName="tel">
-                <span class="label">price</span>
-                <span class="focus-bg"></span>
-              </label>
-              &nbsp;&nbsp;
-            <label for="inp" class="inp">
-                <input type="text" id="inp" placeholder="cellulare" name="field1" formControlName="cel">
-                <span class="label">discount</span>
-                <span class="focus-bg"></span>
-              </label>
-        </li>
-        <li>
-             <label for="inp" class="inp">
-                <input type="text" id="inp" placeholder="città" name="field1" formControlName="city">
-                <span class="label">measure</span>
-                <span class="focus-bg"></span>
-              </label>
-              &nbsp;&nbsp;
-              <label for="inp" class="inp">
-                <input type="text" id="inp" placeholder="indirizzo" name="field1" formControlName="address">
-                <span class="label">price</span>
-                <span class="focus-bg"></span>
-              </label>
-        </li>
-        <li>
-            <label for="inp" class="inp">
-                <input type="text" id="inp" placeholder="provincia" name="field1" formControlName="province">
-                <span class="label">discount</span>
-                <span class="focus-bg"></span>
-              </label>
-              &nbsp;&nbsp;
-              <label for="inp" class="inp">
-                  <input type="text" id="inp" placeholder="cap" name="field1" formControlName="cap">
-                  <span class="label">discount</span>
-                  <span class="focus-bg"></span>
-            </label>
-        </li>
-        <li>
-        <input type="submit" value="SALVA"/>&nbsp;&nbsp;
-        <input type="button" routerLink="/clients" value="ANNULLA">
-        </li>
-        </ul>
-        </form>
-        </div>
-    
-    
-    
-    
+  <form [formGroup]="clienteForm" (ngSubmit)="save()">
+  <h1 class="colo">Modifica Cliente</h1>
+  <label><b>Codice Cliente: {{ clienteForm.value.codClient }}</b></label>
+  <ul>
+  <li>
+      <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="businessName">
+          <span class="label">Ragione Sociale</span>
+          <span class="focus-bg"></span>
+        </label>
+        &nbsp;&nbsp;
+        <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="piva">
+          <span class="label">Partita IVA</span>
+          <span class="focus-bg"></span>
+        </label>
+        &nbsp;&nbsp;
+        <label for="inp" class="inp">
+          <input type="text" id="inp" pplaceholder="&nbsp;" name="field1" formControlName="fiscalCod">
+          <span class="label">Codice fiscale</span>
+          <span class="focus-bg"></span>
+        </label>
+      </li>
+      <li>
+        <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="mail">
+          <span class="label">Mail</span>
+          <span class="focus-bg"></span>
+        </label>
+        &nbsp;&nbsp;
+        <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="tel">
+          <span class="label">Telefono</span>
+          <span class="focus-bg"></span>
+        </label>
+        &nbsp;&nbsp;
+        <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="cel">
+          <span class="label">Cellulare</span>
+          <span class="focus-bg"></span>
+        </label>
+      </li>
+      <li>
+        <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="city">
+          <span class="label">Città</span>
+          <span class="focus-bg"></span>
+        </label>
+        &nbsp;&nbsp;
+        <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="address">
+          <span class="label">Indirizzo</span>
+          <span class="focus-bg"></span>
+        </label>
+      </li>
+      <li>
+        <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="province">
+          <span class="label">Provincia</span>
+          <span class="focus-bg"></span>
+        </label>
+        &nbsp;&nbsp;
+        <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="cap">
+          <span class="label">CAP</span>
+          <span class="focus-bg"></span>
+        </label>
+      </li>
+      
+      <input class="btn btn-primary" type="submit" value="SALVA" />
+      &nbsp;&nbsp;
+      <input class="btn btn-danger" type="button" routerLink="/clients" value="ANNULLA">
+    </ul>
+  </form>
+</div>
