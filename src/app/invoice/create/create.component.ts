@@ -150,7 +150,20 @@ export class CreateComponent implements OnInit, OnChanges {
 
   async addProvisionalInvoiceDetail() {
     let invoiceDetail: InvoiceDetail = {
-      ...this.invoiceDetailForm.value
+      codItem: this.itemSelected.codItem,
+      description: this.itemSelected.description,
+      measure: this.invoiceDetailForm.value.measure != null ? this.invoiceDetailForm.value.measure: this.itemSelected.measure,
+      quantity: this.invoiceDetailForm.value.quantity,
+      lot: this.invoiceDetailForm.value.lot,
+      expiry: this.invoiceDetailForm.value.expiry,
+      unitPrice: this.invoiceDetailForm.value.unitPrice != "" ? this.invoiceDetailForm.value.unitPrice: this.itemSelected.price,
+      discount: this.invoiceDetailForm.value.discount,
+      totalDiscount: this.invoiceDetailForm.value.totaDiscount,
+      taxable: this.invoiceDetailForm.value.taxable,
+      codVat: this.invoiceDetailForm.value.codVat != "" ? this.invoiceDetailForm.value.codVat: this.itemSelected.vat,
+      totalVat: this.invoiceDetailForm.value.totalVat,
+      totalLine: this.invoiceDetailForm.value.totalLine,
+      //...this.invoiceDetailForm.value
     }
     console.log("addProvisionalInvoiceDetail")
     console.log(invoiceDetail)
