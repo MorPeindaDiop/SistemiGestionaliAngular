@@ -26,7 +26,7 @@
                 <td>{{ invoiceMaster.client }}</td>
                 <td>{{ invoiceMaster.payment }}</td>
                 <td>{{ invoiceMaster.orderNumber }}</td>
-                <td>{{ invoiceMaster.date }} </td>
+                <td>{{ invoiceMaster.date | date: 'dd/MM/yyyy' }} </td>
                 <td class=" sp"><button (click)="goToDetail(invoiceMaster.codInvoice)" type="button"
                         class="btn btn-primary">
                         <font color="white">Modifica</font>

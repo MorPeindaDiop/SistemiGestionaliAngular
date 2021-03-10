@@ -28,6 +28,7 @@ export class CreateComponent implements OnInit, OnChanges {
   invoiceSummaryForm: FormGroup;
 
   clientSelected: Client = null;
+  itemSelected: Item = null;
 
   provisionalInvoiceSummary: InvoiceSummary;
   listToSave: InvoiceDetail[] = [];
@@ -151,6 +152,8 @@ export class CreateComponent implements OnInit, OnChanges {
     let invoiceDetail: InvoiceDetail = {
       ...this.invoiceDetailForm.value
     }
+    console.log("addProvisionalInvoiceDetail")
+    console.log(invoiceDetail)
     this.invoiceService.calculateProvisionalInvoiceDetail(invoiceDetail)
     this.invoiceDetailForm.reset();
 
@@ -234,6 +237,10 @@ export class CreateComponent implements OnInit, OnChanges {
 
   addClientSelected(client: Client) {
     this.clientSelected = client;
+  }
+  
+  addItemSelected(item: Item) {
+    this.itemSelected = item;
   }
 
   prova() {
