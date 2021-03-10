@@ -27,20 +27,12 @@
                 <td>{{ invoiceMaster.payment }}</td>
                 <td>{{ invoiceMaster.orderNumber }}</td>
                 <td>{{ invoiceMaster.date }} </td>
-<<<<<<< HEAD
-                <td class=" sp"><button (click)="goToDetail(invoiceMaster.codInvoice)"type="button" class="btn btn-primary" ><font color="white">Edit</font></button></td>
-                <td class=" sp"><button (click)="delete(invoiceMaster.codInvoice)"type="button" class="btn btn-danger ">Delete</button></td>
-                <td>{{ invoiceMaster.date | date: 'dd/MM/yyyy' }} </td>
-                <td><button (click)="goToDetail(invoiceMaster.codInvoice)">Edit</button></td>
-                <td><button (click)="delete(invoiceMaster.codInvoice)">Delete</button></td>
-=======
                 <td class=" sp"><button (click)="goToDetail(invoiceMaster.codInvoice)" type="button"
                         class="btn btn-primary">
                         <font color="white">Modifica</font>
                     </button></td>
                 <td class=" sp"><button (click)="delete(invoiceMaster.codInvoice)" type="button"
                         class="btn btn-danger ">Cancella</button></td>
->>>>>>> prova
             </tr>
         </tbody>
         <!-- <td>{{ item.type == "vf" ? question.correctAnswerBoolean : question.correctAnswerText }}</td>

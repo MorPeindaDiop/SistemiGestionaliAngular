@@ -291,8 +291,6 @@
     <!-- <igx-tabs>
         <igx-tabs-group label="MASTER">
             <form [formGroup]="invoiceMasterForm">
-
-
                 <div>
                     <label>Numero Fattura:</label> <input placeholder="Numero fattura" formControlName="invoiceNumber">
                 </div>
@@ -303,14 +301,8 @@
                             {{client.businessName}}</option>
                     </select>
                 </div>
-<<<<<<< HEAD
-                <div> -->
-                    <!-- <label><b>Type:</b></label> -->
-                    <!-- <input placeholder="Numero ordine" formControlName="orderNumber">
-=======
                 <div>
                     <input placeholder="Numero ordine" formControlName="orderNumber">
->>>>>>> prova2
                 </div>
                 <div>
                     <label>Metodo di pagamento:</label>
@@ -320,71 +312,17 @@
                         <option value="Assegno">Assegno</option>
                     </select>
                 </div>
-<<<<<<< HEAD
-                <div> -->
-                    <!-- <label><b>Type:</b></label> -->
-                    <!-- <input placeholder="Type" formControlName="date"> -->
-
-                    <!-- <ejs-datetimepicker placeholder='Select a date' formControlName="date" [value]='dateValue'
-=======
                 <div>
                     <ejs-datetimepicker placeholder='Select a date' formControlName="date" [value]='dateValue'
->>>>>>> prova2
                         format='yyyy.MM.dd'></ejs-datetimepicker>
                 </div>
-            </form> -->
-       <!---</igx-tabs-group> 
-  <igx-tabs-group label="SUMMARY"> -->
-    <!-- <form [formGroup]="invoiceSummaryForm" (onChange)="prova()">
-        <div>
-            <label>Totale prodotti: </label>
-            <input placeholder="Totale prodotti" formControlName="totalProducts">
-            <label>Totale servizi: </label>
-            <input placeholder="Totale servizi" formControlName="totalServices">
-        </div>
-        <div>
-            <label>Sconto di coda: </label>
-            <input placeholder="Sconto di coda" formControlName="tailDiscount">
-            <label>Totale sconto di coda: </label>
-            <input placeholder="Totale sconto di coda" formControlName="totalTileDiscount">
-        </div>
-        <div>
-            <label>Totale sconto di riga: </label>
-            <input placeholder="Totale sconto di riga" formControlName="totalLineDiscount">
-        </div>
-        <div>
-            <label>Totale sconto: </label>
-            <input placeholder="Totale sconto" formControlName="totalDiscount">
-        </div>
-        <div>
-            <label>Imponibile: </label>
-            <input placeholder="Imponibile" formControlName="taxable">
-        </div>
-        <div>
-            <label>Totale IVA: </label>
-            <input placeholder="Totale IVA" formControlName="totalVat">
-        </div>
-        <div>
-            <label>TOTALE FATTURA: </label>
-            <input placeholder="TOTALE FATTURA" formControlName="totalAmount">
-        </div> -->
-        <!-- <button type="submit">AGGIUNGI</button> &nbsp; -->
-    <!-- </form> -->
-<!-- </igx-tabs-group>
-</igx-tabs> -->
-
-      <!---  <igx-tabs-group label="DETAIL"> -->
-        <div>
-            <label style="color:#0066cc">SELEZIONA ARTICOLO DA AGGIUNGERE:</label>&nbsp;&nbsp;&nbsp;&nbsp;
-            <select formControlName="codItem" #itemSelected>
-                <option *ngFor="let item of items | async" value="{{item.codItem}}">{{item.description}}
-                </option>
-            </select>
-        </div>
+            </form>
+        </igx-tabs-group>
+        <igx-tabs-group label="DETAIL">
             <div>
                 <table class="table table-striped table-bordered table-sm row-border hover" style="width: 100%;">
                     <thead>
-                        <tr class="colo2">
+                        <tr>
                             <th>Codice articolo</th>
                             <th>Descrizione</th>
                             <th>Unità di misura</th>
@@ -398,20 +336,15 @@
                             <th>Iva</th>
                             <th>Importo Iva</th>
                             <th>Totale riga</th>
-                          
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let invoiceDetail of provisionalInvoiceDetailList | async">
                             <td>{{ invoiceDetail.codItem }}</td>
                             <td>{{ invoiceDetail.description }}</td>
-                            <td><!-- {{ invoiceDetail.measure }} -->
-                                <div *ngFor="let measure of measures | async">
-                                    <div *ngIf="measure.codMeasure == invoiceDetail.measure">
-                                            {{ measure.symbol }}
-                                    </div>
-                                </div>
-                            </td>
+                            <td>{{ invoiceDetail.measure }}</td>
                             <td>{{ invoiceDetail.quantity }}</td>
                             <td>{{ invoiceDetail.lot }}</td>
                             <td>{{ invoiceDetail.expiry }}</td>
@@ -422,15 +355,21 @@
                             <td>{{ invoiceDetail.codVat }}</td>
                             <td>{{ invoiceDetail.totalVat }}</td>
                             <td>{{ invoiceDetail.totalLine }}</td>
-                       
+                            <td><button (click)="editPrevisionalInvoiceDetail(invoiceDetail)">Edit</button></td>
+                            <td><button (click)="deletePrevisionalInvoiceDetail(invoiceDetail)">Delete</button></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-
             <div>
                 <form [formGroup]="invoiceDetailForm" (ngSubmit)="addProvisionalInvoiceDetail()">
-                  
+                    <div>
+                        <label>Seleziona articolo da aggiungere:</label>
+                        <select formControlName="codItem" #itemSelected>
+                            <option *ngFor="let item of items | async" value="{{item.codItem}}">{{item.description}}
+                            </option>
+                        </select>
+                    </div>
                     <div *ngFor="let item of items | async">
                         <div *ngIf="item.codItem == itemSelected.value">
                             <div>
@@ -450,28 +389,12 @@
                             <div>
                                 <input placeholder="Sconto" formControlName="discount">
                             </div>
-                            <br>
-                            <button type="submit"class="btn btn-primary">
-                                <font color="white">AGGIUNGI</font></button>
-                                
+                            <button type="submit">AGGIUNGI</button> &nbsp;
                         </div>
                     </div>
                 </form>
             </div>
-        <!-- </igx-tabs-group>-->
-
-
-<<<<<<< HEAD
-      
-
-
-<!-- </div> -->
-<br>
-&nbsp;&nbsp;<button type="button" (click)="save(); deleteProvisionalCalculations()" class="btn btn-primary">
-    <font color="white">SAVE</font>
-</button>&nbsp;&nbsp;&nbsp;&nbsp;
-<button type="button" (click)="deleteProvisionalCalculations()" class="btn btn-danger ">ANNULLA</button>
-=======
+        </igx-tabs-group>
         <igx-tabs-group label="SUMMARY">
             <form [formGroup]="invoiceSummaryForm" (onChange)="prova()">
                 <div>
@@ -510,4 +433,3 @@
         </igx-tabs-group>
     </igx-tabs> -->
 </div>
->>>>>>> prova2
