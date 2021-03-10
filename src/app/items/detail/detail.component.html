@@ -1,0 +1,61 @@
+<div class="form-style-9">
+  <form [formGroup]="itemForm" (ngSubmit)="save()">
+  <h1 class="colo">Modifica articolo</h1>
+  <label><b>Codice articolo: {{ itemForm.value.codItem }}</b></label>
+  <ul>
+  <li>
+
+        <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="description">
+          <span class="label">Descrizione</span>
+          <span class="focus-bg"></span>
+        </label>
+        &nbsp;&nbsp;
+        <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="type">
+          <span class="label">Tipo</span>
+          <span class="focus-bg"></span>
+        </label>
+        &nbsp;&nbsp;
+        <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="category">
+          <span class="label">Categoria</span>
+          <span class="focus-bg"></span>
+        </label>
+      </li>
+      <li>
+
+
+        <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="measure">
+          <span class="label">Unità di misura</span>
+          <span class="focus-bg"></span>
+        </label>
+        &nbsp;&nbsp;
+        <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="price">
+          <span class="label">Prezzo</span>
+          <span class="focus-bg"></span>
+        </label>
+        &nbsp;&nbsp;
+        <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="discount">
+          <span class="label">Sconto</span>
+          <span class="focus-bg"></span>
+        </label>
+
+      </li>
+      <li>
+
+        <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="vat">
+          <span class="label">IVA</span>
+          <span class="focus-bg"></span>
+        </label>
+      </li>
+      <input class="btn btn-primary" type="submit" value="SALVA" />
+      &nbsp;&nbsp;
+      <input class="btn btn-danger" type="button" routerLink="/items" value="ANNULLA">
+    </ul>
+  </form>
+</div>

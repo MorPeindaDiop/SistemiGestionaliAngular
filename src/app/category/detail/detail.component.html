@@ -1,0 +1,29 @@
+<div class="form-style-9">
+  <form [formGroup]="categoryForm" (ngSubmit)="save()">
+    <h1 class="colo">Modifica categoria</h1>
+    <label><b>Codice categoria: {{ categoryForm.value.codCategory }}</b></label>
+    <ul>
+      <li>
+
+        <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="description">
+          <span class="label">Descrizione</span>
+          <span class="focus-bg"></span>
+        </label>
+        &nbsp;&nbsp;
+        <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="note">
+          <span class="label">Note</span>
+          <span class="focus-bg"></span>
+        </label>
+        &nbsp;&nbsp;
+
+      </li>
+
+     
+        <input class="btn btn-primary"type="submit" value="SALVA" />&nbsp;&nbsp;
+        <input class="btn btn-danger" type="button" routerLink="/categories" value="ANNULLA">
+      
+    </ul>
+  </form>
+</div>

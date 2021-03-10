@@ -1,0 +1,30 @@
+<div class="form-style-9">
+  <form [formGroup]="vatForm" (ngSubmit)="save()">
+    <h1 class="colo">Crea IVA</h1>
+    <ul>
+      <li>
+        <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="codVat">
+          <span class="label">Codice IVA</span>
+          <span class="focus-bg"></span>
+        </label>
+        &nbsp;&nbsp;
+        <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="vat">
+          <span class="label">IVA</span>
+          <span class="focus-bg"></span>
+        </label>
+        &nbsp;&nbsp;
+        <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="note">
+          <span class="label">NOTE</span>
+          <span class="focus-bg"></span>
+        </label>
+      </li>
+      <input class="btn btn-primary" type="submit" value="SALVA" />
+        &nbsp;&nbsp;
+        <input class="btn btn-danger" type="button" routerLink="/vat" value="ANNULLA">
+      
+    </ul>
+  </form>
+</div>

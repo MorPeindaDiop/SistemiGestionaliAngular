@@ -1,0 +1,37 @@
+<div class="form-style-9">
+  <form [formGroup]="measureForm" (ngSubmit)="save()">
+    <h1 class="colo">Crea Misura</h1>
+    <ul>
+      <li>
+        <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="codMeasure">
+          <span class="label">Codice misura</span>
+          <span class="focus-bg"></span>
+        </label>
+        &nbsp;&nbsp;
+        <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="description">
+          <span class="label">Descrizione</span>
+          <span class="focus-bg"></span>
+        </label>
+      </li>
+      <li>
+        <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="symbol">
+          <span class="label">Simbolo</span>
+          <span class="focus-bg"></span>
+        </label>
+        &nbsp;&nbsp;
+        <label for="inp" class="inp">
+          <input type="text" id="inp" placeholder="&nbsp;" name="field1" formControlName="note">
+          <span class="label">Note</span>
+          <span class="focus-bg"></span>
+        </label>
+      </li>
+      <input class="btn btn-primary" type="submit" value="SALVA" />
+        &nbsp;&nbsp;
+        <input class="btn btn-danger" type="button" routerLink="/measures" value="ANNULLA">
+      
+    </ul>
+  </form>
+</div>
