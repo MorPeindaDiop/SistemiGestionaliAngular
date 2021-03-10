@@ -33,13 +33,56 @@
                     </li>  
                     <li style="list-style: none;"> 
                     <label for="inp" class="inp">
-                        <label style="color:#0066cc ;">CLIENTE:</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <span class="focus-bg"></span>
-                        <select formControlName="client">
-                           <option *ngFor="let client of clients | async" value="{{client.codClient}} ">
-                               {{client.businessName}}
-                            </option>
-                       </select></label>
+                        <div>
+                            <button class="btn btn-outline-primary mb-2 mr-2" (click)="openXl(content)">Seleziona cliente</button>
+                            <ng-template #content let-modal  style="max-width: none; margin: none;">
+                                <div class="modal-header">
+                                  <h4 class="modal-title">Clienti</h4>
+                                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                    <table class="table table-striped table-bordered table-sm row-border hover" 
+                                    style="width: 100%;" dt-columns="dtColumns">
+                                    <thead>
+                                        <tr>
+                                            <th class="colo3">Codice Cliente</th>
+                                            <th class="colo3">Ragione sociale</th>
+                                            <th class="colo3">Partita IVA</th>
+                                            <th class="colo3">Codice fiscale</th>
+                                            <th class="colo3">Mail</th>
+                                            <th class="colo3">Telefono</th>
+                                            <th class="colo3">Cellulare</th>
+                                            <th class="colo3">Città</th>
+                                            <th class="colo3">Indirizzo&nbsp;&nbsp;</th>
+                                            <th class="colo3">Provincia</th>
+                                            <th class="colo3">CAP</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let client of clients | async">
+                                            <td>{{ client.codClient }}</td>
+                                            <td>{{ client.businessName }}</td>
+                                            <td>{{ client.piva }}</td>
+                                            <td>{{ client.fiscalCod }}</td>
+                                            <td>{{ client.mail }}</td>
+                                            <td>{{ client.tel }}</td>
+                                            <td>{{ client.cel }}</td>
+                                            <td>{{ client.city }}</td>
+                                            <td>{{ client.address }}</td>
+                                            <td>{{ client.province }}</td>
+                                            <td>{{ client.cap }}</td>
+                                            <button  type="button" class="btn btn-primary" (click)="modal.close('Close click'); addClientSelected(client)">Seleziona</button>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                </div>
+                            </ng-template> <br>
+        
+                            <label class="label">Cliente: {{ clientSelected != null ? clientSelected.businessName : ""}}</label>
+                        </div>
+                      </label>
                        &nbsp;&nbsp;
                       
                         <label for="inp" class="inp">
