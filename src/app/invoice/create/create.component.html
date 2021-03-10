@@ -2,7 +2,7 @@
 <br>
 <div class="corpo">
     <button type="button" (click)="save(); deleteProvisionalCalculations()" class="btn btn-primary" style="float: right;">
-        <font color="white">SAVE</font>
+        <font color="white">SALVA</font>
     </button> 
     <button type="button" (click)="deleteProvisionalCalculations()" class="btn btn-danger " style="float: right;">ANNULLA</button>
     
@@ -88,7 +88,7 @@
                     <!-- <label><b>Type:</b></label> -->
                     <!-- <input placeholder="Type" formControlName="date"> -->
 
-                    <ejs-datetimepicker placeholder='Select a date' formControlName="date" [value]='dateValue'
+                    <ejs-datetimepicker placeholder='Select a date' id="datetimepicker" formControlName="date" [value]='dateValue'
                         format='yyyy.MM.dd'></ejs-datetimepicker>
                 </div>
             </form>
@@ -101,6 +101,7 @@
                         <span class="label">Totale prodotti</span>
                         <span class="focus-bg"></span>
                     </label>
+                    &nbsp; &nbsp;
                     <label for="inp" class="inp">
                         <input type="text" id="inp" placeholder="&nbsp;" formControlName="totalServices">
                         <span class="label">Totale servizi</span>
@@ -113,6 +114,7 @@
                         <span class="label">Sconto di coda</span>
                         <span class="focus-bg"></span>
                     </label>
+                    &nbsp; &nbsp;
                     <label for="inp" class="inp">
                         <input type="text" id="inp" placeholder="&nbsp;" formControlName="totalTileDiscount">
                         <span class="label">Totale sconto di coda</span>
@@ -125,6 +127,7 @@
                         <span class="label">Totale sconto di riga</span>
                         <span class="focus-bg"></span>
                     </label>
+                    &nbsp; &nbsp;
                     <label for="inp" class="inp">
                         <input type="text" id="inp" placeholder="&nbsp;" formControlName="totalDiscount">
                         <span class="label">Totale sconto</span>
@@ -137,6 +140,7 @@
                         <span class="label">Imponibile</span>
                         <span class="focus-bg"></span>
                     </label>
+                    &nbsp; &nbsp;
                     <label for="inp" class="inp">
                         <input type="text" id="inp" placeholder="&nbsp;" formControlName="totalVat">
                         <span class="label">Totale IVA</span>
@@ -283,8 +287,8 @@
                             <td>{{ invoiceDetail.codVat }}</td>
                             <td>{{ invoiceDetail.totalVat }}</td>
                             <td>{{ invoiceDetail.totalLine }}</td>
-                            <td><button (click)="editPrevisionalInvoiceDetail(invoiceDetail)">Edit</button></td>
-                            <td><button (click)="deletePrevisionalInvoiceDetail(invoiceDetail)">Delete</button></td>
+                            <td><button (click)="editPrevisionalInvoiceDetail(invoiceDetail)">Modifica</button></td>
+                            <td><button (click)="deletePrevisionalInvoiceDetail(invoiceDetail)">Cancella</button></td>
                         </tr>
                     </tbody>
                     <!-- <td>
