@@ -96,16 +96,6 @@ export class CreateComponent implements OnInit, OnChanges {
     return this.store.pipe(select(selectItems));
   }
 
-<<<<<<< HEAD
-  get vats(): Observable<Vat[]> {
-    return this.store.pipe(select(selectVat));
-  }
-  get measures(): Observable<Measure[]> {
-    return this.store.pipe(select(selectMeasures));
-  }
-  
-=======
->>>>>>> prova
   get provisionalInvoiceDetailList(): Observable<InvoiceDetail[]> {
     return this.store.pipe(select(selectProvisionalInvoicesDetail));
   }
