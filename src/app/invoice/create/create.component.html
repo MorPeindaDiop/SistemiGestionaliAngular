@@ -20,6 +20,20 @@
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
+
+                        <button class="btn btn-outline-primary mb-2 mr-2" (click)="openXl(content4)">Nuovo cliente</button>
+                        <ng-template #content4 let-modal  style="max-width: none; margin: none;">
+                            <div class="modal-header">
+                            <!-- <h4 class="modal-title">Crea cliente</h4> -->
+                            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <div class="modal-body">
+                                <app-create-client></app-create-client>
+                            </div>
+                        </ng-template>
+
                         <div class="modal-body">
                             <table class="table table-striped table-bordered table-sm row-border hover" 
                             style="width: 100%;" dt-columns="dtColumns">
@@ -66,6 +80,8 @@
                         <span class="label">Numero fattura</span>
                         <span class="focus-bg"></span>
                     </label>
+                </div>
+                <div>
                     <label for="inp" class="inp">
                         <input type="text" id="inp" placeholder="&nbsp;" formControlName="orderNumber">
                         <span class="label">Numero ordine</span>

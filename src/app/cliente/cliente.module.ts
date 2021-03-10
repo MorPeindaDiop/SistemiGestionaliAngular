@@ -24,6 +24,9 @@ import { CreateComponent } from './create/create.component';
   ],
   providers: [
     ClientsService
+  ],
+  exports: [
+    CreateComponent
   ]
 })
 export class ClienteModule { }

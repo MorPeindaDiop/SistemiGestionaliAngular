@@ -1,20 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Client } from 'src/app/core/model/client';
 import { ClientsService } from '../services/clients.service';
 
 
 @Component({
-  selector: 'app-create',
+  selector: 'app-create-client',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss']
 })
-export class CreateComponent implements OnInit {
+export class CreateComponent implements OnInit, OnDestroy {
 
   clienteForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private clientsService: ClientsService, private router: Router) {
+  constructor(private fb: FormBuilder, private clientsService: ClientsService, private router: Router, private activatedRoute: ActivatedRoute) {
     this.clienteForm = this.fb.group({
       codClient: ['', Validators.required],
       businessName: ['', Validators.required],
@@ -29,7 +29,7 @@ export class CreateComponent implements OnInit {
       cap: ['', Validators.required],
     })
   }
-
+  
   ngOnInit(): void {
   }
 
@@ -39,7 +39,18 @@ export class CreateComponent implements OnInit {
     }
     console.log(cliente)
     this.clientsService.createClient(cliente);
-    this.router.navigateByUrl('/clients');
+    console.log(this.router.url)
+    if (this.router.url == "/clients/create") {
+      this.router.navigateByUrl('/clients');
+    } else {
+      this.ngOnDestroy()
+    }
+  }
+
+  ngOnDestroy(): void {
+   // throw new Error('Method not implemented.');
+
+   //this.router.
   }
 
 }

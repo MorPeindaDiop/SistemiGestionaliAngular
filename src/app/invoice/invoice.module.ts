@@ -7,6 +7,7 @@ import { CreateComponent } from './create/create.component';
 import { DetailComponent } from './detail/detail.component';
 import { InvoiceComponent } from './main/invoice.component';
 import { InvoiceService } from './services/invoice.service';
+import { ClienteModule } from '../cliente/cliente.module';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { InvoiceService } from './services/invoice.service';
   imports: [
     CommonModule,
     InvoiceRoutingModule,
-    SharedModule
+    SharedModule,
+    ClienteModule
   ],
   providers: [
     InvoiceService
