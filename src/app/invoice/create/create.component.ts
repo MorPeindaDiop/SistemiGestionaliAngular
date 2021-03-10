@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Client } from 'src/app/core/model/client';
@@ -20,11 +21,13 @@ import { InvoiceService } from '../services/invoice.service';
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss']
 })
-export class CreateComponent implements OnInit {
+export class CreateComponent implements OnInit, OnChanges {
 
   invoiceMasterForm: FormGroup;
   invoiceDetailForm: FormGroup;
   invoiceSummaryForm: FormGroup;
+
+  clientSelected: Client = null;
 
   provisionalInvoiceSummary: InvoiceSummary;
   listToSave: InvoiceDetail[] = [];
@@ -33,7 +36,7 @@ export class CreateComponent implements OnInit {
 
   tailDiscount: number = 0;
 
-  constructor(private fb: FormBuilder, private invoiceService: InvoiceService, private router: Router, private store: Store) {
+  constructor(private fb: FormBuilder, private invoiceService: InvoiceService, private router: Router, private store: Store, private modalService: NgbModal) {
 
     this.invoiceService.retrieveAllClients();
     this.invoiceService.retrieveAllItems();
@@ -79,6 +82,11 @@ export class CreateComponent implements OnInit {
     })
 
   }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log("sono dentro on change")
+    console.log(changes.invoiceMasterForm)
+    throw new Error('Method not implemented.');
+  }
 
   get clients(): Observable<Client[]> {
     return this.store.pipe(select(selectClients));
@@ -100,21 +108,20 @@ export class CreateComponent implements OnInit {
     this.invoiceSummaryForm.valueChanges.subscribe(val => {
       console.log("prova")
       console.log(val)
-      if (this.tailDiscount != val.tailDiscount && val.tailDiscount != 0) {
+      console.log(val.tailDiscount.changes)
+      if (val.tailDiscount.changes /*!= this.tailDiscount && val.tailDiscount != 0*/) {
 
         this.tailDiscount = val.tailDiscount
         console.log(this.tailDiscount)
 
         //invoiceMaster
-        let invoiceMaster: InvoiceMaster = {
-          ...this.invoiceMasterForm.value
-        }
+        // let invoiceMaster: InvoiceMaster = {
+        //   ...this.invoiceMasterForm.value
+        // }
 
         //invoiceDetailList
         this.provisionalInvoiceDetailList.subscribe(provisionalInvoiceDetailList => {
-          for (let invoiceDetail of provisionalInvoiceDetailList) {
-            this.listToSave.push(invoiceDetail)
-          }
+          this.listToSave = provisionalInvoiceDetailList
         })
 
         //invoiceSummary
@@ -124,7 +131,7 @@ export class CreateComponent implements OnInit {
 
         //invoice
         let invoice: Invoice = {
-          invoiceMaster: invoiceMaster,
+          invoiceMaster: null,
           invoiceDetailList: this.listToSave,
           invoiceSummary: invoiceSummary
         }
@@ -147,12 +154,12 @@ export class CreateComponent implements OnInit {
     this.invoiceService.calculateProvisionalInvoiceDetail(invoiceDetail)
     this.invoiceDetailForm.reset();
 
-    await this.delay(500);
+    await this.delay(200);
     this.calculateProvisionalInvoiceSummary();
   }
 
   async calculateProvisionalInvoiceSummary() {
-    await this.delay(500);
+    await this.delay(200);
     this.provisionalInvoiceDetailList.subscribe(provisionalInvoiceDetailList => {
       this.listToSave = [];
       for (let invoiceDetail of provisionalInvoiceDetailList) {
@@ -161,7 +168,7 @@ export class CreateComponent implements OnInit {
       return this.listToSave
     })
     this.invoiceService.calculateProvisionalInvoiceSummary(this.listToSave)
-    await this.delay(500);
+    await this.delay(200);
     this.compileSummaryForm();
   }
 
@@ -176,7 +183,12 @@ export class CreateComponent implements OnInit {
   save() {
     //invoiceMaster
     let invoiceMaster: InvoiceMaster = {
-      ...this.invoiceMasterForm.value
+      codInvoice: null,
+      invoiceNumber: this.invoiceMasterForm.value.invoiceNumber,
+      client: this.clientSelected != null ? this.clientSelected.codClient : null,
+      payment: this.invoiceMasterForm.value.payment,
+      orderNumber: this.invoiceMasterForm.value.orderNumber,
+      date: this.invoiceMasterForm.value.date
     }
 
     //invoiceDetailList
@@ -220,8 +232,40 @@ export class CreateComponent implements OnInit {
     )
   }
 
+  addClientSelected(client: Client) {
+    this.clientSelected = client;
+  }
+
   prova() {
     console.log("prova")
+  }
+
+  openBackDropCustomClass(content) {
+    this.modalService.open(content, {backdropClass: 'light-blue-backdrop'});
+  }
+
+  openWindowCustomClass(content) {
+    this.modalService.open(content, { windowClass: 'dark-modal' });
+  }
+
+  openSm(content) {
+    this.modalService.open(content, { size: 'sm' });
+  }
+
+  openLg(content) {
+    this.modalService.open(content, { size: 'lg' });
+  }
+
+  openXl(content) {
+    this.modalService.open(content, { size: 'xl' });
+  }
+
+  openVerticallyCentered(content) {
+    this.modalService.open(content, { centered: true });
+  }
+
+  openScrollableContent(longContent) {
+    this.modalService.open(longContent, { scrollable: true });
   }
 
 }
