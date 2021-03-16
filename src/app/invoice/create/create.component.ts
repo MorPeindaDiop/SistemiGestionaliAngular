@@ -158,19 +158,21 @@ export class CreateComponent implements OnInit, OnChanges {
   }
 
   async addProvisionalInvoiceDetail() {
+    console.log("itemSelected");
+    console.log(this.itemSelected);
     let invoiceDetail: InvoiceDetail = {
       codItem: this.itemSelected.codItem,
       description: this.itemSelected.description,
-      measure: this.invoiceDetailForm.value.measure != "" ? this.invoiceDetailForm.value.measure: this.itemSelected.measure,
+      measure: (this.invoiceDetailForm.value.measure === "" || this.invoiceDetailForm.value.measure === null) ? this.itemSelected.measure : this.invoiceDetailForm.value.measure,
       quantity: this.invoiceDetailForm.value.quantity,
       lot: this.invoiceDetailForm.value.lot,
       expiry: this.invoiceDetailForm.value.expiry,
-      unitPrice: this.invoiceDetailForm.value.unitPrice != "" ? this.invoiceDetailForm.value.unitPrice: this.itemSelected.price,
+      unitPrice: (this.invoiceDetailForm.value.unitPrice === "" || this.invoiceDetailForm.value.unitPrice === null) ? this.itemSelected.price : this.invoiceDetailForm.value.unitPrice,
       totalPrice: this.invoiceDetailForm.value.totalPrice,
       discount: this.invoiceDetailForm.value.discount,
       totalDiscount: this.invoiceDetailForm.value.totaDiscount,
       taxable: this.invoiceDetailForm.value.taxable,
-      codVat: this.invoiceDetailForm.value.codVat != "" ? this.invoiceDetailForm.value.codVat: this.itemSelected.vat,
+      codVat: (this.invoiceDetailForm.value.codVat === "" || this.invoiceDetailForm.value.codVat === null) ? this.itemSelected.vat : this.invoiceDetailForm.value.codVat,
       totalVat: this.invoiceDetailForm.value.totalVat,
       totalLine: this.invoiceDetailForm.value.totalLine,
       //...this.invoiceDetailForm.value
@@ -178,8 +180,8 @@ export class CreateComponent implements OnInit, OnChanges {
     console.log("addProvisionalInvoiceDetail")
     console.log(invoiceDetail)
     this.invoiceService.calculateProvisionalInvoiceDetail(invoiceDetail);
-    this.itemSelected = null;
     this.invoiceDetailForm.reset();
+    this.itemSelected = null;
 
     await this.delay(200);
     this.calculateProvisionalInvoiceSummary();
