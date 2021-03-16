@@ -107,7 +107,11 @@ export class CreateComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.onChanges();
+    console.log("on init");
+    console.log(this.invoiceSummaryForm.value.tailDiscount);
+    if (this.invoiceSummaryForm.value.tailDiscount != null && this.invoiceSummaryForm.value.tailDiscount != this.tailDiscount) {
+      this.onChanges();
+    }
   }
 
   onChanges(): void {
@@ -115,7 +119,7 @@ export class CreateComponent implements OnInit, OnChanges {
       console.log("prova")
       console.log(val)
       //console.log(val.tailDiscount.changes)
-      if (/*val.tailDiscount != this.tailDiscount &&*/ val.tailDiscount != "" ) {
+      //if (val.tailDiscount != this.tailDiscount && val.tailDiscount != null ) {
 
         this.tailDiscount = val.tailDiscount
         console.log(this.tailDiscount)
@@ -144,7 +148,7 @@ export class CreateComponent implements OnInit, OnChanges {
 
         this.invoiceService.calculateProvisionalTailDiscount(invoice);
         this.compileSummaryForm();
-      }
+      //}
     });
 
   }
@@ -173,7 +177,8 @@ export class CreateComponent implements OnInit, OnChanges {
     }
     console.log("addProvisionalInvoiceDetail")
     console.log(invoiceDetail)
-    this.invoiceService.calculateProvisionalInvoiceDetail(invoiceDetail)
+    this.invoiceService.calculateProvisionalInvoiceDetail(invoiceDetail);
+    this.itemSelected = null;
     this.invoiceDetailForm.reset();
 
     await this.delay(200);
