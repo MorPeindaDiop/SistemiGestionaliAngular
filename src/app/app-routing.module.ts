@@ -9,8 +9,8 @@ const routes: Routes = [
   { path: 'measures', loadChildren: () => import('./measures/measures.module').then(m => m.MeasuresModule) },
   { path: 'vat', loadChildren: () => import('./vat/vat.module').then(m => m.VatModule) },
   { path: 'categories', loadChildren: () => import('./category/category.module').then(m => m.CategoryModule) },
+  { path: 'payments', loadChildren: () => import('./payment/payment.module').then(m => m.PaymentModule) },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'payment', loadChildren: () => import('./payment/payment.module').then(m => m.PaymentModule) },
   { path: '**', loadChildren: () => import('./page-not-found/page-not-found.module').then(m => m.PageNotFoundModule) },
 ];
 

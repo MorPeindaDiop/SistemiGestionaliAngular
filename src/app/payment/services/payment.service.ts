@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Payment } from 'src/app/core/model/payment';
+import { createPayment, deletePayment, retrieveAllPayments } from 'src/app/redux/payment/payment.actions';
 
 @Injectable({
   providedIn: 'root'
