@@ -8,6 +8,7 @@ export interface InvoiceDetail {
     lot?: String;
     expiry?: Date;
     unitPrice?: number;
+    totalPrice?: number;
     discount?: String;
     totalDiscount?: number;
     taxable?: number;
