@@ -7,6 +7,7 @@ import { invoicesMasterReducer, InvoicesMasterState } from "./invoiceMaster/invo
 import { invoicesSummaryReducer, InvoicesSummaryState } from "./invoiceSummary/invoiceSummary.reducers";
 import { itemsReducer, ItemsState } from "./item/item.reducers";
 import { measureReducer, MeasuresState } from "./measure/measure.reducers";
+import { paymentsReducer, PaymentsState } from "./payment/payment.reducers";
 import { vatReducer, VatState } from "./vat/vat.reducers";
 
 export interface AppState {
@@ -17,6 +18,7 @@ export interface AppState {
     measuresState: MeasuresState;
     clientsState: ClientsState;
     categoriesState: CategoriesState;
+    paymentsState: PaymentsState;
     invoicesMasterState: InvoicesMasterState;
     invoicesDetailState: InvoicesDetailState;
     invoicesSummaryState: InvoicesSummaryState;
@@ -29,6 +31,7 @@ export const reducers: ActionReducerMap<AppState> = {
     measuresState: measureReducer,
     clientsState: clientsReducer,
     categoriesState: categoriesReducer,
+    paymentsState: paymentsReducer,
     invoicesMasterState: invoicesMasterReducer,
     invoicesDetailState: invoicesDetailReducer,
     invoicesSummaryState: invoicesSummaryReducer

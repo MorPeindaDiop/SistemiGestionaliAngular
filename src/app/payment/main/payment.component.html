@@ -16,7 +16,7 @@
 
             </tr>
         </thead>
-        <tbody>
+        <tbody *ngIf="payments != null">
             <tr *ngFor="let payment of payments | async">
                 <td>{{ payment.codPayment }}</td>
                 <td>{{ payment.description }}</td>
