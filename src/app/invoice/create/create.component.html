@@ -71,8 +71,10 @@
                                         <td>{{ client.address }}</td>
                                         <td>{{ client.province }}</td>
                                         <td>{{ client.cap }}</td>
+                                        <td class="sp">
                                         <button type="button" class="btn btn-primary"
                                             (click)="modal.close('Close click'); addClientSelected(client)">Seleziona</button>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -233,8 +235,10 @@
                                             <td>{{ item.price }} €</td>
                                             <td>{{ item.discount }}</td>
                                             <td>{{ item.vat }}</td>
+                                            <td class="sp">
                                             <button type="button" class="btn btn-primary"
                                                 (click)="modal.close('Close click'); addItemSelected(item)">Seleziona</button>
+                                            </td>
                                         </tr>
                                     </tbody>
                                     <!-- <td>{{ item.type == "vf" ? question.correctAnswerBoolean : question.correctAnswerText }}</td>
