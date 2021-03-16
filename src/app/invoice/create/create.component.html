@@ -71,8 +71,10 @@
                                         <td>{{ client.address }}</td>
                                         <td>{{ client.province }}</td>
                                         <td>{{ client.cap }}</td>
+                                        <td class="sp">
                                         <button type="button" class="btn btn-primary"
                                             (click)="modal.close('Close click'); addClientSelected(client)">Seleziona</button>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -233,8 +235,10 @@
                                             <td>{{ item.price }} €</td>
                                             <td>{{ item.discount }}</td>
                                             <td>{{ item.vat }}</td>
+                                            <td class="sp">
                                             <button type="button" class="btn btn-primary"
                                                 (click)="modal.close('Close click'); addItemSelected(item)">Seleziona</button>
+                                            </td>
                                         </tr>
                                     </tbody>
                                     <!-- <td>{{ item.type == "vf" ? question.correctAnswerBoolean : question.correctAnswerText }}</td>
@@ -256,19 +260,19 @@
                                 <div *ngIf="item.codItem == itemSelected.value"> -->
                             <div class="prova">
                                 <label for="inp" class="inp">
-                                    <input id="inp" placeholder="&nbsp;" class="form-control"
+                                    <input type="text" id="inp" placeholder="&nbsp;" class="form-control"
                                         formControlName="description" [value]="itemSelected.description">
                                     <span class="label">Descrizione</span>
                                 </label>
                                 &nbsp;&nbsp;
                                 <label for="inp" class="inp">
-                                    <input id="inp" placeholder="&nbsp;" class="form-control" formControlName="measure"
+                                    <input type="text" id="inp" placeholder="&nbsp;" class="form-control" formControlName="measure"
                                         [value]="itemSelected.measure">
                                     <span class="label">Unità di misura</span>
                                 </label>
                                 &nbsp;&nbsp;
                                 <label for="inp" class="inp">
-                                    <input id="inp" placeholder="&nbsp;" class="form-control" formControlName="codVat"
+                                    <input type="number" id="inp" placeholder="&nbsp;" class="form-control" formControlName="codVat"
                                         [value]="itemSelected.vat">
                                     <span class="label">Iva</span>
                                 </label>
@@ -277,18 +281,18 @@
                             </div>
                             <div>
                                 <label for="inp" class="inp">
-                                    <input id="inp" placeholder="&nbsp;" class="form-control"
+                                    <input type="number" id="inp" placeholder="&nbsp;" class="form-control"
                                         formControlName="unitPrice" [value]="itemSelected.price">
                                     <span class="label">Prezzo</span>
                                 </label>
                                 &nbsp;&nbsp;
                                 <label for="inp" class="inp">
-                                    <input id="inp" placeholder="&nbsp;" class="form-control"
+                                    <input type="number" id="inp" placeholder="&nbsp;" class="form-control"
                                         formControlName="quantity">
                                     <span class="label">Quantità</span>
                                 </label>
                                 &nbsp;&nbsp;
-                                <label for="inp" class="inp">
+                                <label type="text" for="inp" class="inp">
                                     <input id="inp" placeholder="&nbsp;" class="form-control" formControlName="lot">
                                     <span class="label">Lotto</span>
                                 </label>
@@ -303,7 +307,7 @@
                                 </label>
                                 &nbsp;&nbsp;
                                 <label for="inp" class="inp">
-                                    <input id="inp" placeholder="&nbsp;" class="form-control"
+                                    <input type="number" id="inp" placeholder="&nbsp;" class="form-control"
                                         formControlName="discount">
                                     <span class="label">Sconto</span>
                                 </label>
@@ -337,8 +341,6 @@
                             <th class="colo3">Iva</th>
                             <th class="colo3">Importo Iva</th>
                             <th class="colo3">Totale riga</th>
-                            <th class="colo3"></th>
-                            <th class="colo3"></th>
                         </tr>
                     </thead>
                     <tbody>
