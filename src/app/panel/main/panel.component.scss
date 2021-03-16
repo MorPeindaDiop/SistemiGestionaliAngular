@@ -53,6 +53,33 @@ a:hover {
   width: 1200px;
 }
 
+.grid-container {
+  margin: 0px auto;
+  width: 1200px;
+  display: grid;
+  padding-top: 2%;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "clienti clienti articoli articoli misure misure fatture fatture"
+    ". iva iva categorie categorie pagamenti pagamenti .";
+}
+
+.clienti { grid-area: clienti; }
+
+.articoli { grid-area: articoli; }
+
+.iva {padding-top: 8%; grid-area: iva; }
+
+.categorie { padding-top: 8%; grid-area: categorie; }
+
+.pagamenti { padding-top: 8%; grid-area: pagamenti; }
+
+.fatture { grid-area: fatture; }
+
+.misure { grid-area: misure; }
+
 
 /*********************************************************************************/
 /* Form Style                                                                    */
@@ -544,7 +571,8 @@ ul.contact li a:before {
 
 #three-column #tbox1,
 #three-column #tbox2,
-#three-column #tbox3 {
+#three-column #tbox3,
+#three-column #tbox4 {
   float: left;
   width: 320px;
   padding: 80px 40px 80px 40px;

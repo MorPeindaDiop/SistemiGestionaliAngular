@@ -24,6 +24,7 @@ import { InvoicesMasterEffects } from './redux/invoiceMaster/invoiceMaster.effec
 import { InvoicesDetailEffects } from './redux/invoiceDetail/invoiceDetail.effects';
 import { InvoicesSummaryEffects } from './redux/invoiceSummary/invoiceSummary.effects';
 import { ModalModule } from 'ngb-modal';
+import { PaymentsEffects } from './redux/payment/payment.effects';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ModalModule } from 'ngb-modal';
       CategoriesEffects,
       InvoicesMasterEffects,
       InvoicesDetailEffects,
-      InvoicesSummaryEffects
+      InvoicesSummaryEffects,
+      PaymentsEffects
     ]),
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({
