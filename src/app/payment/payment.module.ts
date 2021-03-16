@@ -5,13 +5,19 @@ import { PaymentRoutingModule } from './payment-routing.module';
 import { PaymentComponent } from './main/payment.component';
 import { CreateComponent } from './create/create.component';
 import { DetailComponent } from './detail/detail.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
-  declarations: [PaymentComponent, CreateComponent, DetailComponent],
+  declarations: [
+    PaymentComponent,
+    CreateComponent,
+    DetailComponent
+  ],
   imports: [
     CommonModule,
-    PaymentRoutingModule
+    PaymentRoutingModule,
+    SharedModule,
   ]
 })
 export class PaymentModule { }
