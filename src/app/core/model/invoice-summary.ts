@@ -4,8 +4,8 @@ export interface InvoiceSummary {
     totalProducts : number;
     totalServices : number;
     totalDiscount : number;
-    tailDiscount : number;
-    totalTileDiscount : number;
+    tailDiscount : String;
+    totalTailDiscount : number;
     totalLineDiscount : number;
     totalVat : number;
     taxable : number;

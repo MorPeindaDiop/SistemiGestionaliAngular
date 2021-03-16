@@ -39,7 +39,7 @@ export class CreateComponent implements OnInit, OnChanges {
 
   public dateValue: Date = new Date();
 
-  tailDiscount: number = 0;
+  tailDiscount: String = "";
 
   constructor(private fb: FormBuilder, private invoiceService: InvoiceService, private router: Router, private store: Store, private modalService: NgbModal) {
 
@@ -80,7 +80,7 @@ export class CreateComponent implements OnInit, OnChanges {
       totalProducts: ['', Validators.required],
       totalServices: ['', Validators.required],
       tailDiscount: ['', Validators.required],
-      totalTileDiscount: ['', Validators.required],
+      totalTailDiscount: ['', Validators.required],
       totalLineDiscount: ['', Validators.required],
       totalDiscount: ['', Validators.required],
       totalVat: ['', Validators.required],
@@ -114,8 +114,8 @@ export class CreateComponent implements OnInit, OnChanges {
     this.invoiceSummaryForm.valueChanges.subscribe(val => {
       console.log("prova")
       console.log(val)
-      console.log(val.tailDiscount.changes)
-      if (val.tailDiscount.changes /*!= this.tailDiscount && val.tailDiscount != 0*/) {
+      //console.log(val.tailDiscount.changes)
+      if (/*val.tailDiscount != this.tailDiscount &&*/ val.tailDiscount != "" ) {
 
         this.tailDiscount = val.tailDiscount
         console.log(this.tailDiscount)
