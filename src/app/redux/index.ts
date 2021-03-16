@@ -10,6 +10,7 @@ import { measureReducer, MeasuresState } from "./measure/measure.reducers";
 import { vatReducer, VatState } from "./vat/vat.reducers";
 
 export interface AppState {
+    [x: string]: any;
     router: RouterReducerState<any>;
     itemsState: ItemsState;
     vatState: VatState;
