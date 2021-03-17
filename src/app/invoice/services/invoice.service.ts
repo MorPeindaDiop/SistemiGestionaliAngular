@@ -9,6 +9,7 @@ import { calculateProvisionalInvoiceDetail, deleteProvisionalInvoiceDetail, dele
 import { calculateProvisionalTailDiscount, createInvoice, createInvoiceMaster, deleteInvoice, retrieveAllInvoicesMaster } from 'src/app/redux/invoiceMaster/invoiceMaster.actions';
 import { calculateProvisionalInvoiceSummary, createInvoiceSummary, deleteInvoiceSummary, deleteProvisionalInvoiceSummary, retrieveAllInvoicesSummary } from 'src/app/redux/invoiceSummary/invoiceSummary.actions';
 import { retrieveAllItems } from 'src/app/redux/item/item.actions';
+import { retrieveAllPayments } from 'src/app/redux/payment/payment.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -73,6 +74,10 @@ export class InvoiceService {
 
   retrieveAllItems() {
     return this.store.dispatch(retrieveAllItems())
+  }
+
+  retrieveAllPayments() {
+    return this.store.dispatch(retrieveAllPayments())
   }
 
 }

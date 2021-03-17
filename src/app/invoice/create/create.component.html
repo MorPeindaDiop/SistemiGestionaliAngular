@@ -98,16 +98,52 @@
                     </label>
                 </div>
                 <div>
-                    <label for="inp" class="inp">
+                    <button class="btn btn-outline-primary mb-2 mr-2" (click)="openXl(content6)">Seleziona condizione di pagamento</button>
+                    <ng-template #content6 let-modal style="max-width: none; margin: none;">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Condizioni di pagamento</h4>
+                            <button type="button" class="close" aria-label="Close"
+                                (click)="modal.dismiss('Cross click')">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <div class="modal-body">
+                            <table class="table table-striped table-bordered table-sm row-border hover"
+                                style="width: 100%;" dt-columns="dtColumns">
+                                <thead>
+                                    <tr>
+                                        <th class="colo3">Codice Pagamento</th>
+                                        <th class="colo3">Descrizione</th>
+                                        <th class="colo3">Note</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let payment of payments | async">
+                                        <td>{{ payment.codPayment }}</td>
+                                        <td>{{ payment.description }}</td>
+                                        <td>{{ payment.note }}</td>
+                                        <td class="sp">
+                                        <button type="button" class="btn btn-primary"
+                                            (click)="modal.close('Close click'); addPaymentSelected(payment)">Seleziona</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </ng-template> <br>
+
+                    <label class="label">Condizione di pagamento: {{ paymentSelected != null ? paymentSelected.description : ""}}</label>
+                    <!-- <label for="inp" class="inp">
                         <select formControlName="payment" class="form-control">
-                            <option value="" disabled selected>Metodo di pagamento</option>
+                            <option value="" disabled selected>Condizione di pagamento</option>
                             <option value="Contanti">Contanti</option>
                             <option value="Bonifico">Bonifico</option>
                             <option value="Assegno">Assegno</option>
-                            <!-- <option *ngFor="let category of categories | async" value="{{category.codCategory}}">
-                                {{category.description}}</option> -->
+                            <option *ngFor="let category of categories | async" value="{{category.codCategory}}">
+                                {{category.description}}</option>
                         </select>
-                    </label>
+                    </label> -->
                 </div>
                 <div>
                     <!-- <label><b>Type:</b></label> -->

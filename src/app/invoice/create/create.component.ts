@@ -1,6 +1,6 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -11,12 +11,15 @@ import { InvoiceMaster } from 'src/app/core/model/invoice-master';
 import { InvoiceSummary } from 'src/app/core/model/invoice-summary';
 import { Item } from 'src/app/core/model/item';
 import { Measure } from 'src/app/core/model/measure';
+import { Payment } from 'src/app/core/model/payment';
 import { Vat } from 'src/app/core/model/vat';
 import { selectClients } from 'src/app/redux/cliente';
-import { selectProvisionalInvoicesDetail } from 'src/app/redux/invoiceDetail';
-import { selectProvisionalInvoiceSummary } from 'src/app/redux/invoiceSummary';
+import { selectInvoicesDetail, selectProvisionalInvoicesDetail } from 'src/app/redux/invoiceDetail';
+import { selectInvoicesMaster } from 'src/app/redux/invoiceMaster';
+import { selectInvoicesSummary, selectProvisionalInvoiceSummary } from 'src/app/redux/invoiceSummary';
 import { selectItems } from 'src/app/redux/item';
 import { selectMeasures } from 'src/app/redux/measure';
+import { selectPayments } from 'src/app/redux/payment';
 import { selectVat } from 'src/app/redux/vat';
 import { InvoiceService } from '../services/invoice.service';
 
@@ -25,7 +28,7 @@ import { InvoiceService } from '../services/invoice.service';
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss']
 })
-export class CreateComponent implements OnInit, OnChanges {
+export class CreateComponent implements OnInit {
 
   invoiceMasterForm: FormGroup;
   invoiceDetailForm: FormGroup;
@@ -33,6 +36,7 @@ export class CreateComponent implements OnInit, OnChanges {
 
   clientSelected: Client = null;
   itemSelected: Item = null;
+  paymentSelected: Payment = null;
 
   provisionalInvoiceSummary: InvoiceSummary;
   listToSave: InvoiceDetail[] = [];
@@ -41,10 +45,11 @@ export class CreateComponent implements OnInit, OnChanges {
 
   tailDiscount: String = "";
 
-  constructor(private fb: FormBuilder, private invoiceService: InvoiceService, private router: Router, private store: Store, private modalService: NgbModal) {
+  constructor(private fb: FormBuilder, private invoiceService: InvoiceService, private router: Router, private store: Store, private modalService: NgbModal, private activatedRoute: ActivatedRoute) {
 
     this.invoiceService.retrieveAllClients();
     this.invoiceService.retrieveAllItems();
+    this.invoiceService.retrieveAllPayments();
 
     this.invoiceService.retrieveAllInvoicesMaster();
     this.invoiceService.retrieveAllInvoicesDetail();
@@ -88,10 +93,45 @@ export class CreateComponent implements OnInit, OnChanges {
     })
 
   }
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log("sono dentro on change")
-    console.log(changes.invoiceMasterForm)
-    throw new Error('Method not implemented.');
+
+  ngOnInit(): void {
+
+    if (this.activatedRoute.snapshot.paramMap.get('codInvoice') != null) {
+      this.store.pipe(select(selectInvoicesMaster)).subscribe(invoicesMaster => {
+        for (let invoiceMaster of invoicesMaster) {
+          if (invoiceMaster.codInvoice === Number(this.activatedRoute.snapshot.paramMap.get('codInvoice'))) {
+            this.invoiceMasterForm.patchValue(
+              invoiceMaster
+            )
+          }
+        }
+      })
+  
+      this.store.pipe(select(selectInvoicesDetail)).subscribe(invoicesDetail => {
+        for (let invoiceDetail of invoicesDetail) {
+          if (invoiceDetail.codInvoice === Number(this.activatedRoute.snapshot.paramMap.get('codInvoice'))) {
+            this.listToSave.push(invoiceDetail)
+          }
+        }
+        this.invoiceService.editInvoiceDetailList(this.listToSave)
+      })
+  
+      this.store.pipe(select(selectInvoicesSummary)).subscribe(invoicesSummary => {
+        for (let invoiceSummary of invoicesSummary) {
+          if (invoiceSummary.codInvoice === Number(this.activatedRoute.snapshot.paramMap.get('codInvoice'))) {
+            this.invoiceSummaryForm.patchValue(
+              invoiceSummary
+            )
+          }
+        }
+      })
+  
+    }
+    console.log("on init");
+    console.log(this.invoiceSummaryForm.value.tailDiscount);
+    if (this.invoiceSummaryForm.value.tailDiscount != null && this.invoiceSummaryForm.value.tailDiscount != this.tailDiscount) {
+      this.onChanges();
+    }
   }
 
   get clients(): Observable<Client[]> {
@@ -102,16 +142,12 @@ export class CreateComponent implements OnInit, OnChanges {
     return this.store.pipe(select(selectItems));
   }
 
-  get provisionalInvoiceDetailList(): Observable<InvoiceDetail[]> {
-    return this.store.pipe(select(selectProvisionalInvoicesDetail));
+  get payments(): Observable<Payment[]> {
+    return this.store.pipe(select(selectPayments));
   }
 
-  ngOnInit(): void {
-    console.log("on init");
-    console.log(this.invoiceSummaryForm.value.tailDiscount);
-    if (this.invoiceSummaryForm.value.tailDiscount != null && this.invoiceSummaryForm.value.tailDiscount != this.tailDiscount) {
-      this.onChanges();
-    }
+  get provisionalInvoiceDetailList(): Observable<InvoiceDetail[]> {
+    return this.store.pipe(select(selectProvisionalInvoicesDetail));
   }
 
   onChanges(): void {
@@ -215,7 +251,7 @@ export class CreateComponent implements OnInit, OnChanges {
       codInvoice: null,
       invoiceNumber: this.invoiceMasterForm.value.invoiceNumber,
       client: this.clientSelected != null ? this.clientSelected.codClient : null,
-      payment: this.invoiceMasterForm.value.payment,
+      payment: this.paymentSelected != null ? this.paymentSelected.codPayment : null,
       orderNumber: this.invoiceMasterForm.value.orderNumber,
       date: this.invoiceMasterForm.value.date
     }
@@ -267,6 +303,10 @@ export class CreateComponent implements OnInit, OnChanges {
   
   addItemSelected(item: Item) {
     this.itemSelected = item;
+  }
+
+  addPaymentSelected(payment: Payment) {
+    this.paymentSelected = payment;
   }
 
   prova() {

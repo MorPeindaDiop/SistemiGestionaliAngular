@@ -6,7 +6,7 @@ import { InvoiceComponent } from './main/invoice.component';
 
 const routes: Routes = [
   { path: '', component: InvoiceComponent },
-  { path: 'detail/:codInvoice', component: DetailComponent },
+  { path: 'detail/:codInvoice', component: CreateComponent },
   { path: 'create', component: CreateComponent },
 ];
 
