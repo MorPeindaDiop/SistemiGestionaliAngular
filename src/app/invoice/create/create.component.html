@@ -8,14 +8,13 @@
     <button type="button" (click)="deleteProvisionalCalculations()" class="btn btn-danger "
         style="float: right;">ANNULLA</button>
 
-    <h2>Nuova Fattura</h2>
+    <h2>Fattura</h2>
 
     <div class="grid-container">
         <div class="master">
             <form [formGroup]="invoiceMasterForm" style="padding: 0 10%;">
                 <div>
-                    <button class="btn btn-outline-primary mb-2 mr-2" (click)="openXl(content)">Seleziona
-                        cliente</button>
+                    <button class="btn btn-outline-primary mb-2 mr-2" (click)="openXl(content)" style="width: 280px;">Seleziona cliente</button>
                     <ng-template #content let-modal style="max-width: none; margin: none;">
                         <div class="modal-header">
                             <h4 class="modal-title">Clienti</h4>
@@ -25,8 +24,7 @@
                             </button>
                         </div>
 
-                        <button class="btn btn-outline-primary mb-2 mr-2" (click)="openXl(content4)">Nuovo
-                            cliente</button>
+                        <button class="btn btn-outline-primary mb-2 mr-2" (click)="openXl(content4)">Nuovo cliente</button>
                         <ng-template #content4 let-modal style="max-width: none; margin: none;">
                             <div class="modal-header">
                                 <!-- <h4 class="modal-title">Crea cliente</h4> -->
@@ -80,8 +78,13 @@
                             </table>
                         </div>
                     </ng-template> <br>
+                    <label for="inp" class="inp">
+                        <input type="text" id="inp" placeholder="&nbsp;" [value]='clientSelected != null ? clientSelected.businessName : ""'>
+                        <span class="label">Cliente</span>
+                        <span class="focus-bg"></span>
+                    </label>
 
-                    <label class="label">Cliente: {{ clientSelected != null ? clientSelected.businessName : ""}}</label>
+                    <!-- <label class="label">Cliente: {{ clientSelected != null ? clientSelected.businessName : ""}}</label> -->
                 </div>
                 <div>
                     <label for="inp" class="inp">
@@ -98,7 +101,7 @@
                     </label>
                 </div>
                 <div>
-                    <button class="btn btn-outline-primary mb-2 mr-2" (click)="openXl(content6)">Seleziona condizione di pagamento</button>
+                    <button class="btn btn-outline-primary mb-2 mr-2" (click)="openXl(content6)" style="width: 280px;">Seleziona condizione di pagamento</button>
                     <ng-template #content6 let-modal style="max-width: none; margin: none;">
                         <div class="modal-header">
                             <h4 class="modal-title">Condizioni di pagamento</h4>
@@ -127,13 +130,19 @@
                                         <button type="button" class="btn btn-primary"
                                             (click)="modal.close('Close click'); addPaymentSelected(payment)">Seleziona</button>
                                         </td>
-                                    </tr>
+                                    </tr>x
                                 </tbody>
                             </table>
                         </div>
                     </ng-template> <br>
 
-                    <label class="label">Condizione di pagamento: {{ paymentSelected != null ? paymentSelected.description : ""}}</label>
+                    <!-- <label class="inp focus-bg"  style="background-color: #F5F5F5;color: #9D9D9D; padding: 16px 12px 0 12px; max-width: 280px;height: 56px;">Condizione di pagamento: {{ paymentSelected != null ? paymentSelected.description : ""}}
+                    </label> -->
+                    <label for="inp" class="inp">
+                        <input type="text" id="inp" placeholder="&nbsp;" [value]='paymentSelected != null ? paymentSelected.description :"" '>
+                        <span class="label">Condizione di pagamento</span>
+                        <span class="focus-bg"></span>
+                    </label>
                     <!-- <label for="inp" class="inp">
                         <select formControlName="payment" class="form-control">
                             <option value="" disabled selected>Condizione di pagamento</option>
@@ -152,7 +161,7 @@
                     <!-- <ejs-datetimepicker placeholder='Select a date' id="datetimepicker" formControlName="date" [value]='dateValue'
                         format='yyyy.MM.dd'></ejs-datetimepicker> -->
 
-                    <input type="date" placeholder="Scadenza" formControlName="date" [value]='dateValue'>
+                    <input type="date" placeholder="Scadenza" formControlName="date" [value]='dateValue'  style="font-weight: 400;padding: 16px 12px 0 12px;color:#9D9D9D;width: 280px;height: 56px;border-bottom: 1px solid #7a7a7a;background: #f5f5f5;border-top: 0px; border-left: 0px;border-right: 0px;">
                 </div>
             </form>
         </div>
@@ -219,7 +228,7 @@
                 </div>
             </form>
         </div>
-        <div class="detail">
+        <div class="detail" style="padding-top:3%">
             <button class="btn btn-outline-primary mb-2 mr-2" (click)="openXl(content2)">Seleziona articolo</button>
             <ng-template #content2 let-modal style="max-width: none; margin: none;">
                 <div class="modal-header">
