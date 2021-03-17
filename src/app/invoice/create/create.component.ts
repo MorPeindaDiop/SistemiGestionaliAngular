@@ -56,6 +56,7 @@ export class CreateComponent implements OnInit {
     this.invoiceService.retrieveAllInvoicesSummary();
     
     this.invoiceMasterForm = this.fb.group({
+      codInvoice: ['', Validators.required],
       invoiceNumber: ['', Validators.required],
       client: ['', Validators.required],
       payment: ['', Validators.required],
@@ -64,6 +65,7 @@ export class CreateComponent implements OnInit {
     })
 
     this.invoiceDetailForm = this.fb.group({
+      codInvoice: ['', Validators.required],
       codItem: ['', Validators.required],
       description: ['', Validators.required],
       measure: ['', Validators.required],
@@ -81,6 +83,7 @@ export class CreateComponent implements OnInit {
     })
 
     this.invoiceSummaryForm = this.fb.group({
+      codInvoice: ['', Validators.required],
       totalAmount: ['', Validators.required],
       totalProducts: ['', Validators.required],
       totalServices: ['', Validators.required],
@@ -248,7 +251,7 @@ export class CreateComponent implements OnInit {
   save() {
     //invoiceMaster
     let invoiceMaster: InvoiceMaster = {
-      codInvoice: null,
+      codInvoice: this.invoiceMasterForm.value.codInvoice,
       invoiceNumber: this.invoiceMasterForm.value.invoiceNumber,
       client: this.clientSelected != null ? this.clientSelected.codClient : null,
       payment: this.paymentSelected != null ? this.paymentSelected.codPayment : null,
